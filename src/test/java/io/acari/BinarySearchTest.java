@@ -30,7 +30,7 @@ public class BinarySearchTest {
     @Test
     public void searchShouldReturnCorrectIndexWhenGivenKeyThatExistsPermutationFour() throws Exception {
         int[] testInput = new int[]{1,2,3,5,8,13};
-        assertEquals(5,  steve.search(testInput, 0, testInput.length - 1, 8));
+        assertEquals(4,  steve.search(testInput, 0, testInput.length - 1, 8));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class BinarySearchTest {
     @Test
     public void searchShouldReturnCorrectNegativeIndexWhenGivenKeyThatDoesNotExistsPermutationTwo() throws Exception {
         int[] testInput = new int[]{11, 22, 33, 44, 55};
-        assertEquals(-7,  steve.search(testInput, 0, testInput.length - 1, 445));
+        assertEquals(-5,  steve.search(testInput, 0, testInput.length - 1, 445));
     }
 
     @Test
