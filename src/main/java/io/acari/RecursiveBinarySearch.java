@@ -1,6 +1,6 @@
 package io.acari;
 
-public class BinarySearch {
+public class RecursiveBinarySearch {
 
     public int search(int array[], int leftIndex, int rightIndex, int value){
         if(leftIndex < rightIndex){

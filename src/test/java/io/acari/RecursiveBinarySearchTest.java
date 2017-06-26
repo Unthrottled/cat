@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 /**
  * Forged in the flames of battle by alex.
  */
-public class BinarySearchTest {
-    private BinarySearch steve = new BinarySearch();
+public class RecursiveBinarySearchTest {
+    private RecursiveBinarySearch steve = new RecursiveBinarySearch();
 
     @Test
     public void searchShouldReturnCorrectIndexWhenGivenKeyThatExists() throws Exception {
