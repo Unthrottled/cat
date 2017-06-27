@@ -1,5 +1,6 @@
 package io.acari.string;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -7,6 +8,7 @@ import static org.junit.Assert.*;
 /**
  * Forged in the flames of battle by alex.
  */
+@Ignore
 public class CommonChildTest {
     private final CommonChild steve = new CommonChild();
     @Test
