@@ -7,8 +7,8 @@ import static org.junit.Assert.assertEquals;
 /**
  * Forged in the flames of battle by alex.
  */
-public class RightBoundaryBinarySearchTest {
-    private final RightBoundaryBinarySearch steve = new RightBoundaryBinarySearch();
+public class IterativeRightBoundaryBinarySearchTest {
+    private final IterativeRightBoundaryBinarySearch steve = new IterativeRightBoundaryBinarySearch();
 
     @Test
     public void searchShouldReturnCorrectIndexWhenGivenKeyThatExists() throws Exception {

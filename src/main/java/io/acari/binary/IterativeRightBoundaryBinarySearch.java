@@ -1,6 +1,6 @@
 package io.acari.binary;
 
-public class RightBoundaryBinarySearch {
+public class IterativeRightBoundaryBinarySearch {
 
     public int search(int array[], int value){
         int left = 0;

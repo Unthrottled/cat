@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 /**
  * Forged in the flames of battle by alex.
  */
-public class LeftBoundaryBinarySearchTest {
-    private LeftBoundaryBinarySearch steve = new LeftBoundaryBinarySearch();
+public class IterativeLeftBoundaryBinarySearchTest {
+    private IterativeLeftBoundaryBinarySearch steve = new IterativeLeftBoundaryBinarySearch();
 
     @Test
     public void searchShouldReturnCorrectIndexWhenGivenKeyThatExists() throws Exception {
