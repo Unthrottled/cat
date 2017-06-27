@@ -2,7 +2,7 @@ package io.acari.binary;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -19,7 +19,7 @@ public class RightBoundaryBinarySearchTest {
     @Test
     public void searchShouldReturnCorrectIndexWhenGivenKeyThatExistsPermutationOne() throws Exception {
         int[] testInput = new int[]{1, 2, 2, 2, 2, 3, 4, 5};
-        assertEquals(1, steve.search(testInput, 2));
+        assertEquals(4, steve.search(testInput, 2));
     }
 
     @Test
