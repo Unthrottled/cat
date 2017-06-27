@@ -23,6 +23,6 @@ public class RecursiveBinarySearch {
 
         }
 
-        return 0 - ++leftIndex;
+        return array[leftIndex] == value ? leftIndex : -(++leftIndex);
     }
 }
