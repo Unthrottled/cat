@@ -1,4 +1,4 @@
-package io.acari;
+package io.acari.binary;
 
 public class IterativeBinarySearch {
 
