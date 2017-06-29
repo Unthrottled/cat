@@ -79,43 +79,43 @@ public class MinRotatedTest {
     @Test
     public void searchL() throws Exception {
         int[] input = {3, 4, 5, 6, 1, 2};
-        assertEquals(5, steve.search(input));
+        assertEquals(4, steve.search(input));
     }
 
     @Test
     public void searchM() throws Exception {
         int[] input = {3, 4, 5, 1, 2};
-        assertEquals(5, steve.search(input));
+        assertEquals(3, steve.search(input));
     }
 
     @Test
     public void searchN() throws Exception {
         int[] input = {3, 4, 1, 2};
-        assertEquals(5, steve.search(input));
+        assertEquals(2, steve.search(input));
     }
 
     @Test
     public void searchO() throws Exception {
         int[] input = {3, 1, 2};
-        assertEquals(5, steve.search(input));
+        assertEquals(1, steve.search(input));
     }
 
     @Test
     public void searchP() throws Exception {
         int[] input = {4, 1, 2, 3};
-        assertEquals(5, steve.search(input));
+        assertEquals(1, steve.search(input));
     }
 
     @Test
     public void searchQ() throws Exception {
         int[] input = {4, 5, 1, 2, 3};
-        assertEquals(5, steve.search(input));
+        assertEquals(2, steve.search(input));
     }
 
     @Test
     public void searchR() throws Exception {
         int[] input = {4, 5, 6, 1, 2, 3};
-        assertEquals(5, steve.search(input));
+        assertEquals(3, steve.search(input));
     }
 
     @Test
