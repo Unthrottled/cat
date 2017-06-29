@@ -1,6 +1,6 @@
 package io.acari.binary;
 
-public class MinRotated {
+public class MinRotatedRecursive {
 
     public int search(int array[]) {
         int right = array.length - 1;

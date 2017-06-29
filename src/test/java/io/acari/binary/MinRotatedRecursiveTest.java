@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 /**
  * Forged in the flames of battle by alex.
  */
-public class MinRotatedTest {
-    private final MinRotated steve = new MinRotated();
+public class MinRotatedRecursiveTest {
+    private final MinRotatedRecursive steve = new MinRotatedRecursive();
 
     @Test
     public void searchA() throws Exception {
