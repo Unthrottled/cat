@@ -49,7 +49,7 @@ public class MaxRotatedIterativeTest {
     @Test
     public void searchG() throws Exception {
         int[] input = {2, 1};
-        assertEquals(1, steve.search(input));
+        assertEquals(0, steve.search(input));
     }
 
     @Test
@@ -121,7 +121,7 @@ public class MaxRotatedIterativeTest {
     @Test
     public void searchT() throws Exception {
         int[] input = {4, 5, 6, 6, 6, 1, 2, 3};
-        assertEquals(3, steve.search(input));
+        assertEquals(4, steve.search(input));
     }
 
     @Test
@@ -133,19 +133,19 @@ public class MaxRotatedIterativeTest {
     @Test
     public void searchV() throws Exception {
         int[] input = {4, 4, 4, 5, 5, 5, 6, 6, 6, 1, 2, 3};
-        assertEquals(6, steve.search(input));
+        assertEquals(11, steve.search(input));
     }
 
     @Test
     public void searchW() throws Exception {
         int[] input = {4, 4, 4, 5, 5, 5, 6, 6, 6, 1, 2, 2, 2, 3};
-        assertEquals(7, steve.search(input));
+        assertEquals(6, steve.search(input));
     }
 
     @Test
     public void searchX() throws Exception {
         int[] input = {4, 4, 4, 5, 5, 5, 6, 6, 6, 1, 2, 2, 2, 3, 3, 3};
-        assertEquals(6, steve.search(input));
+        assertEquals(13, steve.search(input));
     }
 
     @Test
@@ -157,6 +157,6 @@ public class MaxRotatedIterativeTest {
     @Test
     public void searchZ() throws Exception {
         int[] input = {4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3};
-        assertEquals(9, steve.search(input));
+        assertEquals(13, steve.search(input));
     }
 }
