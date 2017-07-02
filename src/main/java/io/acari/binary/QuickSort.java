@@ -15,7 +15,7 @@ public class QuickSort {
         }
     }
 
-    private int _partition(int[] array, int low, int high) {
+    static int _partition(int[] array, int low, int high) {
         int pivot = array[high];
         int i = low - 1;
         for (int j = low; j < high; j++){
@@ -28,7 +28,7 @@ public class QuickSort {
         return i;
     }
 
-    private void _swap(int[] array, int i, int pivot) {
+    static void _swap(int[] array, int i, int pivot) {
         int tempo = array[i];
         array[i] = array[pivot];
         array[pivot] = tempo;
