@@ -2,7 +2,7 @@ package io.acari.binary;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -56,6 +56,13 @@ public class MergeSortTest {
     public void sortShouldSortPartg() throws Exception {
         int[] input = {38, 27, 43, 3, 9, 82, 10};
         int[] expected = {3, 9, 10, 27, 38, 43, 82};
+        assertArrayEquals(expected, steve.sort(input));
+    }
+
+    @Test
+    public void sortShouldSortParth() throws Exception {
+        int[] input = {1, 4, 1, 2, 7, 5, 2};
+        int[] expected = {1, 1, 2, 2, 4, 5, 7};
         assertArrayEquals(expected, steve.sort(input));
     }
 
