@@ -52,4 +52,11 @@ public class MergeSortTest {
         assertArrayEquals(expected, steve.sort(input));
     }
 
+    @Test
+    public void sortShouldSortPartg() throws Exception {
+        int[] input = {38, 27, 43, 3, 9, 82, 10};
+        int[] expected = {3, 9, 10, 27, 38, 43, 82};
+        assertArrayEquals(expected, steve.sort(input));
+    }
+
 }
