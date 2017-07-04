@@ -63,7 +63,7 @@ class LineLevelOrderTraversal {
 
 class GFG2 {
     public static void main(String[] args) {
-        LineLevelOrderTraversal steve = new LineLevelOrderTraversal();
+        LineLevelOrderTraversalTwoQueues steve = new LineLevelOrderTraversalTwoQueues();
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         in.nextLine();
