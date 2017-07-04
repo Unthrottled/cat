@@ -1,11 +1,8 @@
 package io.acari.graph;
 
-import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -20,10 +17,7 @@ public class BFSXTotalTest {
                 {'O', 'X', 'X', 'X', 'X', 'X', 'O',},
                 {'O', 'X', 'O', 'O', 'O', 'X', 'O',}
         };
-        List<String> expectedOutput = Lists.newArrayList(
-                "    X\n" +
-                "    X X X X\n" +
-                "    X     X");
+        int expectedOutput = 1;
 
         assertEquals(expectedOutput, steve.findTree(input));
     }
@@ -35,7 +29,39 @@ public class BFSXTotalTest {
                 {'O','O','O',},
                 {'X','X','X',}
         };
-        List<String> expectedOutput = Lists.newArrayList("XXX", "XXX");
+        int expectedOutput = 2;
+
+        assertEquals(expectedOutput, steve.findTree(input));
+    }
+
+    @Test
+    public void findTreeShouldFindMultiTreePartTwo() throws Exception {
+        char[][] input = {
+                {'X', 'X', 'O',},
+                {'O', 'O', 'X',},
+                {'O', 'X', 'O',},
+                {'O', 'O', 'O',},
+                {'X', 'O', 'X',},
+                {'X', 'O', 'X',},
+                {'O', 'X', 'O',},
+                {'X', 'X', 'O',},
+                {'X', 'X', 'X',},
+                {'O', 'O', 'O',},
+        };
+        int expectedOutput = 6;
+
+        assertEquals(expectedOutput, steve.findTree(input));
+    }
+
+    @Test
+    public void findTreeShouldFindRightThingPartTwo() throws Exception {
+        char[][] input = {
+                {'O', 'O', 'O', 'O', 'X', 'X', 'O',},
+                {'O', 'X', 'O', 'X', 'O', 'O', 'X',},
+                {'X', 'X', 'X', 'X', 'O', 'X', 'O',},
+                {'O', 'X', 'X', 'X', 'O', 'O', 'O',}
+        };
+        int expectedOutput = 4;
 
         assertEquals(expectedOutput, steve.findTree(input));
     }
