@@ -54,7 +54,7 @@ final class Node {
     public Node left;
 
     public Node right;
-
+    public int hd = Integer.MAX_VALUE;
     public Node(int data) {
         this.data = data;
     }
@@ -64,7 +64,7 @@ final class Node {
 
 class GFG2 {
     public static void main(String[] args) {
-        LevelOrderSpiral steve = new LevelOrderSpiral();
+        BottomViewBinaryTree steve = new BottomViewBinaryTree();
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         in.nextLine();
@@ -93,7 +93,7 @@ class GFG2 {
                 graph.put(rootTreeNode.data, rootTreeNode);
                 graph.put(childTreeNode.data, childTreeNode);
             }
-            steve.levelOrder(graph.get(parseInt(rows[0])));
+            steve.bottomView(graph.get(parseInt(rows[0])));
             System.out.println();
         }
     }
