@@ -2,12 +2,12 @@ package io.acari;
 
 public class CountSort {
 
-    public int[] sort(int array[]){
+    public int[] sort(int array[]) {
         int[] counto = new int[1000];
         for (int anArray : array) {
             counto[anArray]++;
         }
-        for(int i = 1; i < counto.length; i++){
+        for (int i = 1; i < counto.length; i++) {
             counto[i] += counto[i - 1];
         }
 

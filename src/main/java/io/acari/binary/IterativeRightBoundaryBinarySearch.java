@@ -2,7 +2,7 @@ package io.acari.binary;
 
 public class IterativeRightBoundaryBinarySearch {
 
-    public int search(int array[], int value){
+    public int search(int array[], int value) {
         int left = 0;
         if (array[left] > value) {
             return -1;

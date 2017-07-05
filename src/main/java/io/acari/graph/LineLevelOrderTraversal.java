@@ -47,18 +47,19 @@ class LineLevelOrderTraversal {
 
     }
 
-    static final class Node {
-        public final int data;
-        public Node left;
+}
 
-        public Node right;
+final class Node {
+    public final int data;
+    public Node left;
 
-        public Node(int data) {
-            this.data = data;
-        }
+    public Node right;
 
-
+    public Node(int data) {
+        this.data = data;
     }
+
+
 }
 
 class GFG2 {
@@ -69,7 +70,7 @@ class GFG2 {
         in.nextLine();
         for (int i_t = 0; i_t < t; i_t++) {
             int nodes = in.nextInt();
-            Map<Integer, LineLevelOrderTraversal.Node> graph = new HashMap<>(nodes);
+            Map<Integer, Node> graph = new HashMap<>(nodes);
             in.nextLine();
             String line = in.nextLine();
             String[] rows = line.split(" ");
@@ -77,10 +78,10 @@ class GFG2 {
                 int root = Integer.parseInt(rows[i]);
                 int child = Integer.parseInt(rows[i + 1]);
                 String side = rows[i + 2];
-                LineLevelOrderTraversal.Node rootTreeNode = graph.getOrDefault(root, new LineLevelOrderTraversal.Node(root));
-                LineLevelOrderTraversal.Node childTreeNode = graph.getOrDefault(child, new LineLevelOrderTraversal.Node(child));
+                Node rootTreeNode = graph.getOrDefault(root, new Node(root));
+                Node childTreeNode = graph.getOrDefault(child, new Node(child));
                 if (childTreeNode.left != null && childTreeNode.right != null) {
-                    childTreeNode = new LineLevelOrderTraversal.Node(child);
+                    childTreeNode = new Node(child);
                 }
 
                 if (side.charAt(0) == 'L' && rootTreeNode.left == null) {

@@ -2,14 +2,14 @@ package io.acari.binary;
 
 public class RecursiveLeftBoundaryBinarySearch {
 
-    public int search(int array[], int value){
+    public int search(int array[], int value) {
         int left = 0;
-        if(array[left] > value){
+        if (array[left] > value) {
             return -1;
         }
 
         int right = array.length - 1;
-        if(array[right] < value){
+        if (array[right] < value) {
             return getInverse(right);
         }
 
@@ -17,10 +17,10 @@ public class RecursiveLeftBoundaryBinarySearch {
     }
 
     private int searcho(int[] array, int left, int right, int value) {
-        if(right - left > 1){
-            int middleIndex = (int) Math.floor(((double)left + (double)right)/2D);
+        if (right - left > 1) {
+            int middleIndex = (int) Math.floor(((double) left + (double) right) / 2D);
             int middleValue = array[middleIndex];
-            if(middleValue < value){
+            if (middleValue < value) {
                 return searcho(array, middleIndex, right, value);
             } else {
                 return searcho(array, left, middleIndex, value);

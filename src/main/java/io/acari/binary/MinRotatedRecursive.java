@@ -9,7 +9,7 @@ public class MinRotatedRecursive {
         int righto = array[right];
         if (array.length == 1 || lefto < righto) {
             return left;
-        }  else {
+        } else {
             return search(array, left, right);
         }
     }

@@ -5,17 +5,17 @@ import java.util.Queue;
 
 class LineLevelOrderTraversalTwoQueues {
 
-    public void levelOrder(LineLevelOrderTraversal.Node root) {
-        if (root != null){
-            Queue<LineLevelOrderTraversal.Node> queueOne = new LinkedList<>();
-            Queue<LineLevelOrderTraversal.Node> queueTwo = new LinkedList<>();
+    public void levelOrder(Node root) {
+        if (root != null) {
+            Queue<Node> queueOne = new LinkedList<>();
+            Queue<Node> queueTwo = new LinkedList<>();
             queueOne.offer(root);
-            while (!queueOne.isEmpty() || !queueTwo.isEmpty()){
-                while (!queueOne.isEmpty()){
+            while (!queueOne.isEmpty() || !queueTwo.isEmpty()) {
+                while (!queueOne.isEmpty()) {
                     doWork(queueTwo, queueOne.poll());
                 }
 
-                while (!queueTwo.isEmpty()){
+                while (!queueTwo.isEmpty()) {
                     doWork(queueOne, queueTwo.poll());
                 }
 
@@ -26,10 +26,10 @@ class LineLevelOrderTraversalTwoQueues {
 
     }
 
-    private void doWork(Queue<LineLevelOrderTraversal.Node> queueOne, LineLevelOrderTraversal.Node node) {
-        if(node.left != null)
+    private void doWork(Queue<Node> queueOne, Node node) {
+        if (node.left != null)
             queueOne.offer(node.left);
-        if(node.right != null)
+        if (node.right != null)
             queueOne.offer(node.right);
         System.out.print(node.data + " ");
     }

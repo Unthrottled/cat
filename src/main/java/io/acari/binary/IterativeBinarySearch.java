@@ -13,12 +13,12 @@ public class IterativeBinarySearch {
             return right;
         }
 
-        while(left < right){
-            int middleIndex = (int) Math.floor(((double) left + (double) right)/2D);
+        while (left < right) {
+            int middleIndex = (int) Math.floor(((double) left + (double) right) / 2D);
             int middleValue = array[middleIndex];
-            if(middleValue == value){
+            if (middleValue == value) {
                 return middleIndex;
-            } else if(middleValue > value){
+            } else if (middleValue > value) {
                 right = --middleIndex;
             } else {
                 left = ++middleIndex;

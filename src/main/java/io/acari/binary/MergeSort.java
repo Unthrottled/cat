@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MergeSort {
     public int[] sort(int array[]) {
-        _sort(Arrays.copyOf(array, array.length), 0, array.length - 1,array);
+        _sort(Arrays.copyOf(array, array.length), 0, array.length - 1, array);
         return array;
     }
 
@@ -16,10 +16,10 @@ public class MergeSort {
 
             int left = low;
             int right = middle + 1;
-            for(int i = low; i <= high; i++){
+            for (int i = low; i <= high; i++) {
                 int leftValue = array[left];
                 int rightValue = array[right];
-                if((leftValue < rightValue && left <= middle)|| right == middle){
+                if ((leftValue < rightValue && left <= middle) || right == middle) {
                     copy[i] = leftValue;
                     left = left + 1 <= middle ? left + 1 : middle + 1;
                 } else {
