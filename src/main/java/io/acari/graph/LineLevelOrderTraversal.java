@@ -64,7 +64,7 @@ final class Node {
 
 class GFG2 {
     public static void main(String[] args) {
-        BottomViewBinaryTree steve = new BottomViewBinaryTree();
+        TopViewBinaryTree steve = new TopViewBinaryTree();
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         in.nextLine();
@@ -93,7 +93,7 @@ class GFG2 {
                 graph.put(rootTreeNode.data, rootTreeNode);
                 graph.put(childTreeNode.data, childTreeNode);
             }
-            steve.bottomView(graph.get(parseInt(rows[0])));
+            steve.topView(graph.get(parseInt(rows[0])));
             System.out.println();
         }
     }
