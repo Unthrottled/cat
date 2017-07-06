@@ -64,7 +64,7 @@ final class Node {
 
 class GFG2 {
     public static void main(String[] args) {
-        LeafBinaryTreeCounter steve = new LeafBinaryTreeCounter();
+        LeafBinaryTreeCounterNonRecursive steve = new LeafBinaryTreeCounterNonRecursive();
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         in.nextLine();
