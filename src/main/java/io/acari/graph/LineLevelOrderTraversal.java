@@ -50,7 +50,7 @@ class LineLevelOrderTraversal {
 }
 
 final class Node {
-    public final int data;
+    public int data;
     public Node left;
 
     public Node right;
@@ -69,7 +69,7 @@ final class Node {
 
 class GFG2 {
     public static void main(String[] args) {
-        BoundaryTraversal steve = new BoundaryTraversal();
+        BoundaryTraversalRecursive steve = new BoundaryTraversalRecursive();
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         in.nextLine();
