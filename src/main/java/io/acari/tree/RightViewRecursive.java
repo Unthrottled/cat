@@ -1,4 +1,4 @@
-package io.acari.graph;
+package io.acari.tree;
 
 public class RightViewRecursive {
     void rightView(Node node) {

@@ -1,4 +1,4 @@
-package io.acari.graph;
+package io.acari.tree;
 
 import static java.lang.Integer.*;
 import static java.lang.Math.max;

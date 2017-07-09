@@ -1,4 +1,4 @@
-package io.acari.graph;
+package io.acari.tree;
 
  class TreeNode {
     public final int data;

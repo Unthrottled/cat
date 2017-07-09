@@ -1,8 +1,7 @@
-package io.acari.graph;
+package io.acari.tree;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 
 public class ReverseLevelTraversalIterative {
     public void reversePrint(Node node) {
