@@ -8,7 +8,7 @@ import static java.lang.Integer.parseInt;
 
 class GFG2 {
     public static void main(String[] args) {
-        RightViewRecursive steve = new RightViewRecursive();
+        RightViewRecursive steve = new RightViewInterative();
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         in.nextLine();
