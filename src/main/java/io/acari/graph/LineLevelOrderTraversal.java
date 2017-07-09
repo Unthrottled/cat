@@ -55,7 +55,7 @@ final class Node {
 
     public Node right;
     public int hd = Integer.MAX_VALUE;
-    public Node(int data) {
+    public Node(int data) {;
         this.data = data;
     }
 
