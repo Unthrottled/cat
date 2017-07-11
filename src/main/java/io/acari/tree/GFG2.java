@@ -8,7 +8,7 @@ import static java.lang.Integer.parseInt;
 
 class GFG2 {
     public static void main(String[] args) {
-        RightViewRecursive steve = new RightViewInterative();
+        LowestCommonAncestor steve = new LowestCommonAncestor();
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         in.nextLine();
@@ -37,7 +37,7 @@ class GFG2 {
                 graph.put(rootTreeNode.data, rootTreeNode);
                 graph.put(childTreeNode.data, childTreeNode);
             }
-            steve.rightView(graph.get(parseInt(rows[0])));
+            steve.doThing(graph.get(parseInt(rows[0])));
             System.out.println();
         }
     }
