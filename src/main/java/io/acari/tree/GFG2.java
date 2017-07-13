@@ -8,7 +8,7 @@ import static java.lang.Integer.parseInt;
 
 class GFG2 {
     public static void main(String[] args) {
-        LowestCommonAncestor steve = new LowestCommonAncestor();
+        LineLevelOrderTraversalTwoQueues steve = new LineLevelOrderTraversalTwoQueues();
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
         in.nextLine();
@@ -37,7 +37,7 @@ class GFG2 {
                 graph.put(rootTreeNode.data, rootTreeNode);
                 graph.put(childTreeNode.data, childTreeNode);
             }
-            steve.doThing(graph.get(parseInt(rows[0])));
+            steve.levelOrder(graph.get(parseInt(rows[0])));
             System.out.println();
         }
     }

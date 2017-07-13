@@ -9,7 +9,7 @@ class LineLevelOrderTraversalTwoQueues {
         if (root != null) {
             Queue<Node> queueOne = new LinkedList<>();
             Queue<Node> queueTwo = new LinkedList<>();
-            queueOne.offer(root);
+            queueTwo.offer(root);
             while (!queueOne.isEmpty() || !queueTwo.isEmpty()) {
                 while (!queueOne.isEmpty()) {
                     doWork(queueTwo, queueOne.poll());
