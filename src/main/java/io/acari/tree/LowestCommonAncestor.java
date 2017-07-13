@@ -6,15 +6,15 @@ import java.util.*;
 
 public class LowestCommonAncestor {
 
-    public int lowestCommonAncestor(Node root, Node one, Node two) {
+    public Node LCA(Node root, int one, int two) {
         if (root != null) {
             Deque<Node> onePath = doWork(root, one);
             if(onePath.isEmpty()){
-                return -1;
+                return null;
             }
             Deque<Node> twoPath = doWork(root, two);
             if(twoPath.isEmpty()){
-                return -1;
+                return null;
             }
 
             while (!(onePath.isEmpty() || twoPath.isEmpty())){
@@ -26,18 +26,18 @@ public class LowestCommonAncestor {
                     Node onePoll = onePath.pollLast();
                     Node twoPoll = twoPath.pollLast();
                     if(onePoll.data == twoPoll.data){
-                        return onePoll.data;
+                        return onePoll;
                     }
                 }
             }
         }
 
-        return -1;
+        return root;
     }
 
-    private Deque<Node> doWork(Node root, Node nodeToFind) {
+    private Deque<Node> doWork(Node root, int nodeToFind) {
         if(root != null){
-            if(root.data == nodeToFind.data){
+            if(root.data == nodeToFind){
                 Deque<Node> deque = new LinkedList<>();
                 deque.push(root);
                 return deque;
@@ -45,28 +45,28 @@ public class LowestCommonAncestor {
 
             Node right = root.right;
             if(right != null){
-                Deque<Node> deque = getNodes(nodeToFind, right);
+                Deque<Node> deque = getNodes(right, nodeToFind);
                 if (deque != null) return deque;
             }
             Node left = root.left;
             if (left != null){
-                Deque<Node> deque = getNodes(nodeToFind, left);
+                Deque<Node> deque = getNodes(left, nodeToFind);
                 if (deque != null) return deque;
             }
         }
         return new ArrayDeque<>();
     }
 
-    private Deque<Node> getNodes(Node one, Node right) {
-        Deque<Node> deque = doWork(right, one);
+    private Deque<Node> getNodes(Node root, int right) {
+        Deque<Node> deque = doWork(root, right);
         if(!deque.isEmpty()){
-            deque.push(right);
+            deque.push(root);
             return deque;
         }
         return null;
     }
 
     public void doThing(Node node) {
-        System.out.print(lowestCommonAncestor(node, new Node(90), new Node(60)));
+        System.out.print(LCA(node, 2, 3));
     }
 }
