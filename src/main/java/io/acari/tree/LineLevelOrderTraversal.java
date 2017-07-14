@@ -52,6 +52,7 @@ class LineLevelOrderTraversal {
 final class Node {
     public int data;
     public Node left;
+    public Node next;
 
     public Node right;
     public int hd = Integer.MAX_VALUE;
