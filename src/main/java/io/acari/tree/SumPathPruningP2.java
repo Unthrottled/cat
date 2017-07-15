@@ -4,27 +4,7 @@ public class SumPathPruningP2 {
 
     private static int aoeu = 0;
 
-    public void prune(Node root, int k) {
-        prunGuy(root, null, k);
-    }
-
-    private void prunGuy(Node root, Node parent, int k){
-        aoeu++;
-        if (root != null) {
-            int k1 = k - root.data;
-            prunGuy(root.left, root, k1);
-            prunGuy(root.right, root, k1);
-
-            if (root.right == null && root.left == null && parent != null && k > root.data) {
-                if(parent.left == root)
-                    parent.left = null;
-                else
-                    parent.right = null;
-            }
-        }
-    }
-
-    public static void main(String... args){
+    public static void main(String... args) {
         int k = 45;
         Node root = new Node(1);
         root.left = new Node(2);
@@ -51,8 +31,28 @@ public class SumPathPruningP2 {
         System.out.println(aoeu);
     }
 
-    public void print(Node node){
-        if (node != null){
+    public void prune(Node root, int k) {
+        prunGuy(root, null, k);
+    }
+
+    private void prunGuy(Node root, Node parent, int k) {
+        aoeu++;
+        if (root != null) {
+            int k1 = k - root.data;
+            prunGuy(root.left, root, k1);
+            prunGuy(root.right, root, k1);
+
+            if (root.right == null && root.left == null && parent != null && k > root.data) {
+                if (parent.left == root)
+                    parent.left = null;
+                else
+                    parent.right = null;
+            }
+        }
+    }
+
+    public void print(Node node) {
+        if (node != null) {
             print(node.left);
             System.out.print(node.data + " ");
             print(node.right);

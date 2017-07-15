@@ -17,14 +17,14 @@ public class TreeFromList {
                 int leftIndex = (2 * index + 1) - index;
                 int rightIndex = (2 * index + 2) - index;
                 Node leftNode = getNode(currentNode, leftIndex);
-                if(leftNode != null){
+                if (leftNode != null) {
                     Tree leftTree = new Tree(leftNode.data);
                     queue.offer(leftTree);
                     currentRoot.left = leftTree;
                 }
 
                 Node rightNode = getNode(currentNode, rightIndex);
-                if(rightNode != null){
+                if (rightNode != null) {
                     Tree rightTree = new Tree(rightNode.data);
                     queue.offer(rightTree);
                     currentRoot.right = rightTree;
@@ -41,7 +41,7 @@ public class TreeFromList {
     }
 
     private static Node getNode(Node currentNode, int leftIndex) {
-        while(leftIndex-- > 0 && currentNode != null){
+        while (leftIndex-- > 0 && currentNode != null) {
             currentNode = currentNode.next;
         }
         return currentNode;

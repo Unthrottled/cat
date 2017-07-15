@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 public class DeepestLeftNode {
 
-    public Node find(Node root){
-        if(root != null){
+    public Node find(Node root) {
+        if (root != null) {
 
         }
 

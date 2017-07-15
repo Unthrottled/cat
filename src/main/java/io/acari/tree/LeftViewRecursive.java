@@ -2,8 +2,8 @@ package io.acari.tree;
 
 public class LeftViewRecursive {
 
-    public void leftView(Node root){
-        if(root != null){
+    public void leftView(Node root) {
+        if (root != null) {
             System.out.print(root.data + " ");
             int max = maxo(root.left, 0, 1);
             maxo(root.right, max, 1);
@@ -11,9 +11,9 @@ public class LeftViewRecursive {
         }
     }
 
-    private int maxo(Node root, int maxLevel, int level){
-        if(root != null){
-            if(maxLevel < level){
+    private int maxo(Node root, int maxLevel, int level) {
+        if (root != null) {
+            if (maxLevel < level) {
                 System.out.print(root.data + " ");
                 maxLevel = level;
             }

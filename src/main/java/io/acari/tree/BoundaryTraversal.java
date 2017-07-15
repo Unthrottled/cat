@@ -24,7 +24,7 @@ public class BoundaryTraversal {
                         if (childRight != null) {
                             rightDeque.push(childRight);
                         }
-                    } else if (childRight != null){
+                    } else if (childRight != null) {
                         printQueue.offer(childRight);
                         leftDeque.offer(childRight);
                     }
@@ -48,7 +48,7 @@ public class BoundaryTraversal {
                         if (childLeft != null) {
                             rightDeque.offer(childLeft);
                         }
-                    } else if(childLeft != null){
+                    } else if (childLeft != null) {
                         printStack.push(childLeft);
                         leftDeque.push(childLeft);
                     }

@@ -6,8 +6,8 @@ import static java.lang.Math.min;
 
 public class MaxMin {
 
-    int findMax(Node node){
-        if(node != null){
+    int findMax(Node node) {
+        if (node != null) {
             int max = max(node.data, findMax(node.right));
             return max(max, findMax(node.left));
         }
@@ -15,8 +15,8 @@ public class MaxMin {
         return MIN_VALUE;
     }
 
-    int findMin(Node node){
-        if(node != null){
+    int findMin(Node node) {
+        if (node != null) {
             int min = min(node.data, findMin(node.right));
             return min(min, findMin(node.left));
         }

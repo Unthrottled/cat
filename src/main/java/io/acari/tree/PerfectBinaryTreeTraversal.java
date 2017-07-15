@@ -5,48 +5,7 @@ import java.util.LinkedList;
 
 public class PerfectBinaryTreeTraversal {
 
-    public void print(Node root){
-        if(root != null){
-            Deque<Node> one = new LinkedList<>();
-            Deque<Node> two = new LinkedList<>();
-            one.offer(root);
-            System.out.print(root.data + " ");
-            while (!(one.isEmpty() && two.isEmpty())){
-                doWork(one, two);
-                printThing(new LinkedList<>(two), true);
-                doWork(two, one);
-                printThing(new LinkedList<>(one), true);
-            }
-        }
-    }
-
-    private void printThing(Deque<Node> two, boolean thing) {
-        while (!two.isEmpty()){
-            if(thing){
-                System.out.print(two.poll().data + " ");
-            } else {
-                System.out.print(two.pollLast().data + " ");
-            }
-
-            thing = !thing;
-        }
-    }
-
-    private void doWork(Deque<Node> one, Deque<Node> two) {
-        while (!one.isEmpty()){
-            Node currentNode = one.poll();
-            offer(two, currentNode.left);
-            offer(two, currentNode.right);
-        }
-    }
-
-    private void offer(Deque<Node> two, Node left) {
-        if(left != null){
-            two.offer(left);
-        }
-    }
-
-    public static void main(String... args){
+    public static void main(String... args) {
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
@@ -82,6 +41,47 @@ public class PerfectBinaryTreeTraversal {
         root.right.right.right.left = new Node(30);
         root.right.right.right.right = new Node(31);
         new PerfectBinaryTreeTraversal().print(root);
+    }
+
+    public void print(Node root) {
+        if (root != null) {
+            Deque<Node> one = new LinkedList<>();
+            Deque<Node> two = new LinkedList<>();
+            one.offer(root);
+            System.out.print(root.data + " ");
+            while (!(one.isEmpty() && two.isEmpty())) {
+                doWork(one, two);
+                printThing(new LinkedList<>(two), true);
+                doWork(two, one);
+                printThing(new LinkedList<>(one), true);
+            }
+        }
+    }
+
+    private void printThing(Deque<Node> two, boolean thing) {
+        while (!two.isEmpty()) {
+            if (thing) {
+                System.out.print(two.poll().data + " ");
+            } else {
+                System.out.print(two.pollLast().data + " ");
+            }
+
+            thing = !thing;
+        }
+    }
+
+    private void doWork(Deque<Node> one, Deque<Node> two) {
+        while (!one.isEmpty()) {
+            Node currentNode = one.poll();
+            offer(two, currentNode.left);
+            offer(two, currentNode.right);
+        }
+    }
+
+    private void offer(Deque<Node> two, Node left) {
+        if (left != null) {
+            two.offer(left);
+        }
     }
 
 

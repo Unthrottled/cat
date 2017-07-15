@@ -6,11 +6,11 @@ import java.util.LinkedList;
 public class RightViewInterative extends RightViewRecursive {
     @Override
     void rightView(Node node) {
-        if(node != null){
+        if (node != null) {
             Deque<Node> one = new LinkedList<>();
             one.offer(node);
             Deque<Node> two = new LinkedList<>();
-            while (!(one.isEmpty() && two.isEmpty())){
+            while (!(one.isEmpty() && two.isEmpty())) {
                 doWork(one, two);
                 doWork(two, one);
             }
@@ -18,10 +18,10 @@ public class RightViewInterative extends RightViewRecursive {
     }
 
     private void doWork(Deque<Node> one, Deque<Node> two) {
-        if(!one.isEmpty()){
+        if (!one.isEmpty()) {
             System.out.print(one.peek().data + " ");
         }
-        while (!one.isEmpty()){
+        while (!one.isEmpty()) {
             Node currentNode = one.poll();
             offerItem(two, currentNode.right);
             offerItem(two, currentNode.left);
@@ -29,7 +29,7 @@ public class RightViewInterative extends RightViewRecursive {
     }
 
     private void offerItem(Deque<Node> two, Node right) {
-        if(right != null){
+        if (right != null) {
             two.offer(right);
         }
     }

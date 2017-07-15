@@ -2,8 +2,8 @@ package io.acari.tree;
 
 public class BoundaryTraversalRecursive {
 
-    public void printBoundary(Node root){
-        if(root != null){
+    public void printBoundary(Node root) {
+        if (root != null) {
             System.out.print(root.data + " ");
             Node left = root.left;
             printLeft(left);
@@ -14,12 +14,12 @@ public class BoundaryTraversalRecursive {
         }
     }
 
-    public void printLeft(Node root){
-        if(root != null){
-            if(root.left != null){
+    public void printLeft(Node root) {
+        if (root != null) {
+            if (root.left != null) {
                 System.out.print(root.data + " ");
                 printLeft(root.left);
-            } else if (root.right != null){
+            } else if (root.right != null) {
                 System.out.print(root.data + " ");
                 printLeft(root.right);
             }
@@ -27,9 +27,9 @@ public class BoundaryTraversalRecursive {
         }
     }
 
-    public void printLeaves(Node root){
-        if(root != null){
-            if(root.left == null && root.right == null){
+    public void printLeaves(Node root) {
+        if (root != null) {
+            if (root.left == null && root.right == null) {
                 System.out.print(root.data + " ");
             }
             printLeaves(root.left);
@@ -37,12 +37,12 @@ public class BoundaryTraversalRecursive {
         }
     }
 
-    public void printRight(Node root){
-        if(root != null){
-            if(root.right != null){
+    public void printRight(Node root) {
+        if (root != null) {
+            if (root.right != null) {
                 printRight(root.right);
                 System.out.print(root.data + " ");
-            } else if (root.left != null){
+            } else if (root.left != null) {
                 printRight(root.left);
                 System.out.print(root.data + " ");
             }

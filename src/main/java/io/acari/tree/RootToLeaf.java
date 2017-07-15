@@ -17,7 +17,7 @@ public class RootToLeaf {
                 Node left = currentNode.left;
                 if (right == null && left == null) {
                     LinkedList<Node> nodes = new LinkedList<>(thing);
-                    while(!nodes.isEmpty()){
+                    while (!nodes.isEmpty()) {
                         System.out.print(nodes.poll().data + " ");
                     }
 //                    System.out.print(thing.stream()
