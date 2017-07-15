@@ -48,12 +48,3 @@ public class TreeFromList {
     }
 }
 
-class Tree {
-    Tree left;
-    Tree right;
-    int data;
-
-    public Tree(int data) {
-        this.data = data;
-    }
-}
