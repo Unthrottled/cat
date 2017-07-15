@@ -1,4 +1,6 @@
-package io.acari.tree;
+package io.acari.tree.drivers;
+
+import io.acari.tree.BFSXTotal;
 
 import java.util.Scanner;
 
