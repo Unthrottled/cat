@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
-class GFG2 {
+public class GFG2 {
     public static void main(String[] args) {
         LineLevelOrderTraversalTwoQueues steve = new LineLevelOrderTraversalTwoQueues();
         Scanner in = new Scanner(System.in);

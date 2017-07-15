@@ -3,7 +3,7 @@ package io.acari.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class LineLevelOrderTraversalTwoQueues {
+public class LineLevelOrderTraversalTwoQueues {
 
     public void levelOrder(Node root) {
         if (root != null) {

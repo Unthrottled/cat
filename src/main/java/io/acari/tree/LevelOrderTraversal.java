@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;
 
-class LevelOrderTraversal {
+public class LevelOrderTraversal {
 
     public java.util.stream.Stream<Integer> traverseTree(TreeNode root) {
         final java.util.stream.Stream.Builder<Integer> bob = java.util.stream.Stream.builder();

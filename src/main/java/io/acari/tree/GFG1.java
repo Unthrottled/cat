@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;
 
-class GFG1 {
+public class GFG1 {
     public static void main(String[] args) {
         LevelOrderTraversal steve = new LevelOrderTraversal();
         Scanner in = new Scanner(System.in);

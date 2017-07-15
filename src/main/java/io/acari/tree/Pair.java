@@ -2,7 +2,7 @@ package io.acari.tree;
 
 import java.util.Objects;
 
-class Pair<A, B> {
+public class Pair<A, B> {
     public final A fst;
     public final B snd;
 

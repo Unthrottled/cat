@@ -2,7 +2,7 @@ package io.acari.tree;
 
 import java.util.Scanner;
 
-class GFG {
+public class GFG {
     public static void main(String[] args) {
         BFSXTotal steve = new BFSXTotal();
         Scanner in = new Scanner(System.in);

@@ -3,7 +3,7 @@ package io.acari.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class LevelOrderSpiral {
+public class LevelOrderSpiral {
 
     public void levelOrder(Node root) {
         if (root != null) {
