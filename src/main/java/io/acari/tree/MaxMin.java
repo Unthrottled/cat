@@ -1,6 +1,7 @@
 package io.acari.tree;
 
-import static java.lang.Integer.*;
+import static java.lang.Integer.MAX_VALUE;
+import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 

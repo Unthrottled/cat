@@ -1,8 +1,7 @@
 package io.acari.tree;
 
-import java.util.*;
-
-import static java.lang.Integer.parseInt;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class LineLevelOrderTraversal {
 

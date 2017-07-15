@@ -1,8 +1,8 @@
 package io.acari.tree;
 
-import com.google.common.collect.Lists;
-
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class LowestCommonAncestor {
 
