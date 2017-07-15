@@ -1,6 +1,6 @@
 package io.acari.tree;
 
-final class Node {
+public final class Node {
     public int data;
     public Node left;
     public Node next;
