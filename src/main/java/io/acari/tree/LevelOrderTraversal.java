@@ -1,7 +1,8 @@
 package io.acari.tree;
 
+import io.acari.tree.pojo.TreeNode;
+
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;

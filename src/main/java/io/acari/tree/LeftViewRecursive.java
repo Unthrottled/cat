@@ -1,5 +1,7 @@
 package io.acari.tree;
 
+import io.acari.tree.pojo.Node;
+
 public class LeftViewRecursive {
 
     public void leftView(Node root) {

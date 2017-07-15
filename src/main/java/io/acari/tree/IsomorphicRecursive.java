@@ -1,5 +1,7 @@
 package io.acari.tree;
 
+import io.acari.tree.pojo.Node;
+
 public class IsomorphicRecursive {
     public boolean isIsomorphic(Node root1, Node root2) {
         if (root1 == null && root2 == null) {

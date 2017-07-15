@@ -1,4 +1,4 @@
-package io.acari.tree;
+package io.acari.tree.pojo;
 
 import java.util.Objects;
 

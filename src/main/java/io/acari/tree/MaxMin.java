@@ -1,5 +1,7 @@
 package io.acari.tree;
 
+import io.acari.tree.pojo.Node;
+
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
 import static java.lang.Math.max;
