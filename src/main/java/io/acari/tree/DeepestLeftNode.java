@@ -12,17 +12,17 @@ public class DeepestLeftNode {
         return root;
     }
 
-    public Node rootUtl(Node root, int max, int currentLevel){
-        if(root != null){
+    public Node rootUtl(Node root, int max, int currentLevel) {
+        if (root != null) {
             Node rightChild = root.right;
             currentLevel++;
             Node lowestLeftRight = rootUtl(rightChild, max, currentLevel);
             Node leftChild = root.left;
-            if(leftChild.left == null && leftChild.right == null){
-                if(currentLevel > max){
+            if (leftChild.left == null && leftChild.right == null) {
+                if (currentLevel > max) {
                     return leftChild;
                 } else {
-                 Node lowestLeftLeft = rootUtl(leftChild, max, currentLevel);
+                    Node lowestLeftLeft = rootUtl(leftChild, max, currentLevel);
 
                 }
             } else {
