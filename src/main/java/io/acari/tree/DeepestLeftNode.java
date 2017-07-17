@@ -4,6 +4,7 @@ import io.acari.tree.pojo.Node;
 
 public class DeepestLeftNode {
 
+    //todo: this later, if ever never maybe?
     public Node find(Node root) {
         if (root != null) {
             return rootUtl(root, 0, 0);
@@ -16,9 +17,8 @@ public class DeepestLeftNode {
         if (root != null) {
             Node rightChild = root.right;
             currentLevel++;
-            Node lowestLeftRight = rootUtl(rightChild, max, currentLevel);
             Node leftChild = root.left;
-            if (leftChild.left == null && leftChild.right == null) {
+            if (leftChild.left == null) {
                 if (currentLevel > max) {
                     return leftChild;
                 } else {
