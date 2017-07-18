@@ -1,14 +1,15 @@
 package io.acari.tree;
 
-import io.acari.tree.pojo.Tree;
+import io.acari.tree.pojo.Node;
+
 
 public class SubTree {
-    public static boolean isSubtree(Tree t, Tree s) {
+    public static boolean isSubtree(Node t, Node s) {
         if (t != null && s != null) {
-            Tree left = s.left;
-            Tree right = s.right;
-            Tree tLeft = t.left;
-            Tree tRight = t.right;
+            Node left = s.left;
+            Node right = s.right;
+            Node tLeft = t.left;
+            Node tRight = t.right;
             if (notJanky(t, tRight) && notJanky(t, tLeft)) {
                 if (t.data == s.data) {
                     return (left == null && right == null) || (isSubtree(tLeft, left) && isSubtree(tRight, right));
@@ -23,7 +24,7 @@ public class SubTree {
         return false;
     }
 
-    private static boolean notJanky(Tree t, Tree tLeft) {
+    private static boolean notJanky(Node t, Node tLeft) {
         return (t == null && tLeft == null) || (t != null && tLeft != null && (t.data != tLeft.data));
     }
 }
