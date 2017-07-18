@@ -10,21 +10,16 @@ public class SubTree {
             Node right = s.right;
             Node tLeft = t.left;
             Node tRight = t.right;
-            if (notJanky(t, tRight) && notJanky(t, tLeft)) {
-                if (t.data == s.data) {
-                    return (left == null && right == null) || (isSubtree(tLeft, left) && isSubtree(tRight, right));
-                } else {
-                    return isSubtree(tLeft, s) || isSubtree(tRight, s);
-                }
+            if (t.data == s.data) {
+                return (left == null && right == null && tRight == null && tLeft == null) ||
+                        (isSubtree(tLeft, left) && isSubtree(tRight, right));
+            } else {
+                return isSubtree(tLeft, s) || isSubtree(tRight, s);
             }
         } else if (t == null && s == null) {
             return true;
         }
 
         return false;
-    }
-
-    private static boolean notJanky(Node t, Node tLeft) {
-        return (t == null && tLeft == null) || (t != null && tLeft != null && (t.data != tLeft.data));
     }
 }
