@@ -28,10 +28,21 @@ public class OverlappingSubProblems {
         }
     }
 
+    public int betterFibTabulated(int n){
+        int[] lookups = new int[n+1];
+        lookups[0] = 0; lookups[1] = 1;
+        for(int i = 2; i <= n; i++){
+            lookups[i] = lookups[i -1] + lookups[i - 2];
+        }
+
+        return lookups[n];
+    }
+
 
     public static void main(String... args){
         OverlappingSubProblems steve = new OverlappingSubProblems();
         System.out.println(steve.fib(21));
         System.out.println(steve.betterFib(21));
+        System.out.println(steve.betterFibTabulated(21));
     }
 }
