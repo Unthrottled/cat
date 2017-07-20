@@ -15,6 +15,15 @@ public class LongestCommonSequence {
 
 
         System.out.println(ayy + " " + lemon + " " + its);
+        reset();
+        System.out.println(steve.find("ISHARENOWORDS REALLY", "ZZZZZZZZZZZ"));
+        System.out.println(steve.betterFind("ISHARENOWORDS REALLY", "ZZZZZZZZZZZ"));
+        System.out.println(steve.evenBetterFind("ISHARENOWORDS REALLY", "ZZZZZZZZZZZ"));
+        System.out.println(ayy + " " + lemon + " " + its);
+    }
+
+    public static void reset(){
+        ayy = lemon = its = 0;
     }
 
     public int find(String one, String two) {
