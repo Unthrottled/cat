@@ -2,33 +2,34 @@ package io.acari.tree;
 
 import io.acari.tree.pojo.Node;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 public class NodeAtEvenDistance {
 
-    public int findNodesWithEvenDistance(Node root){
-        int buddiez = 0;
-        if(root != null){
+    public long findNodesWithEvenDistance(Node root) {
+        if (root != null) {
             Queue<Node> bfsQueue = new LinkedList<>();
-            Queue<Node> dfsQueue = new LinkedList<>();
+            Set<Node> visited = new HashSet<>();
             bfsQueue.offer(root);
-            while (!bfsQueue.isEmpty()){
-                int dist= 0;
+            root.hd = 0;
+            while (!bfsQueue.isEmpty()) {
                 Node currentNode = bfsQueue.poll();
-                Node right = currentNode.right;
-                if(right != null){
-                    bfsQueue.offer(right);
-                    dfsQueue.offer(right);
-                    while (!dfsQueue.isEmpty()){
-                        Node poll = dfsQueue.poll();
-                        if(++dist%2==0)buddiez++;
-                        Node rightGuy = poll.right;
-                        if(rightGuy != null)dfsQueue.offer(rightGuy);
+                int dist = currentNode.hd + 1;
+                visited.add(currentNode);
+                for (Node neighbor : currentNode.neighbors) {
+                    if (!visited.contains(neighbor)) {
+                        neighbor.hd = dist;
+                        bfsQueue.offer(neighbor);
                     }
                 }
             }
+            long count = visited.stream().filter(n -> n.hd % 2 == 0).count();
+            long odd = visited.size() - count;
+            return (odd * (odd - 1) / 2) + (count * (count - 1) / 2);
         }
-        return buddiez;
+        return 0L;
     }
 }
