@@ -1,6 +1,5 @@
 package io.acari.tree.drivers;
 
-import io.acari.tree.LineLevelOrderTraversalTwoQueues;
 import io.acari.tree.NodeAtEvenDistance;
 import io.acari.tree.pojo.Node;
 
@@ -8,26 +7,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static java.lang.Integer.parseInt;
-
 public class GFG4 {
     public static void main(String[] args) {
         NodeAtEvenDistance steve = new NodeAtEvenDistance();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());
-        in.nextLine();
         for (int i_t = 0; i_t < t; i_t++) {
-            int nodes;
-            if (!in.hasNextInt())
-                nodes = Integer.parseInt(in.nextLine());
-            else
-                nodes = in.nextInt();
+            String guy = in.nextLine();
+            guy = guy.isEmpty() ? in.nextLine() : guy;
+            int nodes = Integer.parseInt(guy);
             Map<Integer, Node> graph = new HashMap<>(nodes);
-
-            String s2 = in.nextLine();
-            String s1 = in.nextLine();
             String line = in.nextLine();
-            String[] rows = line.split(" ");
+            line = line.isEmpty() ? in.nextLine() : line;
+            String[] rows = line.trim().split(" ");
             int root = Integer.parseInt(rows[0]);
             graph.put(root, new Node(root));
             for (int i = 1; i < rows.length; i += 2) {
@@ -45,7 +37,7 @@ public class GFG4 {
                 graph.put(rootTreeNode.data, rootTreeNode);
                 graph.put(childTreeNode.data, childTreeNode);
             }
-            System.out.println(steve.findNodesWithEvenDistance(graph.get(parseInt(rows[0]))));
+            System.out.println(steve.findNodesWithEvenDistance(graph.get(Integer.parseInt(rows[0]))));
         }
     }
 
