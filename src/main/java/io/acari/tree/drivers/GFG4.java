@@ -27,13 +27,8 @@ public class GFG4 {
                 int child = Integer.parseInt(rows[i]);
                 Node rootTreeNode = graph.getOrDefault(parent, new Node(parent));
                 Node childTreeNode = graph.getOrDefault(child, new Node(child));
-                if (childTreeNode.left != null && childTreeNode.right != null) {
-                    childTreeNode = new Node(child);
-                }
-                rootTreeNode.right = childTreeNode;
-                childTreeNode.left = rootTreeNode;
-
-
+                rootTreeNode.neighbors.add(childTreeNode);
+                childTreeNode.neighbors.add(rootTreeNode);
                 graph.put(rootTreeNode.data, rootTreeNode);
                 graph.put(childTreeNode.data, childTreeNode);
             }
