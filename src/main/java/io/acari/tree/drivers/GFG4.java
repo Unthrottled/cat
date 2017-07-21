@@ -17,14 +17,20 @@ public class GFG4 {
         int t = Integer.parseInt(in.nextLine());
         in.nextLine();
         for (int i_t = 0; i_t < t; i_t++) {
-            int nodes = Integer.parseInt(in.nextLine());
+            int nodes;
+            if (!in.hasNextInt())
+                nodes = Integer.parseInt(in.nextLine());
+            else
+                nodes = in.nextInt();
             Map<Integer, Node> graph = new HashMap<>(nodes);
-            in.nextLine();
+
+            String s2 = in.nextLine();
+            String s1 = in.nextLine();
             String line = in.nextLine();
             String[] rows = line.split(" ");
             int root = Integer.parseInt(rows[0]);
             graph.put(root, new Node(root));
-            for (int i = 1; i < rows.length; i+=2) {
+            for (int i = 1; i < rows.length; i += 2) {
                 int parent = Integer.parseInt(rows[i - 1]);
                 int child = Integer.parseInt(rows[i]);
                 Node rootTreeNode = graph.getOrDefault(parent, new Node(parent));
@@ -40,7 +46,6 @@ public class GFG4 {
                 graph.put(childTreeNode.data, childTreeNode);
             }
             System.out.println(steve.findNodesWithEvenDistance(graph.get(parseInt(rows[0]))));
-            System.out.println();
         }
     }
 
