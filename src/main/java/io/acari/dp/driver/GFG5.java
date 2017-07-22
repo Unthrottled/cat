@@ -15,8 +15,7 @@ public class GFG5 {
         for (int i_t = 0; i_t < t; i_t++) {
             String guy = in.nextLine();
             guy = guy.isEmpty() ? in.nextLine() : guy;
-            int nodes = Integer.parseInt(guy);
-            String line = in.nextLine();
+            String line = in.hasNext() ? in.nextLine() : guy;
             line = line.isEmpty() ? in.nextLine() : line;
             List<Integer> collect = Arrays.stream(line.trim().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
             System.out.println(steve.find(collect));
