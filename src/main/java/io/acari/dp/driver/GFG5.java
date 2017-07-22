@@ -15,10 +15,15 @@ public class GFG5 {
         for (int i_t = 0; i_t < t; i_t++) {
             String guy = in.nextLine();
             guy = guy.isEmpty() ? in.nextLine() : guy;
+            char c = guy.charAt(0);
             String line = in.hasNext() ? in.nextLine() : guy;
             line = line.isEmpty() ? in.nextLine() : line;
-            List<Integer> collect = Arrays.stream(line.trim().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
-            System.out.println(steve.find(collect));
+            if((guy.length() == 1 && c != '0' && c != '1') || guy.length() > 1){
+                List<Integer> collect = Arrays.stream(line.trim().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+                System.out.println(steve.find(collect));
+            } else {
+                System.out.println(0);
+            }
         }
     }
 }
