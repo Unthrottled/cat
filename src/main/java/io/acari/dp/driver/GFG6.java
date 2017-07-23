@@ -18,7 +18,7 @@ public class GFG6 {
             guy = guy.isEmpty() ? in.nextLine() : guy;
             String lineOne = in.hasNext() ? in.nextLine() : guy;
             String lineTwo = in.hasNext() ? in.nextLine() : lineOne;
-            System.out.println(steve.find(lineOne, lineTwo));
+            System.out.println(steve.findString(lineOne, lineTwo));
         }
     }
 }
