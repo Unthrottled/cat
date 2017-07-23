@@ -15,4 +15,8 @@ public class LongestCommonSubsequence {
         }
         return matrix[0][0];
     }
+
+    public String findString(String one, String two){
+        return "";
+    }
 }
