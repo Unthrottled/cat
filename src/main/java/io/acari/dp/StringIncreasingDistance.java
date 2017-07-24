@@ -4,9 +4,10 @@ public class StringIncreasingDistance {
 
     public int find(String string) {
         int length = string.length();
-        if (length > 2) {
+        if (length > 1 && string.charAt(0) == 'a') {
             for (int j = length - 1; j > -1; --j) {
-                if (reachesEnd(string.substring(0, j), string.charAt(j))) {
+                char guy = string.charAt(j);
+                if (guy != 'a' && reachesEnd(string.substring(0, j), guy)) {
                     return j + 1;
                 }
             }
@@ -17,7 +18,8 @@ public class StringIncreasingDistance {
 
     private boolean reachesEnd(String str, char guy) {
         if (!str.isEmpty()) {
-            if (str.charAt(0) == guy) {
+            char start = str.charAt(0);
+            if (start == guy){
                 return true;
             } else {
                 for (int i = str.length() - 1; i > -1; i--) {
