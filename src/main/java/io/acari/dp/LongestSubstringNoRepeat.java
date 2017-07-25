@@ -1,48 +1,50 @@
 package io.acari.dp;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LongestSubstringNoRepeat {
 
-    public int find(String one){
-        Set<Character> veezeted = new HashSet<>();
+    public int find(String one) {
+        Map<Character, Integer> veezeted = new HashMap<>();
         int length = one.length();
         int[] counts = new int[length];
-        int i1 = length - 1;
-        int maxo = 0;
-        for(int i = i1; i > -1; i--){
-            char e = one.charAt(i);
-            if(veezeted.add(e)){
-                counts[i] += 1 + (i + 1 <= i1 ? counts[i + 1] : 0);
+        int lengthMinusOne = length - 1;
+        int maxPrefix = 0;
+        for (int i = lengthMinusOne; i > -1; i--) {
+            char charAt = one.charAt(i);
+            if (veezeted.containsKey(charAt)) {
+                int previous = veezeted.get(charAt);
+                counts[i] = (previous - 1 > -1 ? previous - 1 : 0) - i;
             } else {
-                veezeted.clear();
-                counts[i] = 1;
-                veezeted.add(e);
+                counts[i] += 1 + (i + 1 <= lengthMinusOne ? counts[i + 1] : 0);
             }
 
-            if(counts[i] > maxo){
-                maxo = counts[i];
+            veezeted.put(charAt, i);
+
+            if (counts[i] > maxPrefix) {
+                maxPrefix = counts[i];
             }
         }
+        counts = new int[length];
         veezeted.clear();
-        int maxo2 = 0;
-        int[] counts2 = new int[length];
-        for(int i = 0; i < length; i++){
-            char e = one.charAt(i);
-            if(veezeted.add(e)){
-                counts2[i] += 1 + (i - 1 >= 0 ? counts2[i - 1] : 0);
+        int maxSuffix = 0;
+        for (int i = 0; i < length; i++) {
+            char charAt = one.charAt(i);
+            if (veezeted.containsKey(charAt)) {
+                int previous = veezeted.get(charAt);
+                counts[i] = i - (previous + 1 > lengthMinusOne ? lengthMinusOne : previous + 1);
             } else {
-                veezeted.clear();
-                counts2[i] = 1;
-                veezeted.add(e);
+                counts[i] += 1 + (i - 1 < 0 ? 0 : counts[i - 1]);
             }
 
-            if(counts2[i] > maxo2){
-                maxo2 = counts2[i];
+            veezeted.put(charAt, i);
+            if (counts[i] > maxSuffix) {
+                maxSuffix = counts[i];
             }
         }
 
-        return Math.max(maxo, maxo2);
+
+        return Math.max(maxPrefix, maxSuffix);
     }
 }
