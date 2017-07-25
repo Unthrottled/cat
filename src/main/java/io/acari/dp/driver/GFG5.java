@@ -18,7 +18,7 @@ public class GFG5 {
             char c = guy.charAt(0);
             String line = in.hasNext() ? in.nextLine() : guy;
             line = line.isEmpty() ? in.nextLine() : line;
-            if((guy.length() == 1 && c != '0' && c != '1') || guy.length() > 1){
+            if ((guy.length() == 1 && c != '0' && c != '1') || guy.length() > 1) {
                 List<Integer> collect = Arrays.stream(line.trim().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
                 System.out.println(steve.find(collect));
             } else {

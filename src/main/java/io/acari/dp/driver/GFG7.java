@@ -1,8 +1,6 @@
 package io.acari.dp.driver;
 
-import io.acari.dp.LongestCommonSubsequence;
 import io.acari.dp.LongestSubstringNoRepeat;
-import io.acari.dp.StringIncreasingDistance;
 
 import java.util.Scanner;
 

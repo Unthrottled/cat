@@ -19,7 +19,7 @@ public class StringIncreasingDistance {
     private boolean reachesEnd(String str, char guy) {
         if (!str.isEmpty()) {
             char start = str.charAt(0);
-            if (start == guy){
+            if (start == guy) {
                 return true;
             } else {
                 for (int i = str.length() - 1; i > -1; i--) {

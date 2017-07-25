@@ -1,6 +1,5 @@
 package io.acari.tree.drivers;
 
-import io.acari.tree.LineLevelOrderTraversalTwoQueues;
 import io.acari.tree.SubTree;
 import io.acari.tree.pojo.Node;
 import io.acari.tree.pojo.Pair;
@@ -19,7 +18,7 @@ public class GFG3 {
         in.nextLine();
         for (int i_t = 0; i_t < t; i_t++) {
             Pair<Map<Integer, Node>, String[]> mapPair = doWerk(in);
-            Map<Integer, Node> graph =  mapPair.fst;
+            Map<Integer, Node> graph = mapPair.fst;
             String[] rows = mapPair.snd;
             Pair<Map<Integer, Node>, String[]> mapPair1 = doWerk(in);
             Map<Integer, Node> fst = mapPair1.fst;
@@ -31,7 +30,7 @@ public class GFG3 {
         }
     }
 
-    private static Pair<Map<Integer, Node>, String[]> doWerk(Scanner in){
+    private static Pair<Map<Integer, Node>, String[]> doWerk(Scanner in) {
         int nodes = in.nextInt();
         Map<Integer, Node> graph = new HashMap<>(nodes);
         in.nextLine();

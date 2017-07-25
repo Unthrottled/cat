@@ -22,7 +22,7 @@ public class LongestCommonSequence {
         System.out.println(ayy + " " + lemon + " " + its);
     }
 
-    public static void reset(){
+    public static void reset() {
         ayy = lemon = its = 0;
     }
 
@@ -46,14 +46,14 @@ public class LongestCommonSequence {
         return betterFindUtil(one, two, 0, 0, lookup);
     }
 
-    public int evenBetterFind(String one, String two){
+    public int evenBetterFind(String one, String two) {
         int[][] lookup = new int[one.length() + 1][two.length() + 1];
-        for(int i = one.length(); i >= 0; i--){
-            for(int j = two.length(); j >= 0; j--){
+        for (int i = one.length(); i >= 0; i--) {
+            for (int j = two.length(); j >= 0; j--) {
                 its++;
-                if(i >= one.length() || j >= two.length()){
+                if (i >= one.length() || j >= two.length()) {
                     lookup[i][j] = 0;
-                } else if (one.charAt(i) == two.charAt(j)){
+                } else if (one.charAt(i) == two.charAt(j)) {
                     lookup[i][j] = 1 + lookup[i + 1][j + 1];
                 } else {
                     lookup[i][j] = Math.max(lookup[i + 1][j], lookup[i][j + 1]);

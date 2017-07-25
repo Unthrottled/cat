@@ -2,7 +2,6 @@ package io.acari.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class BFSXTotal {

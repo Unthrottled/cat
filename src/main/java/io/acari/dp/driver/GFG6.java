@@ -1,12 +1,8 @@
 package io.acari.dp.driver;
 
 import io.acari.dp.LongestCommonSubsequence;
-import io.acari.dp.LongestIncreasingSequence;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class GFG6 {
     public static void main(String[] args) {

@@ -27,7 +27,7 @@ public class NodeAtEvenDistance {
                 }
             }
             long evenCount = visited.stream().filter(n -> n.hd % 2 == 0).count();
-            if(evenCount > 0){
+            if (evenCount > 0) {
                 long odd = visited.size() - evenCount;
                 return (odd * (odd - 1) / 2) + (evenCount * (evenCount - 1) / 2);
             }
