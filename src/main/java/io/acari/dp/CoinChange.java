@@ -2,7 +2,7 @@ package io.acari.dp;
 
 public class CoinChange {
 
-    public int find(int[] coins, int value){
+    public int find(Integer[] coins, int value){
         return - 1;
     }
 }
