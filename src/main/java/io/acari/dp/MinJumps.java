@@ -9,26 +9,34 @@ public class MinJumps {
         Set<Integer> visited = new HashSet<>();
         queue.offer(new Pair<>(jumpy[0], 0));
         int jumps = 0;
+        PriorityQueue<Pair<Integer,Integer>> weighted = new PriorityQueue<>(Comparator.comparing(a->a.fst));
+        int lengthLessOne = jumpy.length - 1;
         while (!queue.isEmpty()){
             Pair<Integer, Integer> currentNode = queue.poll();
             Integer index = currentNode.snd;
-            if(index == jumpy.length - 1){
+            if(index == lengthLessOne){
                 return jumps;
             }
             visited.add(index);
             int neighbors = currentNode.fst;
-            int guy = 0;
             while (neighbors > 0){
-                int next = index + ++guy;
-                if(next < jumpy.length && !visited.contains(next)){
-                    queue.push(new Pair<>(jumpy[next], next));
+                int next = index + neighbors--;
+                if(next == lengthLessOne){
+                    return ++jumps;
                 }
-                neighbors--;
+                if(next < jumpy.length && !visited.contains(next)){
+                    weighted.offer(new Pair<>(jumpy[next], next));
+                }
             }
-            jumps++;
+
+            while (!weighted.isEmpty()){
+                queue.push(weighted.poll());
+            }
+
+            if(!queue.isEmpty())jumps++;
         }
 
-        return jumps;
+        return -1;
     }
 }
 
