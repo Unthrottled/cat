@@ -2,13 +2,15 @@ package io.acari.dp.driver;
 
 import io.acari.dp.SpecialMatrix;
 
+import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class GFG10 {
 
-    public static void main(String... args) {
+    public static void main (String[] args) {
         SpecialMatrix steve = new SpecialMatrix();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());
@@ -18,11 +20,12 @@ public class GFG10 {
             int colEnd = Integer.parseInt(arguments[1]);
             int blockedSpaces = Integer.parseInt(arguments[2]);
             String line = in.nextLine();
-            Integer[][] matrix = new Integer[rowEnd][colEnd];
+            Long[][] matrix = new Long[rowEnd][colEnd];
             Integer[] blockers = new Integer[2 * blockedSpaces];
-            blockers = Arrays.stream(line.split(" ")).map(Integer::parseInt).collect(Collectors.toList()).toArray(blockers);
-            for (int j = 0; j < blockers.length; j += 2) {
-                matrix[blockers[j] -1][blockers[j + 1]-1] = -1;
+            List<Integer> collect = Arrays.stream(line.trim().split(" ")).filter(s -> !s.isEmpty()).map(Integer::parseInt).collect(Collectors.toList());
+            blockers = collect.toArray(blockers);
+            for (int j = 0; j < collect.size(); j += 2) {
+                matrix[blockers[j] - 1][blockers[j + 1] - 1] = -1L;
             }
             System.out.println(steve.find(matrix));
         }
