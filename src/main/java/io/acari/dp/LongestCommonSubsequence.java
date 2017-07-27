@@ -33,7 +33,7 @@ public class LongestCommonSubsequence {
                 while (main == matrix[i][j]) {
                     j++;
                 }
-                stringBuilder.append(two.charAt(j - 1));
+                stringBuilder.append(one.charAt(j - 1));
             }
             i++;
         }
