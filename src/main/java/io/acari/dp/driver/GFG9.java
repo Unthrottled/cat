@@ -1,6 +1,6 @@
 package io.acari.dp.driver;
 
-import io.acari.dp.MatrixMulti;
+import io.acari.dp.CuttedSegments;
 
 import java.util.Arrays;
 import java.util.Scanner;
