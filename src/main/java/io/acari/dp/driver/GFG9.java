@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class GFG9 {
 
     public static void main(String... args) {
-        MatrixMulti steve = new MatrixMulti();
+        CuttedSegments steve = new CuttedSegments();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());
         for (int i_t = 0; i_t < t; i_t++) {
