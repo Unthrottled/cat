@@ -47,6 +47,12 @@ public class LongestCommonSequence {
     }
 
     public int evenBetterFind(String one, String two) {
+        int[][] lookup = getInts(one, two);
+
+        return lookup[0][0];
+    }
+
+    public int[][] getInts(String one, String two) {
         int[][] lookup = new int[one.length() + 1][two.length() + 1];
         for (int i = one.length(); i >= 0; i--) {
             for (int j = two.length(); j >= 0; j--) {
@@ -60,8 +66,7 @@ public class LongestCommonSequence {
                 }
             }
         }
-
-        return lookup[0][0];
+        return lookup;
     }
 
     private int betterFindUtil(String one, String two, int i, int j, int[][] lookup) {
