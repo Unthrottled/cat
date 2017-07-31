@@ -1,6 +1,7 @@
 package io.acari.dp.driver;
 
 import io.acari.dp.EggDrop;
+import io.acari.dp.EggDropBinary;
 import io.acari.dp.SpecialMatrix;
 
 import java.util.Arrays;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 public class GFG15 {
 
     public static void main(String[] args) {
-        EggDrop steve = new EggDrop();
+        EggDropBinary steve = new EggDropBinary();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());
         for (int i_t = 0; i_t < t; i_t++) {
