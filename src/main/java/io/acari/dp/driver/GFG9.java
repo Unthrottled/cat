@@ -1,7 +1,6 @@
 package io.acari.dp.driver;
 
-import io.acari.dp.BitonicSequence;
-import io.acari.dp.MaxSum;
+import io.acari.dp.MatrixMulti;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,7 +9,7 @@ import java.util.stream.Collectors;
 public class GFG9 {
 
     public static void main(String... args) {
-        BitonicSequence steve = new BitonicSequence();
+        MatrixMulti steve = new MatrixMulti();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());
         for (int i_t = 0; i_t < t; i_t++) {
