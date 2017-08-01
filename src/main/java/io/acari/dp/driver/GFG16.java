@@ -22,7 +22,7 @@ public class GFG16 {
             int rollingGuy = 0;
             for (int j = 0; j < rowEnd; j++) {
                 for (int i = 0; i < rowEnd; i++) {
-                    matrix[i][j] = collect.get(rollingGuy++);
+                    matrix[j][i] = collect.get(rollingGuy++);
                 }
             }
             System.out.println(steve.find(matrix));
