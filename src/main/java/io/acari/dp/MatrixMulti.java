@@ -20,10 +20,10 @@ public class MatrixMulti {
                     Integer row = matrices[nextMatrix];
                     Integer otherColumn = matrices[k];
                     int previousMin = lookup[i][k] + lookup[k + 1][nextMatrix];
-                    int currentCombiniation = previousMin + column * row * otherColumn ;
+                    int currentCombiniation = previousMin + column * row * otherColumn;
                     int currentValue = lookup[i][nextMatrix];
                     boolean b = currentValue > currentCombiniation;
-                    if(b){
+                    if (b) {
                         lookup[i][nextMatrix] = currentCombiniation;
                         split[i][nextMatrix] = k;
 
@@ -32,12 +32,24 @@ public class MatrixMulti {
             }
         }
 
-//        printArray(lookup);
-//        System.out.println();
-//        printArray(split);
+        printArray(lookup);
+        System.out.println();
+        printArray(split);
+        System.out.println(findo(matrices, split, 0, arrayLength - 1));
 
 
         return lookup[1][arrayLength - 1];
+    }
+
+    private String findo(Integer[] matrices, int[][] split, int i, int arrayLength) {
+        if (i == arrayLength) {
+            return matrices[i] + "";
+        } else {
+            int sprit = split[i][arrayLength];
+            String findo1 = findo(matrices, split, i, sprit);
+            String findo = findo(matrices, split, sprit + 1, arrayLength);
+            return "(" + findo1 + " " + findo + ")";
+        }
     }
 
 
