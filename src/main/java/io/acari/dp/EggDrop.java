@@ -1,7 +1,5 @@
 package io.acari.dp;
 
-import java.util.Arrays;
-
 public class EggDrop {
 
     public int find(int eggs, int floors){

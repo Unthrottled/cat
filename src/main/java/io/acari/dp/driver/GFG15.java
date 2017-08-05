@@ -1,14 +1,8 @@
 package io.acari.dp.driver;
 
 import io.acari.dp.BinomialCoefficient;
-import io.acari.dp.EggDrop;
-import io.acari.dp.EggDropBinary;
-import io.acari.dp.SpecialMatrix;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class GFG15 {
 

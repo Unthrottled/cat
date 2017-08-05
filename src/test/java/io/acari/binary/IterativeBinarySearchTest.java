@@ -1,9 +1,8 @@
 package io.acari.binary;
 
-import io.acari.binary.IterativeBinarySearch;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
