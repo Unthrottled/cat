@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class FloydWarshall {
 
-    public String find(Integer[][] adjacencyMatrix){
+    public String find(Integer[][] adjacencyMatrix) {
         int length = adjacencyMatrix.length;
 
         for (int i = 0; i < length; i++) {

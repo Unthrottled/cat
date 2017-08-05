@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 @Ignore
 public class CommonChildTest {
     private final CommonChild steve = new CommonChild();
+
     @Test
     public void maxChildShouldReturnCorrectLength() throws Exception {
         assertEquals(3, steve.maxChild("abcd", "abdc"));

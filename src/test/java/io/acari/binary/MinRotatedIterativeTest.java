@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class MinRotatedIterativeTest {
     private final MinRotatedIterative steve = new MinRotatedIterative();
+
     @Test
     public void searchA() throws Exception {
         int[] input = {1, 2, 3, 4, 5, 6};

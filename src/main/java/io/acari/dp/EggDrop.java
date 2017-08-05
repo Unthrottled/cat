@@ -2,7 +2,7 @@ package io.acari.dp;
 
 public class EggDrop {
 
-    public int find(int eggs, int floors){
+    public int find(int eggs, int floors) {
         int[][] lookup = new int[floors + 1][eggs + 1];
         for (int i = 0; i <= eggs; i++) {
             lookup[1][i] = 1;

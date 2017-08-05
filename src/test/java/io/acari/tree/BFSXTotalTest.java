@@ -25,9 +25,9 @@ public class BFSXTotalTest {
     @Test
     public void findTreeShouldFindMultiTree() throws Exception {
         char[][] input = {
-                {'X','X','X',},
-                {'O','O','O',},
-                {'X','X','X',}
+                {'X', 'X', 'X',},
+                {'O', 'O', 'O',},
+                {'X', 'X', 'X',}
         };
         int expectedOutput = 2;
 

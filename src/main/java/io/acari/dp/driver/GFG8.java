@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class GFG8 {
 
-    public static void main(String... args){
+    public static void main(String... args) {
         CoinChange steve = new CoinChange();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());

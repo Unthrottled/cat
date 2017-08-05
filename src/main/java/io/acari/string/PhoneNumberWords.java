@@ -39,14 +39,14 @@ public class PhoneNumberWords {
         return build(graph.get(0));
     }
 
-    private Stream<String> build(Node node){
-        if(node != null){
-            if(node.next == null){
+    private Stream<String> build(Node node) {
+        if (node != null) {
+            if (node.next == null) {
                 return Arrays.stream(node.values).map(String::valueOf);
             } else {
 
                 List<String> collect = build(node.next).collect(Collectors.toList());
-                return Arrays.stream(node.values).flatMap(character -> collect.stream().map(cc-> character + cc));
+                return Arrays.stream(node.values).flatMap(character -> collect.stream().map(cc -> character + cc));
             }
         }
 
