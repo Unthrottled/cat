@@ -11,4 +11,13 @@ public class Main {
         }
     }
 
+    public static void printArray(boolean[][] lookup) {
+        for (boolean[] ints : lookup) {
+            for (boolean anInt : ints) {
+                System.out.print(anInt + " ");
+            }
+            System.out.println();
+        }
+    }
+
 }

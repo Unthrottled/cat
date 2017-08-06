@@ -1,24 +1,38 @@
 package io.acari.dp;
 
 public class LongestPalindrome {
-    private final LongestCommonSequence longestCommonSequence = new LongestCommonSequence();
 
     public String find(String steve) {
-        String two = new StringBuilder(steve).reverse().toString();
-        int[][] lcs = this.longestCommonSequence.getInts(steve, two);
-        int i = 0, j = 0;
         int length = steve.length();
-        StringBuilder stringBuilder = new StringBuilder();
-        while (i < length && j < length) {
-            int main = lcs[i][j];
-            if (main != lcs[i + 1][j]) {
-                while (main == lcs[i][j]) {
-                    j++;
-                }
-                stringBuilder.append(two.charAt(j - 1));
-            }
-            i++;
+        boolean[][] lookup = new boolean[length + 1][length + 1];
+        int start = 0, longestLength = 1;
+
+        for (int i = 0; i < length; i++) {
+            lookup[i][i] = true;//all single character strings are palindromes, yay!
         }
-        return stringBuilder.toString();
+
+        for (int i = 0; i < length - 1; i++) {
+            if (steve.charAt(i) == steve.charAt(i + 1)) {
+                lookup[i][i+1] = true;
+                longestLength = 2;
+                start = i;
+            }
+        }
+
+        for (int i = 3; i <= length; i++) {
+            for (int j = 0; j < length - i + 1; j++) {
+                int k = i + j - 1;
+                boolean allBefore = lookup[j + 1][k - 1];
+                if (allBefore && steve.charAt(j) == steve.charAt(k)) {
+                    lookup[j][k] = true;
+                    if (i > longestLength) {
+                        longestLength = i;
+                        start = j;
+                    }
+                }
+            }
+        }
+
+        return steve.substring(start, start + longestLength);
     }
 }
