@@ -2,7 +2,7 @@ package io.acari.dp;
 
 public class SubsetSum {
 
-    public int find(Integer[] numbers){
-        return -1;
+    public String find(Integer[] numbers){
+        return "NO";
     }
 }
