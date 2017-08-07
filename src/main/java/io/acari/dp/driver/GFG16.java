@@ -1,6 +1,7 @@
 package io.acari.dp.driver;
 
 import io.acari.dp.FloydWarshall;
+import io.acari.dp.PathInMatrix;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 public class GFG16 {
 
     public static void main(String[] args) {
-        FloydWarshall steve = new FloydWarshall();
+        PathInMatrix steve = new PathInMatrix();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());
         for (int i_t = 0; i_t < t; i_t++) {
