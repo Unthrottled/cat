@@ -20,4 +20,12 @@ public class Main {
         }
     }
 
+    public static void printArray(long[][] lookup) {
+        for (long[] ints : lookup) {
+            for (long anInt : ints) {
+                System.out.print(anInt + " ");
+            }
+            System.out.println();
+        }
+    }
 }
