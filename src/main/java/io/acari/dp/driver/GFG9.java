@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class GFG9 {
 
-    public static void main(String... args) {
+    public static void main(String[] args) {
         SubsetSum steve = new SubsetSum();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());
