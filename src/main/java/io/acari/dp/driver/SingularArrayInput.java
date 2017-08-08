@@ -1,7 +1,6 @@
 package io.acari.dp.driver;
 
-import io.acari.dp.MatrixMulti;
-import io.acari.dp.SubsetSum;
+import io.acari.dp.MinimumSumPartition;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,7 +9,7 @@ import java.util.stream.Collectors;
 public class SingularArrayInput {
 
     public static void main(String[] args) {
-        SubsetSum steve = new SubsetSum();
+        MinimumSumPartition steve = new MinimumSumPartition();
         Scanner in = new Scanner(System.in);
         int t = Integer.parseInt(in.nextLine());
         for (int i_t = 0; i_t < t; i_t++) {
