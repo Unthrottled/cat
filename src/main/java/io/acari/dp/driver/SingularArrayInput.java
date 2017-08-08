@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class GFG9 {
+public class SingularArrayInput {
 
     public static void main(String[] args) {
         SubsetSum steve = new SubsetSum();
