@@ -13,7 +13,7 @@ public class LongestPalindrome {
 
         for (int i = 0; i < length - 1; i++) {
             if (steve.charAt(i) == steve.charAt(i + 1)) {
-                lookup[i][i+1] = true;
+                lookup[i][i + 1] = true;
                 longestLength = 2;
                 start = i;
             }

@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class SubsetSum {
 
-    public String find(Integer[] numbers){
+    public String find(Integer[] numbers) {
         int sum = Arrays.stream(numbers).mapToInt(a -> a).sum();
         boolean isEven = sum % 2 == 0;
-        if(isEven){
+        if (isEven) {
             int length = numbers.length;
             int halfSum = sum / 2;
             boolean[][] lookup = new boolean[halfSum + 1][length + 1];
@@ -17,13 +17,13 @@ public class SubsetSum {
                     int jMinus = j - 1;
                     Integer currentNumber = numbers[jMinus];
                     lookup[i][j] = lookup[i][j - 1];
-                    if(i >= currentNumber){
+                    if (i >= currentNumber) {
                         lookup[i][j] = lookup[i][j] || lookup[i - currentNumber][jMinus];
                     }
                 }
             }
-            
-            if (lookup[halfSum][length]){
+
+            if (lookup[halfSum][length]) {
                 return "YES";
             }
         }
