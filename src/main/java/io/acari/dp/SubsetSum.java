@@ -1,7 +1,5 @@
 package io.acari.dp;
 
-import io.acari.Main;
-
 import java.util.Arrays;
 
 public class SubsetSum {
