@@ -6,19 +6,29 @@ public class CycleDetection {
 
 
     public boolean hasCycle(int v, LinkedList<Integer>[] aList, boolean[] visit, boolean[] exploring) {
-        if (!visit[v]) {
-            visit[v] = true;
+        for (int i = 0; i < aList.length; i++) {
+            if(hasCycleUtil(i, aList, visit, exploring)){
+                return true;
+            }
+        }
+        return false;
+    }
 
-            for (Integer integer : aList[v]) {
-                if (hasCycle(integer, aList, visit, exploring) || exploring[integer]) {
+    private boolean hasCycleUtil(int v, LinkedList<Integer>[] aList, boolean[] visit, boolean[] exploring){
+        if(!visit[v]){
+            exploring[v] = true;
+            visit[v] = true;
+            for (Integer edge : aList[v]) {
+                boolean childIsCyclic = !visit[edge] && hasCycleUtil(edge, aList, visit, exploring);
+                boolean refsParent = exploring[edge];
+                if(childIsCyclic || refsParent){
                     return true;
                 }
             }
-
         }
 
-
         exploring[v] = false;
+
         return false;
     }
 
