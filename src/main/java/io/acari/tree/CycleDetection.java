@@ -62,31 +62,32 @@ public class CycleDetection {
         return false;
     }
 
-    Boolean isCyclic(int V, LinkedList<Integer>[] alist) {
-        Set<Integer> visited = new HashSet<>();
-        Deque<Node> queue = new LinkedList<>();
-        int _x = 0;
-        for (List<Integer> gee : alist) {
-            visited.clear();
-            queue.clear();
-            queue.offer(new Node(_x, alist[_x++]));
-            while (!queue.isEmpty()) {
-                Node currentNode = queue.poll();
-                int currentNodeData = currentNode.data;
-                visited.add(currentNodeData);
-                for (Integer iGuy : currentNode.edges) {
-                    LinkedList<Integer> iGuyEdges = alist[iGuy];
-                    if (!visited.contains(iGuy)) {
-                        queue.push(new Node(iGuy, iGuyEdges));
-                    } else {
-                        if (iGuyEdges.stream().anyMatch(a -> a == currentNodeData)) {
-                            return true;
-                        }
-                    }
-                }
+    Boolean isCyclic(int V, LinkedList<Integer>[] aList) {
+        for (int i = 0; i < aList.length; i++) {
+            if(isCyclicHelper(new Node(i, aList[i]), null, new boolean[aList.length], new boolean[aList.length], aList)){
+                return true;
             }
         }
 
+        return false;
+    }
+
+    private boolean isCyclicHelper(Node visitingNode, Node parent, boolean[] visited, boolean[] exploring, LinkedList<Integer>[] aList) {
+        int currentNodeIndex = visitingNode.data;
+        if(!visited[currentNodeIndex]){
+            visited[currentNodeIndex] = true;
+            exploring[currentNodeIndex] = true;
+            for (Integer edge : visitingNode.edges) {
+                boolean isCyclic = exploring[edge] && parent != null && edge != parent.data;
+                boolean childIsCyclic = !visited[edge] && isCyclicHelper(new Node(edge, aList[edge]), visitingNode, visited, exploring, aList);
+                if(isCyclic || childIsCyclic){
+                    return true;
+                }
+            }
+
+        }
+
+        exploring[currentNodeIndex] = false;
         return false;
     }
 }
