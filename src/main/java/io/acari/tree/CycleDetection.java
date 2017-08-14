@@ -7,21 +7,21 @@ public class CycleDetection {
 
     public boolean hasCycle(int v, LinkedList<Integer>[] aList, boolean[] visit, boolean[] exploring) {
         for (int i = 0; i < aList.length; i++) {
-            if(hasCycleUtil(i, aList, visit, exploring)){
+            if (hasCycleUtil(i, aList, visit, exploring)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean hasCycleUtil(int v, LinkedList<Integer>[] aList, boolean[] visit, boolean[] exploring){
-        if(!visit[v]){
+    private boolean hasCycleUtil(int v, LinkedList<Integer>[] aList, boolean[] visit, boolean[] exploring) {
+        if (!visit[v]) {
             exploring[v] = true;
             visit[v] = true;
             for (Integer edge : aList[v]) {
                 boolean childIsCyclic = !visit[edge] && hasCycleUtil(edge, aList, visit, exploring);
                 boolean refsParent = exploring[edge];
-                if(childIsCyclic || refsParent){
+                if (childIsCyclic || refsParent) {
                     return true;
                 }
             }
@@ -63,8 +63,10 @@ public class CycleDetection {
     }
 
     Boolean isCyclic(int V, LinkedList<Integer>[] aList) {
+        int length = aList.length;
+        boolean[] visited = new boolean[length];
         for (int i = 0; i < aList.length; i++) {
-            if(isCyclicHelper(new Node(i, aList[i]), null, new boolean[aList.length], new boolean[aList.length], aList)){
+            if (!visited[i] && isCyclicHelper(new Node(i, aList[i]), null, visited, aList)) {
                 return true;
             }
         }
@@ -72,22 +74,23 @@ public class CycleDetection {
         return false;
     }
 
-    private boolean isCyclicHelper(Node visitingNode, Node parent, boolean[] visited, boolean[] exploring, LinkedList<Integer>[] aList) {
+    private boolean isCyclicHelper(Node visitingNode, Node parent, boolean[] visited, LinkedList<Integer>[] aList) {
         int currentNodeIndex = visitingNode.data;
-        if(!visited[currentNodeIndex]){
-            visited[currentNodeIndex] = true;
-            exploring[currentNodeIndex] = true;
-            for (Integer edge : visitingNode.edges) {
-                boolean isCyclic = exploring[edge] && parent != null && edge != parent.data;
-                boolean childIsCyclic = !visited[edge] && isCyclicHelper(new Node(edge, aList[edge]), visitingNode, visited, exploring, aList);
-                if(isCyclic || childIsCyclic){
-                    return true;
-                }
+        visited[currentNodeIndex] = true;
+        for (Integer edge : visitingNode.edges) {
+            boolean childIsCyclic = !visited[edge] && isCyclicHelper(new Node(edge, aList[edge]), visitingNode, visited, aList);
+            if (childIsCyclic) {
+                return true;
+            }
+
+            boolean isCyclic = visited[edge] && parent != null && edge != parent.data;
+            if (isCyclic) {
+                return true;
             }
 
         }
 
-        exploring[currentNodeIndex] = false;
+
         return false;
     }
 }
