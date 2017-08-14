@@ -2,7 +2,7 @@ package io.acari.tree;
 
 import java.util.*;
 
-public class CycleDetection {
+public class DirectedCycleDetection {
 
 
     public boolean hasCycle(int v, LinkedList<Integer>[] aList, boolean[] visit, boolean[] exploring) {
