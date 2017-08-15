@@ -33,7 +33,9 @@ public class MinJumps {
                 queue.push(weighted.poll());
             }
 
-            if (!queue.isEmpty()) jumps++;
+            if (!queue.isEmpty()) {
+                jumps++;
+            }
         }
 
         return -1;

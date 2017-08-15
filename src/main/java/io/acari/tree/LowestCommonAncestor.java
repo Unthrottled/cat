@@ -48,12 +48,16 @@ public class LowestCommonAncestor {
             Node right = root.right;
             if (right != null) {
                 Deque<Node> deque = getNodes(right, nodeToFind);
-                if (deque != null) return deque;
+                if (deque != null) {
+                    return deque;
+                }
             }
             Node left = root.left;
             if (left != null) {
                 Deque<Node> deque = getNodes(left, nodeToFind);
-                if (deque != null) return deque;
+                if (deque != null) {
+                    return deque;
+                }
             }
         }
         return new ArrayDeque<>();

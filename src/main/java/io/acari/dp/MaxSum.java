@@ -13,13 +13,17 @@ public class MaxSum {
                 int one = integers[i];
                 int two = integers[j];
                 if (one > two) {
-                    if (lookup[j] > subMax) subMax = lookup[j];
+                    if (lookup[j] > subMax) {
+                        subMax = lookup[j];
+                    }
                 }
             }
 
             lookup[i] = Math.max(lookup[i], lookup[i] + subMax);
 
-            if (lookup[i] > max) max = lookup[i];
+            if (lookup[i] > max) {
+                max = lookup[i];
+            }
 
         }
 

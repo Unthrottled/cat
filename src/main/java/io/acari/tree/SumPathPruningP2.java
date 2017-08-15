@@ -45,10 +45,11 @@ public class SumPathPruningP2 {
             prunGuy(root.right, root, k1);
 
             if (root.right == null && root.left == null && parent != null && k > root.data) {
-                if (parent.left == root)
+                if (parent.left == root) {
                     parent.left = null;
-                else
+                } else {
                     parent.right = null;
+                }
             }
         }
     }

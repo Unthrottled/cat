@@ -20,7 +20,9 @@ public class LongestSubstringNoRepeat {
                 currentLength++;
             }
             veezeted.put(charAt, i);
-            if (maxSuffix < currentLength) maxSuffix = currentLength;
+            if (maxSuffix < currentLength) {
+                maxSuffix = currentLength;
+            }
         }
 
 

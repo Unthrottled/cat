@@ -29,10 +29,12 @@ public class LineLevelOrderTraversalTwoQueues {
     }
 
     private void doWork(Queue<Node> queueOne, Node node) {
-        if (node.left != null)
+        if (node.left != null) {
             queueOne.offer(node.left);
-        if (node.right != null)
+        }
+        if (node.right != null) {
             queueOne.offer(node.right);
+        }
         System.out.print(node.data + " ");
     }
 }
