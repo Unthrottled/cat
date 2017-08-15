@@ -7,6 +7,7 @@ public final class Node {
     public int data;
     public Node left;
     public Node next;
+    public int weight;
     public List<Node> neighbors = new LinkedList<>();
 
     public Node right;
