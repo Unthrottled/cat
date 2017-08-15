@@ -7,8 +7,9 @@ public final class Node {
     public int data;
     public Node left;
     public Node next;
-    public int weight;
+    public int value;
     public List<Node> neighbors = new LinkedList<>();
+    public List<Edge> edges = new LinkedList<>();
 
     public Node right;
     public int hd = Integer.MAX_VALUE;
