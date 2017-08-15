@@ -3,13 +3,13 @@ package io.acari.tree.pojo;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class Node {
+public final class Node <T> {
     public int data;
-    public Node left;
-    public Node next;
-    public int value;
-    public List<Node> neighbors = new LinkedList<>();
-    public List<Edge> edges = new LinkedList<>();
+    public Node<T> left;
+    public Node<T> next;
+    public T value;
+    public List<Node<T>> neighbors = new LinkedList<>();
+    public List<Edge<T>> edges = new LinkedList<>();
 
     public Node right;
     public int hd = Integer.MAX_VALUE;
@@ -43,5 +43,37 @@ public final class Node {
     @Override
     public int hashCode() {
         return data;
+    }
+
+    public int getData() {
+        return data;
+    }
+
+    public Node<T> getLeft() {
+        return left;
+    }
+
+    public Node<T> getNext() {
+        return next;
+    }
+
+    public T getValue() {
+        return value;
+    }
+
+    public List<Node<T>> getNeighbors() {
+        return neighbors;
+    }
+
+    public List<Edge<T>> getEdges() {
+        return edges;
+    }
+
+    public Node getRight() {
+        return right;
+    }
+
+    public int getHd() {
+        return hd;
     }
 }

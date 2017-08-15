@@ -2,14 +2,11 @@ package io.acari.tree;
 
 import io.acari.tree.pojo.Node;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 public class NodeAtEvenDistance {
 
-    public long findNodesWithEvenDistance(Node root) {
+    public long findNodesWithEvenDistance(Node<Integer> root) {
         if (root != null) {
             Queue<Node> bfsQueue = new LinkedList<>();
             Set<Node> visited = new HashSet<>();
@@ -19,7 +16,8 @@ public class NodeAtEvenDistance {
                 Node currentNode = bfsQueue.poll();
                 int dist = currentNode.hd + 1;
                 visited.add(currentNode);
-                for (Node neighbor : currentNode.neighbors) {
+                List<Node<Integer>> neighbors = currentNode.getNeighbors();
+                for (Node<Integer> neighbor : neighbors) {
                     if (!visited.contains(neighbor)) {
                         neighbor.hd = dist;
                         bfsQueue.offer(neighbor);

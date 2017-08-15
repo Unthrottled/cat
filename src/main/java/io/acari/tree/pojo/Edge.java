@@ -1,11 +1,11 @@
 package io.acari.tree.pojo;
 
-public class Edge {
+public class Edge<T> {
 
     public int weight;
-    public Node vertex;
+    public Node<T> vertex;
 
-    public Edge(int w, Node v){
+    public Edge(int w, Node<T> v){
         weight = w;
         vertex = v;
     }

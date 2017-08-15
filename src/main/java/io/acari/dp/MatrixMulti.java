@@ -9,7 +9,7 @@ public class MatrixMulti {
         int arrayLength = matrices.length;
         int[][] lookup = new int[arrayLength][arrayLength];
         int[][] split = new int[arrayLength][arrayLength];
-        //Starts at 2 because you can't multiply on matrix
+        //Starts at 2 because you can'value multiply on matrix
         //Since [12, 10, 20] defines two matrices of 12 x 10 and 10 x 20
         for (int chainLength = 2; chainLength < arrayLength; chainLength++) {
             for (int i = 1; i < arrayLength - chainLength + 1; i++) {

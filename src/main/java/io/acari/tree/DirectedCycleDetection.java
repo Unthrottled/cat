@@ -35,21 +35,21 @@ public class DirectedCycleDetection {
     public boolean hasCycleNoRecurse(int v, LinkedList<Integer>[] aList, boolean[] visit, boolean[] explored) {
         Set<Integer> visited = new HashSet<>();
         Set<Integer> queueHash = new HashSet<>();
-        Deque<Node> queue = new LinkedList<>();
+        Deque<Butt> queue = new LinkedList<>();
         int _x = 0;
         for (List<Integer> gee : aList) {
             visited.clear();
             queueHash.clear();
             queue.clear();
             queueHash.add(_x);
-            queue.offer(new Node(_x, aList[_x++]));
+            queue.offer(new Butt(_x, aList[_x++]));
             while (!queue.isEmpty()) {
-                Node currentNode = queue.poll();
-                int data = currentNode.data;
+                Butt currentButt = queue.poll();
+                int data = currentButt.data;
                 visited.add(data);
-                for (Integer iGuy : currentNode.edges) {
+                for (Integer iGuy : currentButt.edges) {
                     if (!visited.contains(iGuy)) {
-                        queue.push(new Node(iGuy, aList[iGuy]));
+                        queue.push(new Butt(iGuy, aList[iGuy]));
                         queueHash.add(iGuy);
                     } else if (queueHash.contains(iGuy)) {
                         return true;
@@ -61,14 +61,14 @@ public class DirectedCycleDetection {
 
         return false;
     }
-}
+    class Butt {
+        List<Integer> edges;
+        int data;
 
-class Node {
-    List<Integer> edges;
-    int data;
-
-    Node(int d, List<Integer> e) {
-        edges = e;
-        data = d;
+        Butt(int d, List<Integer> e) {
+            edges = e;
+            data = d;
+        }
     }
+
 }
