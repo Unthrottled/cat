@@ -1,7 +1,5 @@
 package io.acari.tree.pojo;
 
-import java.util.List;
-
 public class Edge<T> {
 
     public int weight;

@@ -1,6 +1,5 @@
 package io.acari.tree;
 
-import io.acari.tree.pojo.Edge;
 import io.acari.tree.pojo.Node;
 
 import java.util.*;
