@@ -7,7 +7,7 @@ import java.util.*;
 
 public class SyncroShopping {
 
-    //todo: figure out dijkstra's algo
+    //todo: figure out dijkstra's algorithm
     public int find(Node<List<Integer>> root, int size){
         Set<Node<List<Integer>>> shortestPathTreeSet = new HashSet<>();
         Queue<Node<List<Integer>>> queue = new LinkedList<>();
