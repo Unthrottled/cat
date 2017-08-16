@@ -61,6 +61,7 @@ public class DirectedCycleDetection {
 
         return false;
     }
+
     class Butt {
         List<Integer> edges;
         int data;

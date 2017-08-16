@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class SyncroDriver {
 
-    public static void main(String... args){
+    public static void main(String... args) {
         Scanner in = new Scanner(System.in);
         String[] line = in.nextLine().split(" ");
         Integer numNodes = Integer.valueOf(line[0]);

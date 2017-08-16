@@ -5,7 +5,7 @@ public class Edge<T> {
     public int weight;
     public Node<T> vertex;
 
-    public Edge(int w, Node<T> v){
+    public Edge(int w, Node<T> v) {
         weight = w;
         vertex = v;
     }

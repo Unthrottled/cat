@@ -2,7 +2,7 @@ package io.acari.algorithms;
 
 public class ElectronicsShop {
 
-    public int getMoneySpent(int[] keyboards, int[] drives, int s){
+    public int getMoneySpent(int[] keyboards, int[] drives, int s) {
         int maxo = -1;
         for (int keyboard : keyboards) {
             for (int drive : drives) {
