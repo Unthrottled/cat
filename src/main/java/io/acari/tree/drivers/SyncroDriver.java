@@ -35,7 +35,7 @@ public class SyncroDriver {
             listNode2.getEdges().add(new Edge<>(weight, listNode));
         }
 
-        System.out.println(new SyncroShopping().find(graph.get(1)));
+        System.out.println(new SyncroShopping().find(graph.get(1), numNodes));
         in.close();
     }
 }

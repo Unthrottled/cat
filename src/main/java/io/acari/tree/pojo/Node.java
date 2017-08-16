@@ -3,7 +3,7 @@ package io.acari.tree.pojo;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class Node <T> {
+public final class Node <T> implements Comparable<Node<T>>{
     public int data;
     public Node<T> left;
     public Node<T> next;
@@ -23,6 +23,8 @@ public final class Node <T> {
     public String toString() {
         return "Node{" +
                 "data=" + data +
+                ", value=" + value +
+                ", hd=" + hd +
                 '}';
     }
 
@@ -75,5 +77,11 @@ public final class Node <T> {
 
     public int getHd() {
         return hd;
+    }
+
+
+    @Override
+    public int compareTo(Node<T> tNode) {
+        return Integer.compare(hd, tNode.hd);
     }
 }
