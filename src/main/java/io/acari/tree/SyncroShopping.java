@@ -3,6 +3,7 @@ package io.acari.tree;
 import io.acari.tree.pojo.Node;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SyncroShopping {
 
@@ -23,7 +24,10 @@ public class SyncroShopping {
                         queue.put(vertex.data, vertex);
                     });
         }
-
+        System.out.println(shortestPathTreeSet.stream()
+                .filter(n-> !root.equals(n))
+                .map(Node::getData)
+                .map(String::valueOf).collect(Collectors.joining(" ")));
         return -1;
     }
 }
