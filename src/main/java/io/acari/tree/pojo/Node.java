@@ -1,15 +1,15 @@
 package io.acari.tree.pojo;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class Node<T> implements Comparable<Node<T>> {
     public int data;
     public Node<T> left;
     public Node<T> next;
     public T value;
-    public List<Node<T>> neighbors = new LinkedList<>();
-    public List<Edge<T>> edges = new LinkedList<>();
+    public Set<Node<T>> neighbors = new HashSet<>();
+    public Set<Edge<T>> edges = new HashSet<>();
 
     public Node right;
     public int hd = Integer.MAX_VALUE;
@@ -63,11 +63,11 @@ public final class Node<T> implements Comparable<Node<T>> {
         return value;
     }
 
-    public List<Node<T>> getNeighbors() {
+    public Set<Node<T>> getNeighbors() {
         return neighbors;
     }
 
-    public List<Edge<T>> getEdges() {
+    public Set<Edge<T>> getEdges() {
         return edges;
     }
 
