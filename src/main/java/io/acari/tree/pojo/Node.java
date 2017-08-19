@@ -81,6 +81,8 @@ public final class Node<T> implements Comparable<Node<T>> {
 
     @Override
     public int compareTo(Node<T> tNode) {
-        return Integer.compare(hd, tNode.hd);
+        if(equals(tNode)) return 0;
+        int compare = Integer.compare(hd, tNode.hd);
+        return compare == 0 ? Integer.compare(data, tNode.getData()) : compare;
     }
 }
