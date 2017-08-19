@@ -3,14 +3,16 @@ package io.acari.tree;
 import io.acari.tree.pojo.Node;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class DSR2 {
 
-    public Stream<String> find(Node<Integer> root, int size){
+    public Stream<String> find(Node<Integer> root, Map<Integer, Node<Integer>> graph){
         TreeMap<Integer, Node<Integer>> treeMap = new TreeMap<>();
+        int size = graph.size();
         Set<Node<Integer>> shortPathInGraphSet = new HashSet<>(size);
         root.hd = 0;
         treeMap.put(root.data, root);
@@ -25,7 +27,9 @@ public class DSR2 {
                         treeMap.put(vertex.data, vertex);
                     });
         }
-        return shortPathInGraphSet.stream()
+        return Stream.iterate(1, i-> i+ 1)
+                .limit(size)
+                .map(i-> graph.getOrDefault(i, new Node<>(i)))
                 .filter(n-> !root.equals(n))
                 .map(Node::getHd)
                 .map(i-> Integer.MAX_VALUE == i ? -1 : i)

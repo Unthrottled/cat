@@ -34,7 +34,7 @@ public class DSR2Driver {
             }
 
             int root = Integer.parseInt(in.nextLine().trim());
-            System.out.println(new DSR2().find(graph.get(root), numNodes).collect(Collectors.joining(" ")));
+            System.out.println(new DSR2().find(graph.get(root), graph).collect(Collectors.joining(" ")));
         }
         in.close();
     }
