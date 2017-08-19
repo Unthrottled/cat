@@ -20,7 +20,7 @@ public class SyncroShopping {
             Node<List<Integer>> poll = queue.pollFirstEntry().getValue();
             shortestPathTreeSet.add(poll);
             poll.getEdges().stream()
-                    .filter(ee -> poll.hd + ee.weight < ee.vertex.hd)
+                    .filter(ee -> poll.hd + ee.weight <ee.vertex.hd)
                     .forEach(edge -> {
                         Node<List<Integer>> vertex = edge.vertex;
                         vertex.hd = poll.hd + edge.weight;
@@ -28,7 +28,7 @@ public class SyncroShopping {
                     });
         }
         System.out.println(shortestPathTreeSet.stream()
-                .filter(n -> !root.equals(n))
+                .filter(n-> !root.equals(n))
                 .map(Node::getData)
                 .map(String::valueOf).collect(Collectors.joining(" ")));
         return -1;

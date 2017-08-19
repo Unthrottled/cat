@@ -9,12 +9,12 @@ import java.util.stream.Stream;
 
 public class DSR2 {
 
-    public Stream<String> find(Node<Integer> root, int size) {
+    public Stream<String> find(Node<Integer> root, int size){
         TreeMap<Integer, Node<Integer>> treeMap = new TreeMap<>();
         Set<Node<Integer>> shortPathInGraphSet = new HashSet<>(size);
         root.hd = 0;
         treeMap.put(root.data, root);
-        while (shortPathInGraphSet.size() < size) {
+        while (shortPathInGraphSet.size() < size){
             Node<Integer> value = treeMap.pollFirstEntry().getValue();
             shortPathInGraphSet.add(value);
             value.getEdges().stream()
@@ -26,7 +26,7 @@ public class DSR2 {
                     });
         }
         return shortPathInGraphSet.stream()
-                .filter(n -> !root.equals(n))
+                .filter(n-> !root.equals(n))
                 .map(Node::getHd)
                 .map(String::valueOf);
     }
