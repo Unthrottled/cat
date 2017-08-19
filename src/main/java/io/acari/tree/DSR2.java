@@ -14,7 +14,7 @@ public class DSR2 {
         Set<Node<Integer>> shortPathInGraphSet = new HashSet<>(size);
         root.hd = 0;
         treeMap.put(root.data, root);
-        while (shortPathInGraphSet.size() < size){
+        while (shortPathInGraphSet.size() < size && !treeMap.isEmpty()){
             Node<Integer> value = treeMap.pollFirstEntry().getValue();
             shortPathInGraphSet.add(value);
             value.getEdges().stream()
@@ -28,6 +28,7 @@ public class DSR2 {
         return shortPathInGraphSet.stream()
                 .filter(n-> !root.equals(n))
                 .map(Node::getHd)
+                .map(i-> Integer.MAX_VALUE == i ? -1 : i)
                 .map(String::valueOf);
     }
 }

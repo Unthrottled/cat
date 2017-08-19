@@ -15,7 +15,6 @@ public final class Node<T> implements Comparable<Node<T>> {
     public int hd = Integer.MAX_VALUE;
 
     public Node(int data) {
-        ;
         this.data = data;
     }
 
