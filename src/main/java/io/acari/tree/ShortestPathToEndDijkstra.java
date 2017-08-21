@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class ShortestPathToEnd {
+public class ShortestPathToEndDijkstra {
 
     public long find(Node<Integer> root, Node<Integer> terminatingNode){
         final TreeMap<Node<Integer>, Node<Integer>> nextShortest = new TreeMap<>();

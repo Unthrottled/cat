@@ -1,6 +1,6 @@
 package io.acari.tree.drivers;
 
-import io.acari.tree.ShortestPathToEnd;
+import io.acari.tree.ShortestPathToEndDijkstra;
 import io.acari.tree.pojo.Edge;
 import io.acari.tree.pojo.Node;
 
@@ -13,7 +13,7 @@ public class SPEDriver {
     public static void main(String[] butts){
         Scanner in = new Scanner(System.in);
         int testCases = in.nextInt();
-        ShortestPathToEnd steve = new ShortestPathToEnd();
+        ShortestPathToEndDijkstra steve = new ShortestPathToEndDijkstra();
         for (int i = 0; i < testCases; i++) {
             Map<Integer, Node<Integer>> graph = buildGraph(in.nextInt());
             System.out.println(steve.find(graph.get(1), graph.get(graph.size())));
