@@ -24,18 +24,25 @@ public class SPEDriver {
         HashMap<Integer, Node<Integer>> graph = new HashMap<>(i);
         for (int j = 1; j <= i; j++) {
             Node<Integer> currentNode = graph.getOrDefault(j, new Node<>(j));
+            graph.put(j, currentNode);
             int edgeOne = j + 1;
             if(edgeOne <= i){
-                addEdge(currentNode, graph.getOrDefault(edgeOne, new Node<>(edgeOne)));
+                createNode(graph, currentNode, edgeOne);
             }
 
             int edgeTwo = j * 3;
             if(edgeTwo <= i){
-                addEdge(currentNode, graph.getOrDefault(edgeTwo, new Node<>(edgeTwo)));
+                createNode(graph, currentNode, edgeTwo);
             }
         }
 
         return graph;
+    }
+
+    private static void createNode(HashMap<Integer, Node<Integer>> graph, Node<Integer> currentNode, int edgeTwo) {
+        Node<Integer> edgeGuy = graph.getOrDefault(edgeTwo, new Node<>(edgeTwo));
+        addEdge(currentNode, edgeGuy);
+        graph.put(edgeTwo, edgeGuy);
     }
 
     private static void addEdge(Node<Integer> currentNode, Node<Integer> edgeNode) {
