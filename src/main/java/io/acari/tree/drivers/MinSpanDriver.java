@@ -28,7 +28,7 @@ public class MinSpanDriver {
             }
             Integer numRoads = Integer.valueOf(line[1]);
             String[] roadz = in.nextLine().split(" ");
-            int cap = numRoads - 2;
+            int cap = numRoads * 3 - 2;
             for (int kBra = 0; kBra < cap; kBra+=3) {
                 Integer weight = Integer.valueOf(roadz[kBra + 2]);
                 Node<Integer> listNode = graph.get(Integer.valueOf(roadz[kBra]));
