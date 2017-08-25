@@ -34,7 +34,7 @@ public class DSR2Driver {
 
             int root = Integer.parseInt(in.readString().trim());
             new DSR2().find(graph.get(root), graph)
-                    .forEach(s-> System.out.print(s+" "));
+                    .forEach(s -> System.out.print(s + " "));
             out.printLine();
             out.flush();
         }

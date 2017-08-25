@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class MinSpanDriver {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int testCases = Integer.parseInt(in.nextLine().trim());
         MinSpanTree steve = new MinSpanTree();
@@ -27,7 +27,7 @@ public class MinSpanDriver {
             Integer numRoads = Integer.valueOf(line[1]);
             String[] roadz = in.nextLine().split(" ");
             int cap = numRoads * 3 - 2;
-            for (int kBra = 0; kBra < cap; kBra+=3) {
+            for (int kBra = 0; kBra < cap; kBra += 3) {
                 Integer weight = Integer.valueOf(roadz[kBra + 2]);
                 Node<Integer> listNode = graph.get(Integer.valueOf(roadz[kBra]));
                 Node<Integer> listNode2 = graph.get(Integer.valueOf(roadz[kBra + 1]));

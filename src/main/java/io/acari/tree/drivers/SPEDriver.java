@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class SPEDriver {
 
-    public static void main(String[] butts){
+    public static void main(String[] butts) {
         Scanner in = new Scanner(System.in);
         int testCases = in.nextInt();
         ShortestPathToEndDijkstra steve = new ShortestPathToEndDijkstra();
@@ -26,12 +26,12 @@ public class SPEDriver {
             Node<Integer> currentNode = graph.getOrDefault(j, new Node<>(j));
             graph.put(j, currentNode);
             int edgeOne = j + 1;
-            if(edgeOne <= i){
+            if (edgeOne <= i) {
                 createNode(graph, currentNode, edgeOne);
             }
 
             int edgeTwo = j * 3;
-            if(edgeTwo <= i){
+            if (edgeTwo <= i) {
                 createNode(graph, currentNode, edgeTwo);
             }
         }

@@ -13,7 +13,7 @@ public class OutputWriter {
         this.writer = new PrintWriter(writer);
     }
 
-    public void print(Object...objects) {
+    public void print(Object... objects) {
         for (int i = 0; i < objects.length; i++) {
             if (i != 0)
                 writer.print(' ');
@@ -21,7 +21,7 @@ public class OutputWriter {
         }
     }
 
-    public void printLine(Object...objects) {
+    public void printLine(Object... objects) {
         print(objects);
         writer.println();
     }
