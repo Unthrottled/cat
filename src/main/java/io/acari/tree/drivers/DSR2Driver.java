@@ -8,8 +8,6 @@ import util.OutputWriter;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class DSR2Driver {
     public static void main(String... args) {

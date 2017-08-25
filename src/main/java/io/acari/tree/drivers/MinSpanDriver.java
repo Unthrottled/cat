@@ -1,6 +1,5 @@
 package io.acari.tree.drivers;
 
-import io.acari.tree.DSR2;
 import io.acari.tree.MinSpanTree;
 import io.acari.tree.pojo.Edge;
 import io.acari.tree.pojo.Node;
@@ -8,7 +7,6 @@ import io.acari.tree.pojo.Node;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class MinSpanDriver {
 
