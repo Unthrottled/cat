@@ -21,8 +21,8 @@ public class AlmostIncreasingSequence {
         if(++deletions > 1){
           return false;
         }
-        return almostIncreasingSequenceHelper(input, previous, current, deletions) ||
-            almostIncreasingSequenceHelper(input, current, previous, deletions);
+        return almostIncreasingSequenceHelper(input, previousIndex, currentIndex, deletions) ||
+            almostIncreasingSequenceHelper(input, currentIndex, previousIndex, deletions);
 
       } else {
         //happy path
