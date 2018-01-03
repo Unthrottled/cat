@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class HeightSorter {
 
+  public static final int IS_TREE = -1;
+
   /**
    * Some people are standing in a row in a park.
    * There are trees between them which cannot be moved.
@@ -18,8 +20,8 @@ public class HeightSorter {
     int currentIndex = 0;
     for (int i = 0; i < copy.length; i++) {
       int value = copy[i];
-      if(value > -1 && currentIndex < a.length){
-        while (currentIndex < copy.length && a[currentIndex] == -1){currentIndex++;}
+      if(value > IS_TREE && currentIndex < a.length){
+        while (currentIndex < copy.length && a[currentIndex] == IS_TREE){currentIndex++;}
         a[currentIndex++] = value;
       }
     }
