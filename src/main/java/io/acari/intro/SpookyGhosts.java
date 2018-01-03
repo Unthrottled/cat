@@ -13,6 +13,32 @@ public class SpookyGhosts {
    * @return
    */
   int matrixElementsSum(int[][] building) {
-    return -1;
+    int sum = 0;
+    for (int i = 0; i < building.length; i++) {
+      for (int j = 0; j < building[i].length; j++) {
+        int roomCost = building[i][j];
+        if(isSuitableForLiving(building, i, j, roomCost)){
+          sum += roomCost;
+        } else {
+          //no good is haunted!
+          building[i][j] = 0;
+        }
+      }
+    }
+    return sum;
   }
+
+  private boolean isSuitableForLiving(int[][] building, int i, int j, int roomCost) {
+    return !(isHaunted(roomCost) || isRoomAboveHaunted(building, i - 1, j));
+  }
+
+  private boolean isRoomAboveHaunted(int[][] building, int row, int col) {
+    return row > -1 && col < building[row].length && isHaunted(building[row][col]);
+  }
+
+  private boolean isHaunted(int roomCost) {
+    return roomCost == 0;
+  }
+
+
 }
