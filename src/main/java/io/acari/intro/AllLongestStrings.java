@@ -15,3 +15,6 @@ public class AllLongestStrings {
     return null;
   }
 }
+//  SortedMap<Integer, List<String>> collect = Arrays.stream(inputArray)
+//      .collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toList()));
+//    return (String[]) collect.get(collect.lastKey()).toArray();
