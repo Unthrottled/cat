@@ -21,6 +21,11 @@ public class SumAlternation {
    * @return
    */
   int[] alternatingSums(int[] a) {
-    return null;
+    int[] returnArray = new int[2];
+    boolean teamOne = false;
+    for (int i : a) {
+      returnArray[(teamOne = !teamOne) ? 0 : 1] += i;
+    }
+    return returnArray;
   }
 }
