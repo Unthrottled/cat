@@ -12,7 +12,7 @@ public class CommonCharacterCounterTest {
 
   @Test
   public void commonCharacterCountOne() throws Exception {
-    assertEquals(2, commonCharacterCounter.commonCharacterCount("aabcc", "adcaa"));
+    assertEquals(3, commonCharacterCounter.commonCharacterCount("aabcc", "adcaa"));
   }
 
   @Test
