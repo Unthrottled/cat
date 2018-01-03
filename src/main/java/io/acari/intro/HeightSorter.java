@@ -1,5 +1,7 @@
 package io.acari.intro;
 
+import java.util.Arrays;
+
 public class HeightSorter {
 
   /**
@@ -11,7 +13,17 @@ public class HeightSorter {
    * @return
    */
   int[] sortByHeight(int[] a) {
-    return null;
+    int[] copy = Arrays.copyOf(a, a.length);
+    Arrays.sort(copy);
+    int currentIndex = 0;
+    for (int i = 0; i < copy.length; i++) {
+      int value = copy[i];
+      if(value > -1 && currentIndex < a.length){
+        while (currentIndex < copy.length && a[currentIndex] == -1){currentIndex++;}
+        a[currentIndex++] = value;
+      }
+    }
+    return a;
   }
 
 }
