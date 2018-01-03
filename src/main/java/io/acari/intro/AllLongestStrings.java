@@ -12,9 +12,14 @@ public class AllLongestStrings {
    * @return
    */
   String[] allLongestStrings(String[] inputArray) {
-    return null;
+    return toArray(Arrays.stream(inputArray)
+        .collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toList())));
+  }
+
+  private String[] toArray(SortedMap<Integer, List<String>> collect) {
+    List<String> strings = collect.get(collect.lastKey());
+    String[] returnValue = new String[strings.size()];
+    strings.toArray(returnValue);
+    return returnValue;
   }
 }
-//  SortedMap<Integer, List<String>> collect = Arrays.stream(inputArray)
-//      .collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toList()));
-//    return (String[]) collect.get(collect.lastKey()).toArray();

@@ -13,8 +13,6 @@ public class AllLongestStringsTest {
   @Test
   public void allLongestStringsOne() throws Exception {
     assertArrayEquals(new String[]{"aba",
-        "aa",
-        "ad",
         "vcd",
         "aba"}, allLongestStrings.allLongestStrings(new String[]{"aba",
         "aa",
@@ -36,8 +34,7 @@ public class AllLongestStringsTest {
     assertArrayEquals(new String[]{
         "zzzzzz",
         "abcdef",
-        "aaaaaa",
-        "aba"}, allLongestStrings.allLongestStrings(new String[]{"a",
+        "aaaaaa"}, allLongestStrings.allLongestStrings(new String[]{"a",
         "abc",
         "cbd",
         "zzzzzz",
