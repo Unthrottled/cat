@@ -12,11 +12,8 @@ public class AllLongestStrings {
    * @return
    */
   String[] allLongestStrings(String[] inputArray) {
-    return toArray(Arrays.stream(inputArray)
-        .collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toList())));
-  }
-
-  private String[] toArray(SortedMap<Integer, List<String>> collect) {
+    SortedMap<Integer, List<String>> collect = Arrays.stream(inputArray)
+        .collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toList()));
     List<String> strings = collect.get(collect.lastKey());
     String[] returnValue = new String[strings.size()];
     strings.toArray(returnValue);
