@@ -12,12 +12,18 @@ public class AlmostIncreasingSequence {
 
 
   private boolean almostIncreasingSequenceHelper(int[] input, int skipIndex, int previousIndex, int deletions){
+    int beforePreviousIndex = previousIndex - 1;
+    beforePreviousIndex = beforePreviousIndex == skipIndex ? beforePreviousIndex - 1 : beforePreviousIndex;
+    beforePreviousIndex = beforePreviousIndex < 0 ? 0 : beforePreviousIndex;
+
     int currentIndex = previousIndex + 1;
     currentIndex = currentIndex == skipIndex ? currentIndex + 1 : currentIndex;
     for(int i = currentIndex; i < input.length; i++){
-      int previous = input[previousIndex];
-      int current = input[currentIndex];
-      if(previous >= current){
+      int previousValue = input[previousIndex];
+      int currentValue = input[currentIndex];
+      if(previousValue >= currentValue ||((input[beforePreviousIndex] >= previousValue &&
+          beforePreviousIndex != previousIndex &&
+          beforePreviousIndex != skipIndex))){
         if(++deletions > 1){
           return false;
         }
