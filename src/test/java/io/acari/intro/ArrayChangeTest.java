@@ -21,6 +21,11 @@ public class ArrayChangeTest {
   }
 
   @Test
+  public void arrayChangeTwoHalf() throws Exception {
+    assertEquals(2, arrayChange.arrayChange(new int[]{-1000, -1001, -2, 0}));
+  }
+
+  @Test
   public void arrayChangeThree() throws Exception {
     assertEquals(13, arrayChange.arrayChange(new int[]{2, 3, 3, 5, 5, 5, 4, 12, 12, 10, 15}));
   }
