@@ -9,6 +9,27 @@ public class ChessBoardColor {
    * @return
    */
   boolean chessBoardCellColor(String cell1, String cell2) {
-    return false;
+    return new Cell(cell1).equals(new Cell(cell2));
+  }
+
+  static class Cell {
+    public static enum Color {
+      RED, BLACK
+    }
+
+    private Color color;
+
+    public Cell(String cell) {
+      int row = cell.charAt(0) - 64;
+      boolean evenRow = row % 2 == 0;
+      int col = cell.charAt(1) - 48;
+      boolean evenCol = col % 2 == 0;
+      color = (evenRow && !evenCol) || (!evenRow && evenCol) ? Color.RED : Color.BLACK;
+    }
+
+    public boolean equals(Cell cell){
+      return color.equals(cell.color);
+    }
+
   }
 }
