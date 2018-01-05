@@ -17,9 +17,9 @@ public class IPv4Validator {
    *
    * Given a string, find out if it satisfies the IPv4 address naming rules.
    * @param inputString
-   * @return
+   * @return if it satisfies the IPv4 address naming rules.
    */
   boolean isIPv4Address(String inputString) {
-    return false;
+    return inputString.matches("((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))\\.((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))\\.((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))\\.((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))");
   }
 }
