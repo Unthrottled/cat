@@ -1,5 +1,9 @@
 package io.acari.intro;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class TacoCat {
 
   /**
@@ -10,7 +14,16 @@ public class TacoCat {
    * @return
    */
   boolean palindromeRearranging(String inputString) {
-    return false;
+    Map<Integer, Integer> collect = inputString.chars().boxed()
+        .collect(Collectors.toMap(a -> a, a->1, (a,b)->a+b));
+    int highlander = 0;
+    for (Map.Entry<Integer, Integer> integerListEntry : collect.entrySet()) {
+      if((integerListEntry.getValue() % 2 != 0 && highlander++ > 0)){
+        return false;
+      }
+    }
+
+    return true;
   }
 
 }

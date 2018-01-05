@@ -36,6 +36,11 @@ public class TacoCatTest {
   }
 
   @Test
+  public void palindromeRearrangingFivePointTwo() throws Exception {
+    assertFalse(tacoCat.palindromeRearranging("zaaa"));
+  }
+
+  @Test
   public void palindromeRearrangingSix() throws Exception {
     assertTrue(tacoCat.palindromeRearranging("tacocat"));
   }
