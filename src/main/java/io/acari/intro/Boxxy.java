@@ -22,7 +22,30 @@ public class Boxxy {
    * @return
    */
   int[][] boxBlur(int[][] image) {
-    return image;
+    int height = image.length;
+    int width = image[0].length;
+    int widthMinusOne = width - 1;
+    int heightMinusOne = height - 1;
+    int[][] blurredImage = new int[heightMinusOne - 1][widthMinusOne - 1];
+    for (int i = 1; i < heightMinusOne; i++) {
+      for (int j = 1; j < widthMinusOne; j++) {
+         blurredImage[i - 1][j-1] = getPixel(i, j, image);
+      }
+    }
+    return blurredImage;
+  }
+
+  private int getPixel(int i, int j, int[][] image) {
+    int i1 = i + 1;
+    int i2 = j + 1;
+    int sum = 0;
+    for (int k = i - 1; k <= i1; k++) {
+      for (int l = j - 1; l <= i2; l++) {
+        sum += image[k][l];
+      }
+    }
+
+    return sum / 9;
   }
 
 }
