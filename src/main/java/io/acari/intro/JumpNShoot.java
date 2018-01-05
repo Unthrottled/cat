@@ -1,5 +1,7 @@
 package io.acari.intro;
 
+import java.util.Arrays;
+
 public class JumpNShoot {
 
   /**
@@ -15,6 +17,14 @@ public class JumpNShoot {
    * @return
    */
   int avoidObstacles(int[] inputArray) {
-    return 0;
+    int min = 1;
+    boolean minUnknown;
+    do{
+      int temp = ++min;
+      minUnknown = Arrays.stream(inputArray)
+          .map(i->i%temp)
+          .anyMatch(i->i == 0);
+    }while (minUnknown);
+    return min;
   }
 }
