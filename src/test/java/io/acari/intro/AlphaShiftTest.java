@@ -17,7 +17,7 @@ public class AlphaShiftTest {
 
   @Test
   public void alphabeticShiftTwo() throws Exception {
-    assertEquals("a", alphaShift.alphabeticShift("a"));
+    assertEquals("b", alphaShift.alphabeticShift("a"));
   }
 
 }

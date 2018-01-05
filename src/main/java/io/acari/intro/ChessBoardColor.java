@@ -13,7 +13,7 @@ public class ChessBoardColor {
   }
 
   static class Cell {
-    public static enum Color {
+    public enum Color {
       RED, BLACK
     }
 
