@@ -10,7 +10,7 @@ public class VarNameChecker {
    * @return
    */
   boolean variableName(String name) {
-    return false;
+    return name.matches("^(_|[a-zA-Z])(([a-zA-Z0-9]|_)?)+");
   }
 
 }
