@@ -1,5 +1,7 @@
 package io.acari.intro;
 
+import java.util.Arrays;
+
 public class IPv4Validator {
 
 
@@ -20,6 +22,7 @@ public class IPv4Validator {
    * @return if it satisfies the IPv4 address naming rules.
    */
   boolean isIPv4Address(String inputString) {
-    return inputString.matches("((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))\\.((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))\\.((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))\\.((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))");
+    String[] split = inputString.split("\\." );
+    return split.length == 4 && Arrays.stream(split).allMatch(s -> s.matches("((25[0-5]|2[0-4][0-9])|(1[0-9]{2})|([0-9]?[0-9]))"));
   }
 }
