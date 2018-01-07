@@ -9,6 +9,10 @@ public class DigitFirst {
    * @return
    */
   char firstDigit(String inputString) {
-    return '\0';
+    return inputString.chars()
+        .mapToObj(i->(char)i)
+        .filter(Character::isDigit)
+        .findFirst()
+        .orElse('\0');
   }
 }
