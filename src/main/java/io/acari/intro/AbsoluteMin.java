@@ -17,7 +17,8 @@ public class AbsoluteMin {
    * @return
    */
   int absoluteValuesSumMinimization(int[] a) {
-    return 0;
+    int index = (a.length - 1) / 2;
+    return a[index];
   }
 
 }
