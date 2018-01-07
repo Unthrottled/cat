@@ -37,7 +37,7 @@ public class StringsRearrangementTest {
 
   @Test
   public void stringsRearrangementFive() throws Exception {
-    assertTrue(stringsRearrangement.stringsRearrangement(new String[]{"ab",
+    assertFalse(stringsRearrangement.stringsRearrangement(new String[]{"ab",
         "ad",
         "ef",
         "eg"}));
