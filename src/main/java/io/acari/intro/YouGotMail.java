@@ -11,7 +11,7 @@ public class YouGotMail {
    * @return
    */
   String findEmailDomain(String address) {
-    return address;
+    return address.substring(address.lastIndexOf('@')+1);
   }
 
 }
