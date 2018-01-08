@@ -23,7 +23,7 @@ public class RaceCar {
         }
       }
     }
-    return st;
+    throw new IllegalStateException("We should always be able to create a palindrome!!");
   }
 
   private boolean isPalindrome(String st) {
