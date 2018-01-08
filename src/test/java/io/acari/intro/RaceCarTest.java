@@ -2,7 +2,7 @@ package io.acari.intro;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -21,6 +21,11 @@ public class RaceCarTest {
   }
 
   @Test
+  public void buildPalindromeTwo_Half() throws Exception {
+    assertEquals("ababcbaba", raceCar.buildPalindrome("ababcbab" ));
+  }
+
+  @Test
   public void buildPalindromeThree() throws Exception {
     assertEquals("abba",raceCar.buildPalindrome("abba"));
   }
@@ -30,4 +35,18 @@ public class RaceCarTest {
     assertEquals("abaaba",raceCar.buildPalindrome("abaa"));
   }
 
+  @Test
+  public void buildPalindromeFive() throws Exception {
+    assertEquals("abacaba", raceCar.buildPalindrome("abaca" ));
+  }
+
+  @Test
+  public void buildPalindromeSix() throws Exception {
+    assertEquals("abcacba", raceCar.buildPalindrome("abca" ));
+  }
+
+  @Test
+  public void buildPalindromeSeven() throws Exception {
+    assertEquals("abcddcba", raceCar.buildPalindrome("abcdd" ));
+  }
 }
