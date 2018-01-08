@@ -13,6 +13,24 @@ public class DegreesOfDigits {
    * @return
    */
   int digitDegree(int n) {
-    return n;
+    double v = Math.log10(n);
+    if(Double.compare(1d, v) > 0){
+      return 0;
+    }
+    int degrees = 1;
+    int runningCount = n;
+    while ((int) Math.log10((runningCount = decompose(runningCount))) >= 1){
+      degrees++;
+    }
+    return degrees;
+  }
+
+  private int decompose(int n) {
+    int runningSum = 0;
+    while (n > 0){
+      runningSum += n % 10;
+      n /= 10;
+    }
+    return runningSum;
   }
 }
