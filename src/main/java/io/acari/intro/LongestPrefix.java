@@ -10,6 +10,15 @@ public class LongestPrefix {
    * @return
    */
   String longestDigitsPrefix(String inputString) {
-    return inputString;
+    StringBuilder stringBuilder = new StringBuilder();
+    for (int i = 0; i < inputString.length(); i++) {
+      char c = inputString.charAt(i);
+      if (Character.isDigit(c)) {
+        stringBuilder.append(c);
+      } else {
+        break;
+      }
+    }
+    return stringBuilder.toString();
   }
 }
