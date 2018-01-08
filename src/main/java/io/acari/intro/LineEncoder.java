@@ -21,7 +21,29 @@ public class LineEncoder {
    * @return
    */
   String lineEncoding(String s) {
-    return s;
+    StringBuilder stringBuilder = new StringBuilder();
+    int currentCount = 1;
+    char currentCharacter = s.charAt(0);
+    int length = s.length()-1;
+    for (int i = 1; i <= length; i++) {
+      char nextChar = s.charAt(i);
+      if(nextChar == currentCharacter){
+        currentCount++;
+      } else {
+        process(stringBuilder, currentCount, currentCharacter);
+        currentCount = 1;
+      }
+      currentCharacter = nextChar;
+    }
+    process(stringBuilder,currentCount,currentCharacter);
+    return stringBuilder.toString();
+  }
+
+  private void process(StringBuilder stringBuilder, int currentCount, char currentCharacter) {
+    if(currentCount > 1){
+      stringBuilder.append(currentCount);
+    }
+    stringBuilder.append(currentCharacter);
   }
 
 }
