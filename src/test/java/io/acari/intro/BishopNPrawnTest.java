@@ -32,7 +32,7 @@ public class BishopNPrawnTest {
 
   @Test
   public void bishopAndPawnFive() throws Exception {
-    assertFalse(bishopNPrawn.bishopAndPawn("e7", "d6"));
+    assertTrue(bishopNPrawn.bishopAndPawn("e7", "d6"));
   }
 
   @Test
