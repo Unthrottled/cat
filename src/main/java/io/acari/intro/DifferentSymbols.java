@@ -8,6 +8,6 @@ public class DifferentSymbols {
    * @return
    */
   int differentSymbolsNaive(String s) {
-    return s.length();
+    return (int) s.chars().distinct().count();
   }
 }
