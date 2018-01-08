@@ -27,7 +27,12 @@ public class MACAttackTest {
 
   @Test
   public void isMAC48AddressFour() throws Exception {
-    assertFalse(macAttack.isMAC48Address("FF-FF-FF-FF-FF-FF"));
+    assertTrue(macAttack.isMAC48Address("FF-FF-FF-FF-FF-FF"));
+  }
+
+  @Test
+  public void isMAC48AddressFour_Half() throws Exception {
+    assertFalse(macAttack.isMAC48Address("FF-FF--FF-FF-FF-FF"));
   }
 
   @Test
@@ -37,7 +42,12 @@ public class MACAttackTest {
 
   @Test
   public void isMAC48AddressSix() throws Exception {
-    assertTrue(macAttack.isMAC48Address("G0-00-00-00-00-00"));
+    assertFalse(macAttack.isMAC48Address("G0-00-00-00-00-00"));
+  }
+
+  @Test
+  public void isMAC48AddressSeven() throws Exception {
+    assertFalse(macAttack.isMAC48Address("02-03-04-05-06-07-"));
   }
 
 }

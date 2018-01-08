@@ -1,5 +1,7 @@
 package io.acari.intro;
 
+import java.util.Arrays;
+
 public class MACAttack {
 
   /**
@@ -16,6 +18,11 @@ public class MACAttack {
    * @return
    */
   boolean isMAC48Address(String inputString) {
-    return false;
+    if(inputString.startsWith("-") || inputString.endsWith("-"))
+      return false;
+    String[] split = inputString.split("-" );
+    return split.length == 6 &&
+        Arrays.stream(split)
+            .allMatch(s->s.matches("[A-F0-9]{2}"));
   }
 }
