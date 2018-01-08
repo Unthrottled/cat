@@ -10,6 +10,13 @@ public class StringBoutique {
    * @return
    */
   boolean isBeautifulString(String inputString) {
+    int[] charCounts = new int[26];
+    inputString.chars().map(i->i-97).forEach(i->charCounts[i]++);
+    for (int i = 1; i < charCounts.length; i++) {
+      if(charCounts[i-1] < charCounts[i]){
+        return false;
+      }
+    }
     return true;//gurl you always beautiful.
   }
 
