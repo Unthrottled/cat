@@ -1,5 +1,9 @@
 package io.acari.intro;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class KnapsackLite {
 
   /**
@@ -18,6 +22,36 @@ public class KnapsackLite {
    * @return
    */
   int knapsackLight(int value1, int weight1, int value2, int weight2, int maxW) {
-    return 0;
+    List<Item> treasureChest = new LinkedList<>();
+    treasureChest.add(new Item(value1, weight1));
+    treasureChest.add(new Item(value2, weight2));
+    return maxProfit(maxW, 0, treasureChest);
+  }
+
+  private int maxProfit(int capacity, int value, List<Item> oneLess) {
+    int maxProfit = value;
+    for (int j = 0; j < oneLess.size(); j++) {
+      List<Item> guy = new LinkedList<>(oneLess);
+      Item item = guy.remove(j);
+      int weight = item.weight;
+      int profit;
+      if (capacity >= weight) {
+        profit = Math.max(maxProfit(capacity - weight, value + item.value, guy), maxProfit(capacity, value, guy));
+      } else {
+        profit = maxProfit(capacity, value, guy);
+      }
+      maxProfit = profit > maxProfit ? profit : maxProfit;
+    }
+    return maxProfit;
+  }
+
+  class Item {
+    private final int value;
+    private final int weight;
+
+    Item(int value, int weight) {
+      this.value = value;
+      this.weight = weight;
+    }
   }
 }
