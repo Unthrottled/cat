@@ -13,6 +13,12 @@ public class DonaldJTrumpTest {
   @Test
   public void electionsWinnersOne() throws Exception {
     assertEquals(2,
+        donaldJTrump.electionsWinners(new int[]{2, 3, 5, 2}, 3));
+  }
+
+  @Test
+  public void electionsWinnersOne_Half() throws Exception {
+    assertEquals(1,
         donaldJTrump.electionsWinners(new int[]{2, 3, 5, 2}, 2));
   }
 
