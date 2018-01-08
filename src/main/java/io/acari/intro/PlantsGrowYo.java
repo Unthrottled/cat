@@ -21,6 +21,12 @@ public class PlantsGrowYo {
      * @return
      */
     int growingPlant(int upSpeed, int downSpeed, int desiredHeight) {
-        return 0;
+        int days = 0;
+        int height = 0;
+        do {
+            height += upSpeed;
+            ++days;
+        } while (height < desiredHeight && (height -= downSpeed) > 0);
+        return days;
     }
 }
