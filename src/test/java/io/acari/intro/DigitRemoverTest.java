@@ -30,4 +30,14 @@ public class DigitRemoverTest {
     assertEquals(22229, digitRemover.deleteDigit(222219));
   }
 
+  @Test
+  public void deleteDigitFive() throws Exception {
+    assertEquals(111110, digitRemover.deleteDigit(1110110));
+  }
+
+  @Test
+  public void deleteDigitSix() throws Exception {
+    assertEquals(2202, digitRemover.deleteDigit(21202));
+  }
+
 }
