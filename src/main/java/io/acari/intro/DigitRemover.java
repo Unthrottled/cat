@@ -11,27 +11,16 @@ public class DigitRemover {
    * @return
    */
   int deleteDigit(int n) {
-    int max = decompose(n);
-    String s = String.valueOf(n);
-    return Integer.parseInt(s.substring(0, max) + s.substring(max +1));
-  }
-
-  private int decompose(int n) {
-    int previous = -1;
-    int current;
-    int returnValue = -1;
-    int ceil = (int) Math.ceil(Math.log10(n));
-    int index = ceil;
-    while (n > 0){
-      index--;
-      current = n % 10;
-      if (previous != -1 && current < previous){
-        returnValue = index;
-      }
-      previous = current;
-      n/=10;
+    int max = 0;
+    for (int t = 1; t < n; t *= 10) {
+      int i = n / 10;
+      int i1 = i / t;
+      int i2 = i1 * t;
+      int i3 = n % t;
+      int i4 = i2 + i3;
+      max = Math.max(i4, max);
     }
-    return returnValue == -1 ? ceil : returnValue;
+    return max;
   }
 
 }
