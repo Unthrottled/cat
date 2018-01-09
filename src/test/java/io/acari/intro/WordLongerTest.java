@@ -21,6 +21,11 @@ public class WordLongerTest {
   }
 
   @Test
+  public void longestWordFour() throws Exception {
+    assertEquals("AA", wordLonger.longestWord("A!! AA[]z"));
+  }
+
+  @Test
   public void longestWordThree() throws Exception {
     assertEquals("ABCd", wordLonger.longestWord("ABCd"));
   }
