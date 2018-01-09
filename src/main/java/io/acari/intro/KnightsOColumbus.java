@@ -23,7 +23,42 @@ public class KnightsOColumbus {
    * @return
    */
   int chessKnight(String cell) {
-    return 2;
+    Cell c = new Cell(cell);
+    return findValidInRange(c);
+  }
+
+  private int findValidInRange(Cell c) {
+    int sum = 0;
+    int n = 0;
+    for (int x = -2; x <= 2; x++) {
+      for (int y = -2; y <= 2; y++) {
+        if (x != 0 && y != 0 && Math.abs(x) != Math.abs(y) &&
+            new Cell(c.row + x, c.col + y).isValid())
+          sum++;
+      }
+    }
+    return sum;
+  }
+
+  private class Cell {
+    private final int row;
+    private final int col;
+
+    Cell(String cell) {
+      cell = cell.toUpperCase();
+      row = cell.charAt(0) - 65;
+      col = cell.charAt(1) - 49;
+    }
+
+    Cell(int row, int col) {
+      this.row = row;
+      this.col = col;
+    }
+
+    boolean isValid() {
+      return row > -1 && row < 8 &&
+          col > -1 && col < 8;
+    }
   }
 
 }
