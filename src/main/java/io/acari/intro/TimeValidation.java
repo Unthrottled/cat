@@ -1,5 +1,9 @@
 package io.acari.intro;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class TimeValidation {
 
   /**
@@ -10,7 +14,12 @@ public class TimeValidation {
    * @return
    */
   boolean validTime(String time) {
-    return false;
+    try {
+      LocalTime.parse(time, DateTimeFormatter.ofPattern("kk:mm"));
+      return !time.startsWith("24");
+    } catch (DateTimeParseException ignored){
+      return false;
+    }
   }
 
 }
