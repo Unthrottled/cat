@@ -31,4 +31,11 @@ public class SumItUpTest {
             ("Your payment method is invalid"));
   }
 
+  @Test
+  public void sumUpNumbersFour() throws Exception {
+    assertEquals(10,
+        sumItUp.sumUpNumbers
+            ("1$$2 a,3;s 4"));
+  }
+
 }

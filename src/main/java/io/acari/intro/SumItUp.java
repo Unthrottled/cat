@@ -1,5 +1,7 @@
 package io.acari.intro;
 
+import java.util.Arrays;
+
 public class SumItUp {
 
   /**
@@ -21,7 +23,28 @@ public class SumItUp {
    * @return
    */
   int sumUpNumbers(String inputString) {
-    return inputString.length();
+    int sum = 0;
+    boolean onNumber = false;
+    int startIndex = 0;
+    int length = inputString.length();
+    for (int i = 0; i < length; i++) {
+      char c = inputString.charAt(i);
+      if(Character.isDigit(c)){
+        if(!onNumber){
+          startIndex = i;
+          onNumber = true;
+        }
+      } else {
+        if(onNumber){
+          sum += Integer.parseInt(inputString.substring(startIndex, i));
+        }
+        startIndex = i + 1;
+        onNumber = false;
+      }
+    }
+    if(onNumber) sum += Integer.parseInt(inputString.substring(startIndex, length));
+
+    return sum;
   }
 
 }
