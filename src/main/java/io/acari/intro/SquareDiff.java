@@ -1,5 +1,8 @@
 package io.acari.intro;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class SquareDiff {
 
   /**
@@ -11,7 +14,19 @@ public class SquareDiff {
    * @return
    */
   int differentSquares(int[][] matrix) {
-    return 0;
+    Set<String> sequences = new HashSet<>();
+    for (int i = 1; i < matrix.length; i++) {
+      int i1 = matrix[i].length - 1;
+      for (int j = 0; j < i1; j++) {
+        sequences.add("" + matrix[i-1][j] +
+            matrix[i -1][j + 1] +
+            matrix[i][j] +
+            matrix[i][j + 1]
+        );
+      }
+
+    }
+    return sequences.size();
   }
 
 }
