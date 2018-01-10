@@ -20,7 +20,11 @@ public class BitsNPieces {
    * @return
    */
   String messageFromBinaryCode(String code) {
-    return code;
+    StringBuilder stringBuilder = new StringBuilder();
+    for (int i = 0; i < code.length(); i+=8) {
+      stringBuilder.appendCodePoint((char)Long.parseLong(code.substring(i, i + 8), 2));
+    }
+    return stringBuilder.toString();
   }
 
 }
