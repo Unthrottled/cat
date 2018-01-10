@@ -54,7 +54,7 @@ public class NameThatFile {
             fileNames.put(current, newSetPlusOne());
           }
         } else if (fileNames.containsKey(current)) {
-
+          postFixThatShit(names, fileNames, i, current);
         } else {
           //first time we have seen this!
           fileNames.put(current, newSetPlusOne());

@@ -2,7 +2,7 @@ package io.acari.intro;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -13,10 +13,10 @@ public class NameThatFileTest {
   @Test
   public void fileNamingOne() throws Exception {
     assertArrayEquals(new String[]{"doc",
-        "doc(1)",
-        "image",
-        "doc(1)(1)",
-        "doc(2)"},
+            "doc(1)",
+            "image",
+            "doc(1)(1)",
+            "doc(2)"},
         nameThatFile.fileNaming(new String[]{"doc",
             "doc",
             "image",
@@ -57,14 +57,14 @@ public class NameThatFileTest {
   @Test
   public void fileNamingThree() throws Exception {
     assertArrayEquals(new String[]{"dd",
-        "dd(1)",
-        "dd(2)",
-        "dd(3)",
-        "dd(1)(1)",
-        "dd(1)(2)",
-        "dd(1)(1)(1)",
-        "dd(4)",
-        "dd(1)(3)"},
+            "dd(1)",
+            "dd(2)",
+            "dd(3)",
+            "dd(1)(1)",
+            "dd(1)(2)",
+            "dd(1)(1)(1)",
+            "dd(4)",
+            "dd(1)(3)"},
         nameThatFile.fileNaming(new String[]{"dd",
             "dd(1)",
             "dd(2)",
@@ -74,6 +74,99 @@ public class NameThatFileTest {
             "dd(1)(1)",
             "dd",
             "dd(1)"})
+    );
+  }
+
+  @Test
+  public void fileNamingFour() throws Exception {
+    assertArrayEquals(new String[]{"dd",
+            "dd(1)",
+            "tit(ties)(1)",
+            "dd(2)",
+            "dd(3)",
+            "tit(ties)",
+            "dd(1)(1)",
+            "dd(1)(2)",
+            "dd(1)(1)(1)",
+            "tit(ties)(2)",
+            "dd(4)",
+            "dd(1)(3)"},
+        nameThatFile.fileNaming(new String[]{"dd",
+            "dd(1)",
+            "tit(ties)(1)",
+            "dd(2)",
+            "dd",
+            "tit(ties)",
+            "dd(1)",
+            "dd(1)(2)",
+            "dd(1)(1)",
+            "tit(ties)",
+            "dd",
+            "dd(1)"})
+    );
+  }
+
+  @Test
+  public void fileNamingFive() throws Exception {
+    assertArrayEquals(new String[]{"dd",
+            "dd(1)",
+            "tit(ties)",
+            "dd(2)",
+            "dd(3)",
+            "tit(ties)(2)",
+            "dd(1)(1)",
+            "dd(1)(2)",
+            "dd(1)(1)(1)",
+            "tit(ties)(1)",
+            "dd(4)",
+            "dd(1)(3)"},
+        nameThatFile.fileNaming(new String[]{"dd",
+            "dd(1)",
+            "tit(ties)",
+            "dd(2)",
+            "dd",
+            "tit(ties)(2)",
+            "dd(1)",
+            "dd(1)(2)",
+            "dd(1)(1)",
+            "tit(ties)",
+            "dd",
+            "dd(1)"})
+    );
+  }
+
+  @Test
+  public void fileNamingSix() throws Exception {
+    assertArrayEquals(new String[]{"dd",
+            "dd(1)",
+            "tit(ties)",
+            "dd(2)",
+            "dd(3)",
+            "tit(ties)(2)",
+            "dd(1)(1)",
+            "dd(1)(2)",
+            "dd(1)(1)(1)",
+            "tit(ties)(1)",
+            "dd(4)",
+            "dd(1)(3)",
+            "boob)(",
+            "boob)((1)",
+        },
+        nameThatFile.fileNaming(new String[]{"dd",
+            "dd(1)",
+            "tit(ties)",
+            "dd(2)",
+            "dd",
+            "tit(ties)(2)",
+            "dd(1)",
+            "dd(1)(2)",
+            "dd(1)(1)",
+            "tit(ties)",
+            "dd",
+            "dd(1)",
+            "boob)(",
+            "boob)(",
+        })
     );
   }
 
