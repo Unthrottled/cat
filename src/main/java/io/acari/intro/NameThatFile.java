@@ -1,9 +1,6 @@
 package io.acari.intro;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class NameThatFile {
 
@@ -30,9 +27,34 @@ public class NameThatFile {
       int lastClosingIndex = current.lastIndexOf(')');
       boolean validPostfix = lastOpenIndex > -1 && lastClosingIndex - lastOpenIndex > 0;
       if (validPostfix) {
-        processPostFixedFileName(fileNames, current, lastOpenIndex, lastClosingIndex);
-      } else if(fileNames.containsKey(current)) {
+        int number = -1;
+        boolean hasNumber = true;
+        try {
+          number = Integer.parseInt(current.substring(lastOpenIndex + 1, lastClosingIndex));
+        } catch (RuntimeException e) {
+          hasNumber = false;
+        }
 
+        if (hasNumber && number > 0) {
+          String minusPostFix = current.substring(0, lastOpenIndex);
+          SortedSet<Integer> integers = fileNames.getOrDefault(minusPostFix, newSortedSet());
+          if (!integers.add(number)) {
+            //The same! make a new one!
+            SortedSet<Integer> v = newSetPlusOne();
+            fileNames.put(current, v);
+            postFixThatShit(names, fileNames, i, current);
+          } else {
+            //unique value!
+            fileNames.put(minusPostFix, integers);
+          }
+        } else if (fileNames.containsKey(current)) {
+
+        } else {
+          //first time we have seen this!
+          fileNames.put(current, newSetPlusOne());
+        }
+      } else if (fileNames.containsKey(current)) {
+        postFixThatShit(names, fileNames, i, current);
       } else {
         //first time we have seen this!
         fileNames.put(current, newSetPlusOne());
@@ -41,34 +63,27 @@ public class NameThatFile {
     return names;
   }
 
-  private void processPostFixedFileName(Map<String, SortedSet<Integer>> fileNames, String current, int lastOpenIndex, int lastClosingIndex) {
-    int number = -1;
-    boolean hasNumber = true;
-    try {
-      number = Integer.parseInt(current.substring(lastOpenIndex + 1, lastClosingIndex));
-    } catch (RuntimeException e) {
-      hasNumber = false;
-    }
-    if (hasNumber) {
-      processNumberedPostfix(fileNames, current, lastOpenIndex, number);
-    } else if (fileNames.containsKey(current)) {
-
-    } else {
-      //first time we have seen this!
-      fileNames.put(current, newSetPlusOne());
-    }
+  private void postFixThatShit(String[] names, Map<String, SortedSet<Integer>> fileNames, int i, String current) {
+    SortedSet<Integer> integers = fileNames.get(current);
+    int nextNumberToPostFix = getNextNumber(integers);
+    integers.add(nextNumberToPostFix);
+    appendPostFix(names, i, current, nextNumberToPostFix);
   }
 
-  private void processNumberedPostfix(Map<String, SortedSet<Integer>> fileNames, String current, int lastOpenIndex, int number) {
-    String minusPostFix = current.substring(0, lastOpenIndex);
-    SortedSet<Integer> integers = fileNames.getOrDefault(minusPostFix, newSortedSet());
-    if(!integers.add(number)){
-      //The same! make a new one!
-      fileNames.put(current, newSetPlusOne());
-    } else {
-      //unique value!
-      fileNames.put(minusPostFix, integers);
+  private void appendPostFix(String[] names, int i, String current, int nextNumberToPostFix) {
+    names[i] = current + "(" + nextNumberToPostFix + ")";
+  }
+
+  private int getNextNumber(SortedSet<Integer> integers) {
+    Iterator<Integer> iterator = integers.iterator();
+    for (int i = 0; i < integers.size(); i++) {
+      Integer next = iterator.next();
+      if(i != next){
+        //there's a discrepancy in the range!
+        return i + 1;
+      }
     }
+    return integers.last() + 1;
   }
 
   private SortedSet<Integer> newSortedSet() {
