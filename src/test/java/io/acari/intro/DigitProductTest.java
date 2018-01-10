@@ -30,8 +30,8 @@ public class DigitProductTest {
 
   @Test
   public void digitsProductFour() throws Exception {
-    assertEquals(0,
-        digitProduct.digitsProduct(1));
+    assertEquals(10,
+        digitProduct.digitsProduct(0));
   }
 
   @Test
@@ -44,6 +44,12 @@ public class DigitProductTest {
   public void digitsProductSix() throws Exception {
     assertEquals(1,
         digitProduct.digitsProduct(1));
+  }
+
+  @Test
+  public void digitsProductSeven() throws Exception {
+    assertEquals(589,
+        digitProduct.digitsProduct(360));
   }
 
 }
