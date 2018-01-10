@@ -67,7 +67,8 @@ public class NameThatFile {
     SortedSet<Integer> integers = fileNames.get(current);
     int nextNumberToPostFix = getNextNumber(integers);
     integers.add(nextNumberToPostFix);
-    appendPostFix(names, i, current, nextNumberToPostFix);
+    if (nextNumberToPostFix > 0)
+      appendPostFix(names, i, current, nextNumberToPostFix);
   }
 
   private void appendPostFix(String[] names, int i, String current, int nextNumberToPostFix) {
@@ -75,12 +76,14 @@ public class NameThatFile {
   }
 
   private int getNextNumber(SortedSet<Integer> integers) {
+
+
     Iterator<Integer> iterator = integers.iterator();
     for (int i = 0; i < integers.size(); i++) {
       Integer next = iterator.next();
-      if(i != next){
+      if (i != next) {
         //there's a discrepancy in the range!
-        return i + 1;
+        return i;
       }
     }
     return integers.last() + 1;
