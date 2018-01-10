@@ -40,12 +40,18 @@ public class NameThatFile {
           SortedSet<Integer> integers = fileNames.getOrDefault(minusPostFix, newSortedSet());
           if (!integers.add(number)) {
             //The same! make a new one!
-            SortedSet<Integer> v = newSetPlusOne();
+            SortedSet<Integer> v = fileNames.getOrDefault(current, newSetPlusOne());
             fileNames.put(current, v);
             postFixThatShit(names, fileNames, i, current);
           } else {
             //unique value!
+            //No need to post fix;
+
+            //Keep Track of minus
             fileNames.put(minusPostFix, integers);
+
+            //Keep track of full
+            fileNames.put(current, newSetPlusOne());
           }
         } else if (fileNames.containsKey(current)) {
 
