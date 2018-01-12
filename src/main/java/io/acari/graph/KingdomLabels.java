@@ -1,5 +1,8 @@
 package io.acari.graph;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class KingdomLabels {
 
   /**
@@ -38,4 +41,85 @@ public class KingdomLabels {
     return false;
   }
 
+  static class Edge implements Comparable<Edge> {
+    final Node fst;
+    final Node snd;
+    final int name;
+
+    Edge(Node var1, Node var2, int name) {
+      this.fst = var1;
+      this.snd = var2;
+      this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Edge edge = (Edge) o;
+
+      if (!fst.equals(edge.fst)) return false;
+      return snd.equals(edge.snd);
+    }
+
+    @Override
+    public int hashCode() {
+      int result = fst.hashCode();
+      result = 31 * result + snd.hashCode();
+      return result;
+    }
+
+    @Override
+    public int compareTo(Edge edge) {
+      int i = getSmallest().compareTo(edge.getSmallest());
+      return i == 0 ? getLargest().compareTo(edge.getLargest()) : i;
+    }
+
+    private Node getSmallest(){
+      return fst.compareTo(snd) < 0 ? fst : snd;
+    }
+
+    private Node getLargest(){
+      return fst.compareTo(snd) > 0 ? fst : snd;
+    }
+  }
+
+  class Node implements Comparable<Node> {
+    final int number;
+    final Set<Node> neighbors;
+
+    public Node(int number, int cities) {
+      this.number = number;
+      this.neighbors = new HashSet<>(cities);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Node node = (Node) o;
+
+      return number == node.number;
+    }
+
+    @Override
+    public int hashCode() {
+      return number;
+    }
+
+    boolean isConnected(Node c) {
+      return neighbors.contains(c) || equals(c);
+    }
+
+    void addNeighbor(Node cityOne) {
+      neighbors.add(cityOne);
+    }
+
+    @Override
+    public int compareTo(Node node) {
+      return number - node.number;
+    }
+  }
 }
