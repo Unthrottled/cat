@@ -50,48 +50,6 @@ public class KingRoadEfficiency {
     return true;
   }
 
-  static class Edge implements Comparable<Edge> {
-    final Node fst;
-    final Node snd;
-
-    Edge(Node var1, Node var2) {
-      this.fst = var1;
-      this.snd = var2;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-
-      Edge edge = (Edge) o;
-
-      if (!fst.equals(edge.fst)) return false;
-      return snd.equals(edge.snd);
-    }
-
-    @Override
-    public int hashCode() {
-      int result = fst.hashCode();
-      result = 31 * result + snd.hashCode();
-      return result;
-    }
-
-    @Override
-    public int compareTo(Edge edge) {
-      int i = getSmallest().compareTo(edge.getSmallest());
-      return i == 0 ? getLargest().compareTo(edge.getLargest()) : i;
-    }
-
-    private Node getSmallest(){
-      return fst.compareTo(snd) < 0 ? fst : snd;
-    }
-
-    private Node getLargest(){
-      return fst.compareTo(snd) > 0 ? fst : snd;
-    }
-  }
-
   class Node implements Comparable<Node> {
     final int number;
     final Set<Node> neighbors;
