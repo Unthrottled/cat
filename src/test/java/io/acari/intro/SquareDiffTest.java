@@ -12,7 +12,7 @@ public class SquareDiffTest {
 
   @Test
   public void differentSquares() throws Exception {
-    assertEquals(6, squareDiff.differentSquares(
+    assertEquals(1, squareDiff.differentSquares(
         new int[][]{{9, 9, 9, 9, 9},
             {9, 9, 9, 9, 9},
             {9, 9, 9, 9, 9},
