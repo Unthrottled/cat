@@ -83,7 +83,7 @@ public class KingdomLabels {
     return true;
   }
 
-  static class Edge {
+  class Edge {
     final Node fst;
     final int name;
 

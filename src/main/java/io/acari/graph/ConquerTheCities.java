@@ -1,5 +1,10 @@
 package io.acari.graph;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ConquerTheCities {
 
   /**
@@ -25,6 +30,81 @@ public class ConquerTheCities {
    * @return
    */
   int[] citiesConquering(int n, int[][] roads) {
-    return null;
+    Map<Integer, Node> graph = new HashMap<>();
+    for (int[] road : roads) {
+      int nodeOne = road[0];
+      Node cityOne = graph.getOrDefault(nodeOne, new Node(nodeOne));
+      int nodeTwo = road[1];
+      Node cityTwo = graph.getOrDefault(nodeTwo, new Node(nodeTwo));
+      cityOne.addNeighbor(cityTwo);
+      cityTwo.addNeighbor(cityOne);
+      graph.put(nodeOne, cityOne);
+      graph.put(nodeTwo, cityTwo);
+    }
+
+    int[] conquered = new int[n];
+    return conquered;
+  }
+
+  class Edge {
+    final Node fst;
+
+    Edge(Node var1) {
+      this.fst = var1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Edge edge = (Edge) o;
+
+      return fst.equals(edge.fst);
+    }
+
+    @Override
+    public int hashCode() {
+      return fst.hashCode();
+    }
+
+    public Node getNode() {
+      return fst;
+    }
+
+  }
+
+  class Node implements Comparable<Node> {
+    final int number;
+    final List<Edge> neighbors;
+
+    public Node(int number) {
+      this.number = number;
+      this.neighbors = new ArrayList<>();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Node node = (Node) o;
+
+      return number == node.number;
+    }
+
+    @Override
+    public int hashCode() {
+      return number;
+    }
+
+    void addNeighbor(Node cityOne) {
+      neighbors.add(new Edge(cityOne));
+    }
+
+    @Override
+    public int compareTo(Node node) {
+      return number - node.number;
+    }
   }
 }
