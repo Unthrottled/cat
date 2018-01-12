@@ -28,7 +28,7 @@ public class KingRoadEfficiencyTest {
   @Test
   public void efficientRoadNetworkTwo() throws Exception {
     assertFalse(
-        roadsForTheKing.efficientRoadNetwork(5,
+        roadsForTheKing.efficientRoadNetwork(6,
             new int[][]
     {{0,4},
       {5,0},

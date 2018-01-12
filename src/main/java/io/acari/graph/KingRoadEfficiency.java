@@ -32,10 +32,6 @@ public class KingRoadEfficiency {
    * @return
    */
   boolean efficientRoadNetwork(int n, int[][] roads) {
-    if(n < roads.length){
-      return false;
-    }
-
     if (n > 1) {
       Map<Integer, Node> graph = IntStream.range(0, n)
           .boxed()
@@ -47,16 +43,45 @@ public class KingRoadEfficiency {
         cityTwo.addNeighbor(cityOne);
       }
 
-      return true;
-
+      for (Node node : graph.values()) {
+        if (canGetToAll(n, node)) {
+          graph.entrySet().stream()
+              .map(Map.Entry::getValue)
+              .forEach(node1 -> node1.depth = 0);
+        } else {
+          return false;
+        }
+      }
     }
 
     return true;
   }
 
+  private boolean canGetToAll(int n, Node e) {
+    Set<Node> visited = new HashSet<>();
+    Queue<Node> q = new LinkedList<>();
+    q.offer(e);
+    while (!q.isEmpty()) {
+      Node poll = q.poll();
+      if (poll.depth > 2) {
+        return false;
+      }
+
+      poll.neighbors.stream()
+          .filter(visited::add)
+          .forEach(child -> {
+            child.depth = poll.depth + 1;
+            q.offer(child);
+          });
+    }
+
+    return visited.size() == n;
+  }
+
   class Node implements Comparable<Node> {
     final int number;
     final Set<Node> neighbors;
+    int depth = 0;
 
     public Node(int number, int cities) {
       this.number = number;
