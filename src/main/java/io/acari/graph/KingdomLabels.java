@@ -1,7 +1,6 @@
 package io.acari.graph;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class KingdomLabels {
 
@@ -38,17 +37,58 @@ public class KingdomLabels {
    * @return
    */
   boolean namingRoads(int[][] roads) {
-    return false;
+    int citieRoads = roads.length;
+    if (citieRoads > 1) {
+      Map<Integer, Node> graph = new HashMap<>();
+      for (int[] road : roads) {
+        int nodeOne = road[0];
+        Node cityOne = graph.getOrDefault(nodeOne, new Node(nodeOne));
+        int nodeTwo = road[1];
+        Node cityTwo = graph.getOrDefault(nodeTwo, new Node(nodeTwo));
+        int roadName = road[2];
+        cityOne.addNeighbor(cityTwo, roadName);
+        cityTwo.addNeighbor(cityOne, roadName);
+        graph.put(nodeOne, cityOne);
+        graph.put(nodeTwo, cityTwo);
+      }
+
+      Set<Node> visited = new HashSet<>();
+      Queue<Node> queue = new LinkedList<>();
+      queue.offer(graph.entrySet().iterator().next().getValue());
+      while (!queue.isEmpty()) {
+        Node poll = queue.poll();
+        if (hasValidRoads(poll)) {
+          poll.neighbors.stream()
+              .map(Edge::getNode)
+              .filter(visited::add)
+              .forEach(queue::offer);
+        } else {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
-  static class Edge implements Comparable<Edge> {
+  private boolean hasValidRoads(Node poll) {
+    List<Edge> neighbors = poll.neighbors;
+    for (int i = 0; i < neighbors.size(); i++) {
+      Edge edge = neighbors.get(i);
+      for (int j = i + 1; j < neighbors.size(); j++) {
+        Edge edge1 = neighbors.get(j);
+        if (Math.abs(edge.name - edge1.name) < 2)
+          return false;
+      }
+    }
+    return true;
+  }
+
+  static class Edge {
     final Node fst;
-    final Node snd;
     final int name;
 
-    Edge(Node var1, Node var2, int name) {
+    Edge(Node var1, int name) {
       this.fst = var1;
-      this.snd = var2;
       this.name = name;
     }
 
@@ -59,39 +99,26 @@ public class KingdomLabels {
 
       Edge edge = (Edge) o;
 
-      if (!fst.equals(edge.fst)) return false;
-      return snd.equals(edge.snd);
+      return fst.equals(edge.fst);
     }
 
     @Override
     public int hashCode() {
-      int result = fst.hashCode();
-      result = 31 * result + snd.hashCode();
-      return result;
+      return fst.hashCode();
     }
 
-    @Override
-    public int compareTo(Edge edge) {
-      int i = getSmallest().compareTo(edge.getSmallest());
-      return i == 0 ? getLargest().compareTo(edge.getLargest()) : i;
+    public Node getNode() {
+      return fst;
     }
 
-    private Node getSmallest(){
-      return fst.compareTo(snd) < 0 ? fst : snd;
-    }
-
-    private Node getLargest(){
-      return fst.compareTo(snd) > 0 ? fst : snd;
-    }
   }
-
   class Node implements Comparable<Node> {
     final int number;
-    final Set<Node> neighbors;
+    final List<Edge> neighbors;
 
-    public Node(int number, int cities) {
+    public Node(int number) {
       this.number = number;
-      this.neighbors = new HashSet<>(cities);
+      this.neighbors = new ArrayList<>();
     }
 
     @Override
@@ -109,12 +136,8 @@ public class KingdomLabels {
       return number;
     }
 
-    boolean isConnected(Node c) {
-      return neighbors.contains(c) || equals(c);
-    }
-
-    void addNeighbor(Node cityOne) {
-      neighbors.add(cityOne);
+    void addNeighbor(Node cityOne, int name) {
+      neighbors.add(new Edge(cityOne, name));
     }
 
     @Override
