@@ -32,6 +32,10 @@ public class KingRoadEfficiency {
    * @return
    */
   boolean efficientRoadNetwork(int n, int[][] roads) {
+    if(n < roads.length){
+      return false;
+    }
+
     if (n > 1) {
       Map<Integer, Node> graph = IntStream.range(0, n)
           .boxed()
