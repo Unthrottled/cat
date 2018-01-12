@@ -1,5 +1,9 @@
 package io.acari.graph;
 
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class KingRoadEfficiency {
 
   /**
@@ -28,7 +32,101 @@ public class KingRoadEfficiency {
    * @return
    */
   boolean efficientRoadNetwork(int n, int[][] roads) {
-    return false;
+    if (n > 1) {
+      Map<Integer, RoadsForTheKing.Node> graph = IntStream.range(0, n)
+          .boxed()
+          .collect(Collectors.toMap(a -> a, a -> new RoadsForTheKing.Node(a, cities)));
+      for (int[] road : roads) {
+        RoadsForTheKing.Node cityOne = graph.get(road[0]);
+        RoadsForTheKing.Node cityTwo = graph.get(road[1]);
+        cityOne.addNeighbor(cityTwo);
+        cityTwo.addNeighbor(cityOne);
+      }
+
+      return true;
+
+    }
+
+    return true;
   }
 
+  static class Edge implements Comparable<RoadsForTheKing.Edge> {
+    final RoadsForTheKing.Node fst;
+    final RoadsForTheKing.Node snd;
+
+    Edge(RoadsForTheKing.Node var1, RoadsForTheKing.Node var2) {
+      this.fst = var1;
+      this.snd = var2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      RoadsForTheKing.Edge edge = (RoadsForTheKing.Edge) o;
+
+      if (!fst.equals(edge.fst)) return false;
+      return snd.equals(edge.snd);
+    }
+
+    @Override
+    public int hashCode() {
+      int result = fst.hashCode();
+      result = 31 * result + snd.hashCode();
+      return result;
+    }
+
+    @Override
+    public int compareTo(RoadsForTheKing.Edge edge) {
+      int i = getSmallest().compareTo(edge.getSmallest());
+      return i == 0 ? getLargest().compareTo(edge.getLargest()) : i;
+    }
+
+    private RoadsForTheKing.Node getSmallest(){
+      return fst.compareTo(snd) < 0 ? fst : snd;
+    }
+
+    private RoadsForTheKing.Node getLargest(){
+      return fst.compareTo(snd) > 0 ? fst : snd;
+    }
+  }
+
+  class Node implements Comparable<RoadsForTheKing.Node> {
+    final int number;
+    final Set<RoadsForTheKing.Node> neighbors;
+
+    public Node(int number, int cities) {
+      this.number = number;
+      this.neighbors = new HashSet<>(cities);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      RoadsForTheKing.Node node = (RoadsForTheKing.Node) o;
+
+      return number == node.number;
+    }
+
+    @Override
+    public int hashCode() {
+      return number;
+    }
+
+    boolean isConnected(RoadsForTheKing.Node c) {
+      return neighbors.contains(c) || equals(c);
+    }
+
+    void addNeighbor(RoadsForTheKing.Node cityOne) {
+      neighbors.add(cityOne);
+    }
+
+    @Override
+    public int compareTo(RoadsForTheKing.Node node) {
+      return number - node.number;
+    }
+  }
 }
