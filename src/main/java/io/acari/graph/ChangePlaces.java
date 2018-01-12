@@ -27,7 +27,21 @@ public class ChangePlaces {
    * @return
    */
   boolean[][] greatRenaming(boolean[][] roadRegister) {
-    return null;
+    int length = roadRegister.length;
+    boolean[][] flippedRoads = new boolean[length][length];
+    int lessLength = length - 1;
+    int rowIndex = lessLength;
+    for (int i = 0; i < length; i++) {
+      int colIndex = lessLength;
+      rowIndex = rowIndex % length;
+      for (int j = 0; j < length; j++) {
+        colIndex = colIndex % length;
+        flippedRoads[i][j] = roadRegister[rowIndex][colIndex];
+        colIndex++;
+      }
+      rowIndex++;
+    }
+    return flippedRoads;
   }
 
 }
