@@ -36,13 +36,9 @@ public class KingdomRoadsTest {
   @Test
   public void newRoadSystemThree() throws Exception {
     assertFalse(kingdomRoads.newRoadSystem(new boolean[][]
-        {{false,true,false,false,false,false,false},
- {true,false,false,false,false,false,false},
- {false,false,false,true,false,false,false},
- {false,false,true,false,false,false,false},
- {false,false,false,false,false,false,true},
- {false,false,false,false,true,false,false},
- {false,false,false,false,false,true,false}}
+        {{false,true,false}, 
+         {false,false,false},
+         {true,false,false}}
     ));
   }
 

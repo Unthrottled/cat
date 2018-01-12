@@ -29,6 +29,31 @@ public class KingdomRoads {
    * @return
    */
   boolean newRoadSystem(boolean[][] roadRegister) {
-    return false;
+    for (int row = 0; row < roadRegister[0].length; row++) {
+        if(wrongAmountOfRoads(row, roadRegister)){
+          return false;
+        }
+    }
+    return true;
+  }
+
+  private boolean wrongAmountOfRoads(int row, boolean[][] roadRegister) {
+    return getIncoming(row, roadRegister) != getOutGoing(row, roadRegister);
+  }
+
+  private int getIncoming(int city, boolean[][] roadRegister) {
+    int sum = 0;
+    for (boolean[] aRoadRegister : roadRegister) {
+      sum = aRoadRegister[city] ? sum + 1 : sum;
+    }
+    return sum;
+  }
+
+  private int getOutGoing(int city, boolean[][] roadRegister) {
+    int sum = 0;
+    for (int i = 0; i < roadRegister.length; i++) {
+      sum = roadRegister[city][i] ? sum + 1 : sum;
+    }
+    return sum;
   }
 }
