@@ -33,12 +33,12 @@ public class KingRoadEfficiency {
    */
   boolean efficientRoadNetwork(int n, int[][] roads) {
     if (n > 1) {
-      Map<Integer, RoadsForTheKing.Node> graph = IntStream.range(0, n)
+      Map<Integer, Node> graph = IntStream.range(0, n)
           .boxed()
-          .collect(Collectors.toMap(a -> a, a -> new RoadsForTheKing.Node(a, cities)));
+          .collect(Collectors.toMap(a -> a, a -> new Node(a, cities)));
       for (int[] road : roads) {
-        RoadsForTheKing.Node cityOne = graph.get(road[0]);
-        RoadsForTheKing.Node cityTwo = graph.get(road[1]);
+        Node cityOne = graph.get(road[0]);
+        Node cityTwo = graph.get(road[1]);
         cityOne.addNeighbor(cityTwo);
         cityTwo.addNeighbor(cityOne);
       }
@@ -50,11 +50,11 @@ public class KingRoadEfficiency {
     return true;
   }
 
-  static class Edge implements Comparable<RoadsForTheKing.Edge> {
-    final RoadsForTheKing.Node fst;
-    final RoadsForTheKing.Node snd;
+  static class Edge implements Comparable<Edge> {
+    final Node fst;
+    final Node snd;
 
-    Edge(RoadsForTheKing.Node var1, RoadsForTheKing.Node var2) {
+    Edge(Node var1, Node var2) {
       this.fst = var1;
       this.snd = var2;
     }
@@ -64,7 +64,7 @@ public class KingRoadEfficiency {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
 
-      RoadsForTheKing.Edge edge = (RoadsForTheKing.Edge) o;
+      Edge edge = (Edge) o;
 
       if (!fst.equals(edge.fst)) return false;
       return snd.equals(edge.snd);
@@ -78,23 +78,23 @@ public class KingRoadEfficiency {
     }
 
     @Override
-    public int compareTo(RoadsForTheKing.Edge edge) {
+    public int compareTo(Edge edge) {
       int i = getSmallest().compareTo(edge.getSmallest());
       return i == 0 ? getLargest().compareTo(edge.getLargest()) : i;
     }
 
-    private RoadsForTheKing.Node getSmallest(){
+    private Node getSmallest(){
       return fst.compareTo(snd) < 0 ? fst : snd;
     }
 
-    private RoadsForTheKing.Node getLargest(){
+    private Node getLargest(){
       return fst.compareTo(snd) > 0 ? fst : snd;
     }
   }
 
-  class Node implements Comparable<RoadsForTheKing.Node> {
+  class Node implements Comparable<Node> {
     final int number;
-    final Set<RoadsForTheKing.Node> neighbors;
+    final Set<Node> neighbors;
 
     public Node(int number, int cities) {
       this.number = number;
@@ -106,7 +106,7 @@ public class KingRoadEfficiency {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
 
-      RoadsForTheKing.Node node = (RoadsForTheKing.Node) o;
+      Node node = (Node) o;
 
       return number == node.number;
     }
@@ -116,16 +116,16 @@ public class KingRoadEfficiency {
       return number;
     }
 
-    boolean isConnected(RoadsForTheKing.Node c) {
+    boolean isConnected(Node c) {
       return neighbors.contains(c) || equals(c);
     }
 
-    void addNeighbor(RoadsForTheKing.Node cityOne) {
+    void addNeighbor(Node cityOne) {
       neighbors.add(cityOne);
     }
 
     @Override
-    public int compareTo(RoadsForTheKing.Node node) {
+    public int compareTo(Node node) {
       return number - node.number;
     }
   }
