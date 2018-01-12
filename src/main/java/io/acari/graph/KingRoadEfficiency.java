@@ -35,7 +35,7 @@ public class KingRoadEfficiency {
     if (n > 1) {
       Map<Integer, Node> graph = IntStream.range(0, n)
           .boxed()
-          .collect(Collectors.toMap(a -> a, a -> new Node(a, cities)));
+          .collect(Collectors.toMap(a -> a, a -> new Node(a, n)));
       for (int[] road : roads) {
         Node cityOne = graph.get(road[0]);
         Node cityTwo = graph.get(road[1]);
