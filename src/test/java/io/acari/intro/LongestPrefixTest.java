@@ -12,31 +12,31 @@ public class LongestPrefixTest {
 
   @Test
   public void longestDigitsPrefixOne() throws Exception {
-    assertEquals("123", longestPrefix.longestDigitsPrefix("123aa1" ));
+    assertEquals("123", longestPrefix.longestDigitsPrefix("123aa1"));
   }
 
   @Test
   public void longestDigitsPrefixTwo() throws Exception {
-    assertEquals("0123456789", longestPrefix.longestDigitsPrefix("0123456789" ));
+    assertEquals("0123456789", longestPrefix.longestDigitsPrefix("0123456789"));
   }
 
   @Test
   public void longestDigitsPrefixThree() throws Exception {
-    assertEquals("", longestPrefix.longestDigitsPrefix("  3) always check for whitespaces" ));
+    assertEquals("", longestPrefix.longestDigitsPrefix("  3) always check for whitespaces"));
   }
 
   @Test
   public void longestDigitsPrefixFour() throws Exception {
-    assertEquals("12", longestPrefix.longestDigitsPrefix("12abc34" ));
+    assertEquals("12", longestPrefix.longestDigitsPrefix("12abc34"));
   }
 
   @Test
   public void longestDigitsPrefixFive() throws Exception {
-    assertEquals("", longestPrefix.longestDigitsPrefix("the output is 42" ));
+    assertEquals("", longestPrefix.longestDigitsPrefix("the output is 42"));
   }
 
   @Test
   public void longestDigitsPrefixSix() throws Exception {
-    assertEquals("", longestPrefix.longestDigitsPrefix("" ));
+    assertEquals("", longestPrefix.longestDigitsPrefix(""));
   }
 }

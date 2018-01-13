@@ -2,7 +2,7 @@ package io.acari.intro;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -12,7 +12,7 @@ public class ArrayChangeTest {
 
   @Test
   public void arrayChangeOne() throws Exception {
-    assertEquals(3, arrayChange.arrayChange(new int[]{1,1,1}));
+    assertEquals(3, arrayChange.arrayChange(new int[]{1, 1, 1}));
   }
 
   @Test
@@ -32,7 +32,7 @@ public class ArrayChangeTest {
 
   @Test
   public void arrayChangeFour() throws Exception {
-    assertEquals(12, arrayChange.arrayChange(new int[]{2,1,10,1}));
+    assertEquals(12, arrayChange.arrayChange(new int[]{2, 1, 10, 1}));
   }
 
 }

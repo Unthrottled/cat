@@ -2,7 +2,7 @@ package io.acari.intro;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -17,7 +17,7 @@ public class AdjacentListsTest {
 
   @Test
   public void arrayMaximalAdjacentDifferenceTwo() throws Exception {
-    assertEquals(0, adjacentLists.arrayMaximalAdjacentDifference(new int[]{1,1,1,1}));
+    assertEquals(0, adjacentLists.arrayMaximalAdjacentDifference(new int[]{1, 1, 1, 1}));
   }
 
   @Test

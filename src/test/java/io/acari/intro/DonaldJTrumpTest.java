@@ -2,7 +2,7 @@ package io.acari.intro;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -37,13 +37,13 @@ public class DonaldJTrumpTest {
   @Test
   public void electionsWinnersFour() throws Exception {
     assertEquals(4,
-        donaldJTrump.electionsWinners(new int[]{1,1,1,1}, 1));
+        donaldJTrump.electionsWinners(new int[]{1, 1, 1, 1}, 1));
   }
 
   @Test
   public void electionsWinnersFive() throws Exception {
     assertEquals(0,
-        donaldJTrump.electionsWinners(new int[]{1,1,1,1}, 0));
+        donaldJTrump.electionsWinners(new int[]{1, 1, 1, 1}, 0));
   }
 
   @Test

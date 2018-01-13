@@ -182,15 +182,15 @@ public class RoadsForTheKingTest {
   @Test
   public void roadsBuildingThree() throws Exception {
     assertArrayEquals(new int[][]
-        {{1, 2},
-            {1, 3},
-            {1, 5},
-            {1, 8},
-            {2, 5},
-            {3, 5},
-            {3, 8}}
+            {{1, 2},
+                {1, 3},
+                {1, 5},
+                {1, 8},
+                {2, 5},
+                {3, 5},
+                {3, 8}}
         ,
-        roadsForTheKing.roadsBuilding(9,new int[][]
+        roadsForTheKing.roadsBuilding(9, new int[][]
             {{5, 8},
                 {6, 0},
                 {0, 5},

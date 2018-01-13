@@ -2,7 +2,7 @@ package io.acari.intro;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -17,7 +17,7 @@ public class JumpNShootTest {
 
   @Test
   public void avoidObstaclesTwo() throws Exception {
-    assertEquals(4, jumpNShoot.avoidObstacles(new int[]{2,3}));
+    assertEquals(4, jumpNShoot.avoidObstacles(new int[]{2, 3}));
   }
 
   @Test

@@ -2,7 +2,7 @@ package io.acari.intro;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -22,17 +22,17 @@ public class KnapsackLiteTest {
 
   @Test
   public void knapsackLightThree() throws Exception {
-    assertEquals(7, knapsackLite.knapsackLight(5,3,7,4,6));
+    assertEquals(7, knapsackLite.knapsackLight(5, 3, 7, 4, 6));
   }
 
   @Test
   public void knapsackLightFour() throws Exception {
-    assertEquals(0, knapsackLite.knapsackLight(10,2,11,3, 1));
+    assertEquals(0, knapsackLite.knapsackLight(10, 2, 11, 3, 1));
   }
 
   @Test
   public void knapsackLightFive() throws Exception {
-    assertEquals(15, knapsackLite.knapsackLight(15,2,20,3,2));
+    assertEquals(15, knapsackLite.knapsackLight(15, 2, 20, 3, 2));
   }
 
 }

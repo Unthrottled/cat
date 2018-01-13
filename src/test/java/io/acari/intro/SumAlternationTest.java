@@ -2,7 +2,7 @@ package io.acari.intro;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * Forged in the flames of battle by alex.
@@ -22,7 +22,7 @@ public class SumAlternationTest {
 
   @Test
   public void alternatingSumsThree() throws Exception {
-    assertArrayEquals(new int[]{80,0}, sumAlternation.alternatingSums(new int[]{80}));
+    assertArrayEquals(new int[]{80, 0}, sumAlternation.alternatingSums(new int[]{80}));
   }
 
 }
