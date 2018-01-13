@@ -1,7 +1,5 @@
 package io.acari.intro;
 
-import java.util.Arrays;
-
 public class SumItUp {
 
   /**
