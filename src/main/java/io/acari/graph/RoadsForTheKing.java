@@ -53,9 +53,9 @@ public class RoadsForTheKing {
       }
 
       SortedSet<Edge> newRoads =
-          IntStream.range(0, cities)
-              .boxed()
-              .flatMap(city -> {
+      IntStream.range(0, cities)
+          .boxed()
+          .flatMap(city -> {
                 Node cityNode = graph.get(city);
                 return IntStream.range(0, cities)
                     .boxed()

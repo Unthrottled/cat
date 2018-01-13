@@ -1,9 +1,9 @@
 package io.acari.graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class ConquerTheCities {
 
@@ -30,20 +30,64 @@ public class ConquerTheCities {
    * @return
    */
   int[] citiesConquering(int n, int[][] roads) {
-    Map<Integer, Node> graph = new HashMap<>();
+    Map<Integer, Node> graph = IntStream.range(0, n)
+        .boxed()
+        .collect(Collectors.toMap(a -> a, Node::new));
+
     for (int[] road : roads) {
       int nodeOne = road[0];
-      Node cityOne = graph.getOrDefault(nodeOne, new Node(nodeOne));
+      Node cityOne = graph.get(nodeOne);
       int nodeTwo = road[1];
-      Node cityTwo = graph.getOrDefault(nodeTwo, new Node(nodeTwo));
+      Node cityTwo = graph.get(nodeTwo);
       cityOne.addNeighbor(cityTwo);
       cityTwo.addNeighbor(cityOne);
       graph.put(nodeOne, cityOne);
       graph.put(nodeTwo, cityTwo);
     }
 
+    final java.util.concurrent.atomic.AtomicInteger citiesConquered = new java.util.concurrent.atomic.AtomicInteger(0);
+    final java.util.concurrent.atomic.AtomicInteger day = new java.util.concurrent.atomic.AtomicInteger(1);
+    do {
+      citiesConquered.getAndSet(0);
+      Set<Node> visited = new HashSet<>(n);
+      IntStream.range(0, n)
+          .boxed()
+          .map(graph::get)
+          .filter(no -> !visited.contains(no))
+          .filter(no -> !no.conquered)
+          .forEach(node -> {
+            Queue<Node> queue = new LinkedList<>();
+            queue.offer(node);
+            while (!queue.isEmpty()) {
+              Node currentNode = queue.poll();
+              if (visited.add(currentNode)) {
+                if (canConquer(currentNode, day.get())) {
+                  citiesConquered.getAndIncrement();
+                  currentNode.conquered = true;
+                  currentNode.dayConqured = day.get();
+                }
+                currentNode.fetchNeighbors()
+                    .filter(node1 -> !node1.conquered)
+                    .filter(node1 -> !visited.contains(node1))
+                    .forEach(queue::offer);
+              }
+            }
+          });
+      day.getAndIncrement();
+    } while (citiesConquered.get() > 0);
+
     int[] conquered = new int[n];
+    IntStream.range(0, n)
+        .boxed()
+        .forEach(i -> conquered[i] = graph.get(i).dayConqured);
     return conquered;
+  }
+
+  private boolean canConquer(Node poll, int i) {
+    return poll.fetchNeighbors()
+
+        .filter(n -> !n.conquered || n.dayConqured == i)
+        .count() < 2;
   }
 
   class Edge {
@@ -77,6 +121,8 @@ public class ConquerTheCities {
   class Node implements Comparable<Node> {
     final int number;
     final List<Edge> neighbors;
+    boolean conquered = false;
+    int dayConqured = -1;
 
     public Node(int number) {
       this.number = number;
@@ -98,8 +144,19 @@ public class ConquerTheCities {
       return number;
     }
 
+    @Override
+    public String toString() {
+      return "Node{" +
+          "number=" + number +
+          '}';
+    }
+
     void addNeighbor(Node cityOne) {
       neighbors.add(new Edge(cityOne));
+    }
+
+    Stream<Node> fetchNeighbors() {
+      return neighbors.stream().map(Edge::getNode);
     }
 
     @Override
