@@ -17,7 +17,7 @@ public class TimeValidation {
     try {
       LocalTime.parse(time, DateTimeFormatter.ofPattern("kk:mm"));
       return !time.startsWith("24");
-    } catch (DateTimeParseException ignored){
+    } catch (DateTimeParseException ignored) {
       return false;
     }
   }

@@ -37,8 +37,8 @@ public class DonaldJTrump {
         .filter(e -> e.getKey() + k > largestValue)
         .mapToInt(Map.Entry::getValue)
         .sum();
-    int top = map.getOrDefault(max,0);
-    return sum == 0 ? topWinner(k, top) :  sum;
+    int top = map.getOrDefault(max, 0);
+    return sum == 0 ? topWinner(k, top) : sum;
   }
 
   private int topWinner(int k, int top) {

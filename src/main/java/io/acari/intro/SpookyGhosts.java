@@ -17,7 +17,7 @@ public class SpookyGhosts {
     for (int i = 0; i < building.length; i++) {
       for (int j = 0; j < building[i].length; j++) {
         int roomCost = building[i][j];
-        if(isSuitableForLiving(building, i, j, roomCost)){
+        if (isSuitableForLiving(building, i, j, roomCost)) {
           sum += roomCost;
         } else {
           //no good is haunted!

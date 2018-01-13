@@ -16,9 +16,9 @@ public class RaceCar {
 
     String reversed = reverse(st);
     for (int i = 0; i < st.length(); i++) {
-      if(reversed.charAt(0) == st.charAt(i)){
+      if (reversed.charAt(0) == st.charAt(i)) {
         String maybePal = st.substring(0, i) + reversed;
-        if(isPalindrome(maybePal)){
+        if (isPalindrome(maybePal)) {
           return maybePal;//isPal!
         }
       }

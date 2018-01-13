@@ -4,6 +4,7 @@ public class DifferentSymbols {
 
   /**
    * Given a string, find the number of different characters in it.
+   *
    * @param s
    * @return
    */

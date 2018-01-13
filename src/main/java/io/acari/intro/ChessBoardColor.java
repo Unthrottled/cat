@@ -4,6 +4,7 @@ public class ChessBoardColor {
 
   /**
    * Given two cells on the standard chess board, determine whether they have the same color or not.
+   *
    * @param cell1
    * @param cell2
    * @return
@@ -13,10 +14,6 @@ public class ChessBoardColor {
   }
 
   static class Cell {
-    public enum Color {
-      RED, BLACK
-    }
-
     private Color color;
 
     public Cell(String cell) {
@@ -27,8 +24,12 @@ public class ChessBoardColor {
       color = (evenRow && !evenCol) || (!evenRow && evenCol) ? Color.RED : Color.BLACK;
     }
 
-    public boolean equals(Cell cell){
+    public boolean equals(Cell cell) {
       return color.equals(cell.color);
+    }
+
+    public enum Color {
+      RED, BLACK
     }
 
   }

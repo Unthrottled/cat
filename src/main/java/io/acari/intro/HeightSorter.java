@@ -20,8 +20,10 @@ public class HeightSorter {
     int currentIndex = 0;
     for (int i = 0; i < copy.length; i++) {
       int value = copy[i];
-      if(value > IS_TREE && currentIndex < a.length){
-        while (currentIndex < copy.length && a[currentIndex] == IS_TREE){currentIndex++;}
+      if (value > IS_TREE && currentIndex < a.length) {
+        while (currentIndex < copy.length && a[currentIndex] == IS_TREE) {
+          currentIndex++;
+        }
         a[currentIndex++] = value;
       }
     }

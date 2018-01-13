@@ -32,30 +32,30 @@ public class UndirectedCycleDetection {
 //        return false;
 //    }
 
-    Boolean isCyclic(int V, LinkedList<Integer>[] aList) {
-        boolean visited[] = new boolean[V];
-        for (int rootIndex = 0; rootIndex < V; rootIndex++) {
-            if (!visited[rootIndex]) {
-                if (isCyclicUtil(rootIndex, visited, -1, aList)) {
-                    return true;
-                }
-            }
+  Boolean isCyclic(int V, LinkedList<Integer>[] aList) {
+    boolean visited[] = new boolean[V];
+    for (int rootIndex = 0; rootIndex < V; rootIndex++) {
+      if (!visited[rootIndex]) {
+        if (isCyclicUtil(rootIndex, visited, -1, aList)) {
+          return true;
         }
-
-        return false;
+      }
     }
 
-    private boolean isCyclicUtil(int v, boolean visited[], int parent, LinkedList<Integer>[] aList) {
-        visited[v] = true;
-        for (Integer i : aList[v]) {
-            if (!visited[i]) {
-                if (isCyclicUtil(i, visited, v, aList)) {
-                    return true;
-                }
-            } else if (i != parent) {
-                return true;
-            }
+    return false;
+  }
+
+  private boolean isCyclicUtil(int v, boolean visited[], int parent, LinkedList<Integer>[] aList) {
+    visited[v] = true;
+    for (Integer i : aList[v]) {
+      if (!visited[i]) {
+        if (isCyclicUtil(i, visited, v, aList)) {
+          return true;
         }
-        return false;
+      } else if (i != parent) {
+        return true;
+      }
     }
+    return false;
+  }
 }

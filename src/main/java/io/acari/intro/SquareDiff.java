@@ -18,8 +18,8 @@ public class SquareDiff {
     for (int i = 1; i < matrix.length; i++) {
       int i1 = matrix[i].length - 1;
       for (int j = 0; j < i1; j++) {
-        sequences.add("" + matrix[i-1][j] +
-            matrix[i -1][j + 1] +
+        sequences.add("" + matrix[i - 1][j] +
+            matrix[i - 1][j + 1] +
             matrix[i][j] +
             matrix[i][j + 1]
         );

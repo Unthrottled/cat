@@ -19,9 +19,9 @@ public class ParenthesesReverser {
   String reverseParentheses(String s) {
     for (int i = 0; i < s.length(); i++) {
       char c = s.charAt(i);
-      if(c == '('){
+      if (c == '(') {
         int closingParenIndex = findCloseParen(s.substring(i + 1)) + 1 + i;
-        String fixxed = reverseParentheses(s.substring(i+1, closingParenIndex));
+        String fixxed = reverseParentheses(s.substring(i + 1, closingParenIndex));
         s = s.substring(0, i) + new StringBuilder().append(fixxed).reverse().toString() + s.substring(closingParenIndex + 1);
       }
     }
@@ -32,10 +32,10 @@ public class ParenthesesReverser {
     Deque<Character> stack = new LinkedList<>();
     for (int i = 0; i < substring.length(); i++) {
       char c = substring.charAt(i);
-      if(c == '('){
+      if (c == '(') {
         stack.offer(c);
-      } else if (c == ')'){
-        if(stack.isEmpty()){
+      } else if (c == ')') {
+        if (stack.isEmpty()) {
           return i;
         } else {
           stack.pop();

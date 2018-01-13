@@ -19,7 +19,7 @@ public class ArrayChange {
     for (int i = 0; i < i1; i++) {
       int currentValue = inputArray[i];
       int nextValue = inputArray[i + 1];
-      if(currentValue >= nextValue){
+      if (currentValue >= nextValue) {
         int abs = Math.abs(currentValue - (nextValue - 1));
         sum += abs;
         inputArray[i + 1] += abs;

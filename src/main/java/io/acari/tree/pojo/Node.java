@@ -4,85 +4,85 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class Node<T> implements Comparable<Node<T>> {
-    public int data;
-    public Node<T> left;
-    public Node<T> next;
-    public T value;
-    public List<Node<T>> neighbors = new LinkedList<>();
-    public List<Edge<T>> edges = new LinkedList<>();
+  public int data;
+  public Node<T> left;
+  public Node<T> next;
+  public T value;
+  public List<Node<T>> neighbors = new LinkedList<>();
+  public List<Edge<T>> edges = new LinkedList<>();
 
-    public Node right;
-    public int hd = Integer.MAX_VALUE;
+  public Node right;
+  public int hd = Integer.MAX_VALUE;
 
-    public Node(int data) {
-        this.data = data;
+  public Node(int data) {
+    this.data = data;
+  }
+
+  @Override
+  public String toString() {
+    return "Node{" +
+        "data=" + data +
+        ", value=" + value +
+        ", hd=" + hd +
+        '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
 
-    @Override
-    public String toString() {
-        return "Node{" +
-                "data=" + data +
-                ", value=" + value +
-                ", hd=" + hd +
-                '}';
-    }
+    Node node = (Node) o;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+    return data == node.data;
+  }
 
-        Node node = (Node) o;
+  @Override
+  public int hashCode() {
+    return data;
+  }
 
-        return data == node.data;
-    }
+  public int getData() {
+    return data;
+  }
 
-    @Override
-    public int hashCode() {
-        return data;
-    }
+  public Node<T> getLeft() {
+    return left;
+  }
 
-    public int getData() {
-        return data;
-    }
+  public Node<T> getNext() {
+    return next;
+  }
 
-    public Node<T> getLeft() {
-        return left;
-    }
+  public T getValue() {
+    return value;
+  }
 
-    public Node<T> getNext() {
-        return next;
-    }
+  public List<Node<T>> getNeighbors() {
+    return neighbors;
+  }
 
-    public T getValue() {
-        return value;
-    }
+  public List<Edge<T>> getEdges() {
+    return edges;
+  }
 
-    public List<Node<T>> getNeighbors() {
-        return neighbors;
-    }
+  public Node getRight() {
+    return right;
+  }
 
-    public List<Edge<T>> getEdges() {
-        return edges;
-    }
-
-    public Node getRight() {
-        return right;
-    }
-
-    public int getHd() {
-        return hd;
-    }
+  public int getHd() {
+    return hd;
+  }
 
 
-    @Override
-    public int compareTo(Node<T> tNode) {
-        if (equals(tNode)) return 0;
-        int compare = Integer.compare(hd, tNode.hd);
-        return compare == 0 ? Integer.compare(data, tNode.getData()) : compare;
-    }
+  @Override
+  public int compareTo(Node<T> tNode) {
+    if (equals(tNode)) return 0;
+    int compare = Integer.compare(hd, tNode.hd);
+    return compare == 0 ? Integer.compare(data, tNode.getData()) : compare;
+  }
 }

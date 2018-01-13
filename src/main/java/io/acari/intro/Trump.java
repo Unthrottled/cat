@@ -30,9 +30,9 @@ public class Trump {
     String bar = generateBar(picture[0].length() + 2);
     String[] returnValue = new String[length + 2];
     returnValue[0] = bar;
-    int i= 1;
+    int i = 1;
     for (String s : picture) {
-      returnValue[i++]= "*" + s + "*";
+      returnValue[i++] = "*" + s + "*";
     }
     returnValue[length + 1] = bar;
     return returnValue;
@@ -41,7 +41,7 @@ public class Trump {
   private String generateBar(int length) {
     StringBuilder returnValue = new StringBuilder();
     int i = 0;
-    while(i++ < length){
+    while (i++ < length) {
       returnValue.append("*");
     }
     return returnValue.toString();

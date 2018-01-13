@@ -112,6 +112,7 @@ public class KingdomLabels {
     }
 
   }
+
   class Node implements Comparable<Node> {
     final int number;
     final List<Edge> neighbors;

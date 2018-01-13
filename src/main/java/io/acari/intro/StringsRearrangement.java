@@ -32,7 +32,7 @@ public class StringsRearrangement {
   }
 
   private boolean canRearrange(String[] inputArray, int index, Set<Integer> otherIndices) {
-    if (otherIndices.isEmpty() ) {
+    if (otherIndices.isEmpty()) {
       return true;
     }
 
@@ -56,8 +56,8 @@ public class StringsRearrangement {
     for (int i = 0; i < stringOne.length(); i++) {
       char one = stringOne.charAt(i);
       char two = stringTwo.charAt(i);
-      if(one != two){
-        if(++different > 1){
+      if (one != two) {
+        if (++different > 1) {
           return false;
         }
       }

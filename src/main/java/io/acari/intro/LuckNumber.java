@@ -12,7 +12,7 @@ public class LuckNumber {
    */
   boolean isLucky(int n) {
     int log10 = (int) Math.ceil(Math.log10(n));
-    if(log10 % 2 != 0){
+    if (log10 % 2 != 0) {
       //there are no halfs
       return false;
     }
@@ -25,7 +25,7 @@ public class LuckNumber {
 
   private int getSum(int secondHalf) {
     int sum = 0;
-    while (secondHalf > 0){
+    while (secondHalf > 0) {
       sum += secondHalf % 10;
       secondHalf /= 10;
     }

@@ -14,10 +14,10 @@ public class TacoCat {
    */
   boolean palindromeRearranging(String inputString) {
     Map<Integer, Integer> collect = inputString.chars().boxed()
-        .collect(Collectors.toMap(a -> a, a->1, (a,b)->a+b));
+        .collect(Collectors.toMap(a -> a, a -> 1, (a, b) -> a + b));
     int highlander = 0;
     for (Map.Entry<Integer, Integer> integerListEntry : collect.entrySet()) {
-      if((integerListEntry.getValue() % 2 != 0 && highlander++ > 0)){
+      if ((integerListEntry.getValue() % 2 != 0 && highlander++ > 0)) {
         return false;
       }
     }

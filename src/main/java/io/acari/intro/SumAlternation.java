@@ -11,9 +11,9 @@ public class SumAlternation {
    * Return an array of two integers, where the first element is the total weight
    * of team 1, and the second element is the total weight of team 2
    * after the division is complete.
-   *
+   * <p>
    * Example
-   *
+   * <p>
    * For a = [50, 60, 60, 45, 70], the output should be
    * alternatingSums(a) = [180, 105].
    *

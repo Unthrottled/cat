@@ -27,20 +27,20 @@ public class SumItUp {
     int length = inputString.length();
     for (int i = 0; i < length; i++) {
       char c = inputString.charAt(i);
-      if(Character.isDigit(c)){
-        if(!onNumber){
+      if (Character.isDigit(c)) {
+        if (!onNumber) {
           startIndex = i;
           onNumber = true;
         }
       } else {
-        if(onNumber){
+        if (onNumber) {
           sum += Integer.parseInt(inputString.substring(startIndex, i));
         }
         startIndex = i + 1;
         onNumber = false;
       }
     }
-    if(onNumber) sum += Integer.parseInt(inputString.substring(startIndex, length));
+    if (onNumber) sum += Integer.parseInt(inputString.substring(startIndex, length));
 
     return sum;
   }

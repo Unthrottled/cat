@@ -18,11 +18,11 @@ public class MACAttack {
    * @return
    */
   boolean isMAC48Address(String inputString) {
-    if(inputString.startsWith("-") || inputString.endsWith("-"))
+    if (inputString.startsWith("-") || inputString.endsWith("-"))
       return false;
-    String[] split = inputString.split("-" );
+    String[] split = inputString.split("-");
     return split.length == 6 &&
         Arrays.stream(split)
-            .allMatch(s->s.matches("[A-F0-9]{2}"));
+            .allMatch(s -> s.matches("[A-F0-9]{2}"));
   }
 }

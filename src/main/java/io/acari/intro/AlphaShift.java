@@ -13,7 +13,7 @@ public class AlphaShift {
     StringBuilder stringBuilder = new StringBuilder();
     inputString.chars()
         .map(i -> 97 + ((i - 96) % 26))
-        .mapToObj(i->(char)i)
+        .mapToObj(i -> (char) i)
         .forEach(stringBuilder::append);
     return stringBuilder.toString();
   }

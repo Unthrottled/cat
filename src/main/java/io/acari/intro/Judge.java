@@ -27,7 +27,7 @@ public class Judge {
             return true;
           }
           int tempIndex = findIndex(b, nextIndex, aValue);
-          swap(b, i,nextIndex);
+          swap(b, i, nextIndex);
           nextIndex = tempIndex;
         } while (nextIndex > -1);
         return false;

@@ -10,7 +10,7 @@ public class DigitFirst {
    */
   char firstDigit(String inputString) {
     return inputString.chars()
-        .mapToObj(i->(char)i)
+        .mapToObj(i -> (char) i)
         .filter(Character::isDigit)
         .findFirst()
         .orElse('\0');
