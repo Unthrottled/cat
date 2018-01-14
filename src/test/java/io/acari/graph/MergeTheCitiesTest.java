@@ -51,14 +51,15 @@ public class MergeTheCitiesTest {
   @Test
   public void mergingCitiesSix() throws Exception {
     assertArrayEquals(new boolean[][]
-            {{false, true, true},
-                {true, false, true},
-                {true, true, false}}
-
-        ,
-        mergeTheCities.mergingCities(new boolean[][]
             {{false, true},
                 {true, false}}
+        ,
+        mergeTheCities.mergingCities(
+            new boolean[][]
+                {{false, true, true},
+                    {true, false, true},
+                    {true, true, false}}
+
         )
     );
   }
