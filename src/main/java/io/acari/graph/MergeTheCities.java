@@ -1,5 +1,12 @@
 package io.acari.graph;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class MergeTheCities {
 
   /**
@@ -26,7 +33,106 @@ public class MergeTheCities {
    * @return
    */
   boolean[][] mergingCities(boolean[][] roadRegister) {
-    return roadRegister;
+    int length = roadRegister.length;
+    Map<Integer, Node> graph = IntStream.range(0, length)
+        .boxed()
+        .collect(Collectors.toMap(a -> a, Node::new));
+    for (int i = 0; i < length; i++) {
+      Node one = graph.get(i);
+      for (int j = 0; j < length; j++) {
+        if (roadRegister[i][j]) {
+          Node two = graph.get(j);
+          one.addNeighbor(two);
+          two.addNeighbor(one);
+        }
+      }
+    }
+
+
+    for (int i = 0, j = 0; i < length - 1; i += 2, j++) {
+      Node currentNode = graph.get(i);
+      Node nextNode = graph.get(i + 1);
+      if (currentNode.isConnected(nextNode)) {
+        nextNode.neighbors
+            .stream()
+            .filter(n -> !currentNode.equals(n))
+            .forEach(n -> {
+              n.neighbors.remove(nextNode);
+              currentNode.addNeighbor(n);
+              n.addNeighbor(currentNode);
+            });
+        IntStream.range(nextNode.number + 1, length)
+            .boxed()
+            .map(graph::get)
+            .filter(Objects::nonNull)
+            .forEach(n -> n.newIndex--);
+        currentNode.neighbors.remove(nextNode);
+        graph.remove(nextNode.number);
+      }
+    }
+
+    int size = graph.size();
+    boolean[][] newRegister = new boolean[size][size];
+    for (int row = 0, j = 0; row < length; row++) {
+      if (graph.containsKey(row)) {
+        newRegister[j++] = buildNeighbors(graph.get(row), size);
+      }
+    }
+
+    return newRegister;
   }
 
+  private boolean[] buildNeighbors(Node currentNode, int size) {
+    boolean[] connections = new boolean[size];
+    currentNode.neighbors.forEach(node -> connections[node.newIndex] = true);
+    return connections;
+  }
+
+  class Node implements Comparable<Node> {
+    final int number;
+    final Set<Node> neighbors;
+    int newIndex;
+
+    public Node(int number) {
+      this.number = number;
+      this.newIndex = number;
+      this.neighbors = new HashSet<>();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Node node = (Node) o;
+
+      return number == node.number;
+    }
+
+    @Override
+    public int hashCode() {
+      return number;
+    }
+
+    boolean isConnected(Node c) {
+      return neighbors.contains(c) || equals(c);
+    }
+
+    void addNeighbor(Node cityOne) {
+      neighbors.add(cityOne);
+    }
+
+    @Override
+    public int compareTo(Node node) {
+      return number - node.number;
+    }
+
+    @Override
+    public String toString() {
+      return "Node{" +
+          "number=" + number +
+          ", newIndex=" + newIndex +
+          '}';
+    }
+  }
 }
