@@ -77,7 +77,7 @@ public class RoadsForTheKing {
     return roads;
   }
 
-  static class Edge implements Comparable<Edge> {
+  class Edge implements Comparable<Edge> {
     final Node fst;
     final Node snd;
 
