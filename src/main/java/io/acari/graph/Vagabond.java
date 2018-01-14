@@ -1,7 +1,8 @@
 package io.acari.graph;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Vagabond {
 
@@ -32,8 +33,62 @@ public class Vagabond {
    * @return
    */
   boolean[][] livingOnTheRoads(boolean[][] roadRegister) {
+    int length = roadRegister.length;
+    Map<Integer, Node> graph = createGraph(roadRegister, length);
+    SortedSet<Edge> edges = createEdgeGraph(graph);
+
+
     return roadRegister;
   }
+
+  private SortedSet<Edge> createEdgeGraph(Map<Integer, Node> graph1) {
+    Map<Node, List<Edge>> graphy = graph1.entrySet()
+        .stream()
+        .map(Map.Entry::getValue)
+        .flatMap(n -> n.neighbors.stream()
+            .map(n1 -> new Edge(n, n1))
+            .map(e -> new Pair<>(n, e)))
+        .collect(Collectors.groupingBy(Pair::getKey, Collectors.mapping(Pair::getValue, Collectors.toList())));
+
+    return null;
+  }
+
+  private Map<Integer, Node> createGraph(boolean[][] roadRegister, int length) {
+    Map<Integer, Node> graph = IntStream.range(0, length)
+        .boxed()
+        .collect(Collectors.toMap(a -> a, Node::new));
+    for (int i = 0; i < length; i++) {
+      Node one = graph.get(i);
+      for (int j = 0; j < length; j++) {
+        if (roadRegister[i][j]) {
+          Node two = graph.get(j);
+          one.addNeighbor(two);
+          two.addNeighbor(one);
+        }
+      }
+    }
+    return graph;
+  }
+
+  class Pair<A, B> {
+    public final A fst;
+    public final B snd;
+
+    public Pair(A var1, B var2) {
+      this.fst = var1;
+      this.snd = var2;
+    }
+
+    public  A getKey(){
+      return fst;
+    }
+
+    public B getValue(){
+      return snd;
+    }
+  }
+
+
 
   class Edge implements Comparable<Edge> {
     final Node fst;
@@ -57,8 +112,8 @@ public class Vagabond {
 
     @Override
     public int hashCode() {
-      int result = fst.hashCode();
-      result = 31 * result + snd.hashCode();
+      int result = getSmallest().hashCode();
+      result = 31 * result + getLargest().hashCode();
       return result;
     }
 
