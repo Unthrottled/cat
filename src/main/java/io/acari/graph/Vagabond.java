@@ -34,23 +34,57 @@ public class Vagabond {
    */
   boolean[][] livingOnTheRoads(boolean[][] roadRegister) {
     int length = roadRegister.length;
-    Map<Integer, Node> graph = createGraph(roadRegister, length);
-    SortedSet<Edge> edges = createEdgeGraph(graph);
+    Map<Integer, Node> tempNodeGraph = new HashMap<>();
+    Map<Integer, Node> orderedGraph = giveNewNames(
+        createGraph(roadRegister, length).entrySet()
+            .stream()
+            .map(Map.Entry::getValue)
+            .flatMap(cityNode -> cityNode.neighbors
+                .stream()
+                .map(cityNode2 -> {
+                  int number = cityNode.number + cityNode2.number;
+                  Node streetNode = tempNodeGraph.getOrDefault(number, new Node(number));
+                  addNeighbors(tempNodeGraph, cityNode, streetNode);
+                  addNeighbors(tempNodeGraph, cityNode2, streetNode);
+                  return streetNode;
+                }))
+            .collect(Collectors.toMap(a -> a.number, a -> a, (a, b) -> a, TreeMap::new)));
+    int size = orderedGraph.size();
+    boolean[][] newRoadRegister = new boolean[size][size];
+    for (int i = 0; i < orderedGraph.size(); i++) {
+      newRoadRegister[i] = buildNeighbors(orderedGraph.get(i), size);
 
+    }
 
-    return roadRegister;
+    return newRoadRegister;
   }
 
-  private SortedSet<Edge> createEdgeGraph(Map<Integer, Node> graph1) {
-    Map<Node, List<Edge>> graphy = graph1.entrySet()
-        .stream()
-        .map(Map.Entry::getValue)
-        .flatMap(n -> n.neighbors.stream()
-            .map(n1 -> new Edge(n, n1))
-            .map(e -> new Pair<>(n, e)))
-        .collect(Collectors.groupingBy(Pair::getKey, Collectors.mapping(Pair::getValue, Collectors.toList())));
+  private void addNeighbors(Map<Integer, Node> tempNodeGraph, Node cityNode2, Node streetNode) {
+    cityNode2.neighbors
+        .forEach(otherCityNode->{
+          int naoeu = cityNode2.number + otherCityNode.number;
+          Node neighborStreetNode = tempNodeGraph.getOrDefault(naoeu, new Node(naoeu));
+          neighborStreetNode.addNeighbor(streetNode);
+          streetNode.addNeighbor(neighborStreetNode);
+        });
+  }
 
-    return null;
+  private Map<Integer, Node> giveNewNames(SortedMap<Integer, Node> edgeGraph) {
+    int index = 0;
+    HashMap<Integer, Node> newGuy = new HashMap<>(edgeGraph.size());
+    for (Map.Entry<Integer, Node> integerNodeEntry : edgeGraph.entrySet()) {
+      int k = index++;
+      Node value = integerNodeEntry.getValue();
+      newGuy.put(k, value);
+      value.newIndex = k;
+    }
+    return newGuy;
+  }
+
+  private boolean[] buildNeighbors(Node currentNode, int size) {
+    boolean[] connections = new boolean[size];
+    currentNode.neighbors.forEach(node -> connections[node.newIndex] = true);
+    return connections;
   }
 
   private Map<Integer, Node> createGraph(boolean[][] roadRegister, int length) {
@@ -70,74 +104,14 @@ public class Vagabond {
     return graph;
   }
 
-  class Pair<A, B> {
-    public final A fst;
-    public final B snd;
-
-    public Pair(A var1, B var2) {
-      this.fst = var1;
-      this.snd = var2;
-    }
-
-    public  A getKey(){
-      return fst;
-    }
-
-    public B getValue(){
-      return snd;
-    }
-  }
-
-
-
-  class Edge implements Comparable<Edge> {
-    final Node fst;
-    final Node snd;
-
-    Edge(Node var1, Node var2) {
-      this.fst = var1;
-      this.snd = var2;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-
-      Edge edge = (Edge) o;
-
-      if (!fst.equals(edge.fst)) return false;
-      return snd.equals(edge.snd);
-    }
-
-    @Override
-    public int hashCode() {
-      int result = getSmallest().hashCode();
-      result = 31 * result + getLargest().hashCode();
-      return result;
-    }
-
-    @Override
-    public int compareTo(Edge edge) {
-      int i = getSmallest().compareTo(edge.getSmallest());
-      return i == 0 ? getLargest().compareTo(edge.getLargest()) : i;
-    }
-
-    private Node getSmallest() {
-      return fst.compareTo(snd) < 0 ? fst : snd;
-    }
-
-    private Node getLargest() {
-      return fst.compareTo(snd) > 0 ? fst : snd;
-    }
-  }
-
   class Node implements Comparable<Node> {
     final int number;
     final Set<Node> neighbors;
+    int newIndex;
 
     public Node(int number) {
       this.number = number;
+      newIndex = number;
       this.neighbors = new HashSet<>();
     }
 
