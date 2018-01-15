@@ -34,7 +34,7 @@ public class Vagabond {
    */
   boolean[][] livingOnTheRoads(boolean[][] roadRegister) {
     int length = roadRegister.length;
-    Map<Integer, Node> tempNodeGraph = new HashMap<>();
+    Map<String, Node> tempNodeGraph = new HashMap<>();
     Map<Integer, Node> orderedGraph = giveRoadCitiesNewNames(
         createCityGraph(roadRegister, length)
             .entrySet()
@@ -43,7 +43,7 @@ public class Vagabond {
             .flatMap(cityNode -> cityNode.neighbors
                 .stream()
                 .map(cityNode2 -> {
-                  int number = cityNode.number + cityNode2.number;
+                  String number = getNew(cityNode, cityNode2);
                   Node streetNode = tempNodeGraph.getOrDefault(number, new Node(number));
                   createNeigborRoadCities(tempNodeGraph, cityNode, streetNode);
                   createNeigborRoadCities(tempNodeGraph, cityNode2, streetNode);
@@ -60,12 +60,16 @@ public class Vagabond {
     return newRoadRegister;
   }
 
-  private void createNeigborRoadCities(Map<Integer, Node> tempRoadCityGraph, Node cityNode, Node roadToCityNode) {
+  private String getNew(Node cityNode, Node cityNode2) {
+    return cityNode.number.compareTo(cityNode2.number) < 0 ? cityNode.number + "_" + cityNode2.number : cityNode2.number + "_" + cityNode.number;
+  }
+
+  private void createNeigborRoadCities(Map<String, Node> tempRoadCityGraph, Node cityNode, Node roadToCityNode) {
     cityNode.neighbors
         .stream()
-        .filter(otherCityNode -> cityNode.number + otherCityNode.number != roadToCityNode.number)//don't do the same wombo combo
-        .forEach(otherCityNode->{
-          int newRoadCity = cityNode.number + otherCityNode.number;
+        .filter(otherCityNode -> getNew(cityNode, otherCityNode).compareTo(roadToCityNode.number) != 0)//don't do the same wombo combo
+        .forEach(otherCityNode -> {
+          String newRoadCity = getNew(cityNode, otherCityNode);
           Node neighborRoadCityNode = tempRoadCityGraph.getOrDefault(newRoadCity, new Node(newRoadCity));
           neighborRoadCityNode.addNeighbor(roadToCityNode);
           roadToCityNode.addNeighbor(neighborRoadCityNode);
@@ -73,10 +77,10 @@ public class Vagabond {
         });
   }
 
-  private Map<Integer, Node> giveRoadCitiesNewNames(SortedMap<Integer, Node> edgeGraph) {
+  private Map<Integer, Node> giveRoadCitiesNewNames(SortedMap<String, Node> edgeGraph) {
     int index = 0;
     HashMap<Integer, Node> newGuy = new HashMap<>(edgeGraph.size());
-    for (Map.Entry<Integer, Node> integerNodeEntry : edgeGraph.entrySet()) {
+    for (Map.Entry<String, Node> integerNodeEntry : edgeGraph.entrySet()) {
       int k = index++;
       Node value = integerNodeEntry.getValue();
       newGuy.put(k, value);
@@ -91,15 +95,16 @@ public class Vagabond {
     return connections;
   }
 
-  private Map<Integer, Node> createCityGraph(boolean[][] roadRegister, int length) {
-    Map<Integer, Node> graph = IntStream.range(0, length)
+  private Map<String, Node> createCityGraph(boolean[][] roadRegister, int length) {
+    Map<String, Node> graph = IntStream.range(0, length)
         .boxed()
+        .map(Object::toString)
         .collect(Collectors.toMap(a -> a, Node::new));
     for (int i = 0; i < length; i++) {
-      Node one = graph.get(i);
+      Node one = graph.get(String.valueOf(i));
       for (int j = 0; j < length; j++) {
         if (roadRegister[i][j]) {
-          Node two = graph.get(j);
+          Node two = graph.get(String.valueOf(j));
           one.addNeighbor(two);
           two.addNeighbor(one);
         }
@@ -108,14 +113,14 @@ public class Vagabond {
     return graph;
   }
 
-  class Node implements Comparable<Node> {
-    final int number;
+  class Node {
+    final String number;
     final Set<Node> neighbors;
     int newIndex;
 
-    public Node(int number) {
+    public Node(String number) {
       this.number = number;
-      newIndex = number;
+      newIndex = 0;
       this.neighbors = new HashSet<>();
     }
 
@@ -126,33 +131,16 @@ public class Vagabond {
 
       Node node = (Node) o;
 
-      return number == node.number;
+      return number.equals(node.number);
     }
 
     @Override
     public int hashCode() {
-      return number;
-    }
-
-    boolean isConnected(Node c) {
-      return neighbors.contains(c) || equals(c);
+      return number.hashCode();
     }
 
     void addNeighbor(Node cityOne) {
       neighbors.add(cityOne);
-    }
-
-    @Override
-    public int compareTo(Node node) {
-      return number - node.number;
-    }
-
-    @Override
-    public String toString() {
-      return "Node{" +
-          "number=" + number +
-          ", newIndex=" + newIndex +
-          '}';
     }
   }
 }
