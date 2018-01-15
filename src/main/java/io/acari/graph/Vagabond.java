@@ -66,13 +66,15 @@ public class Vagabond {
   }
 
   private String getNew(Node cityNode, Node cityNode2) {
-    return cityNode.number.compareTo(cityNode2.number) < 0 ? cityNode.number + "_" + cityNode2.number : cityNode2.number + "_" + cityNode.number;
+    int number = Integer.parseInt(cityNode.number);
+    int number1 = Integer.parseInt(cityNode2.number);
+    return number - number1 < 0 ? number + "_" + number1 : number1 + "_" + number;
   }
 
   private void createNeighborRoadCities(Map<String, Node> tempRoadCityGraph, Node neighborCityNode, Node roadToCityNode) {
     neighborCityNode.neighbors
         .stream()
-        .filter(otherCityNode -> getNew(neighborCityNode, otherCityNode).compareTo(roadToCityNode.number) != 0)//don't do the same wombo combo
+        .filter(otherCityNode -> !getNew(neighborCityNode, otherCityNode).equals(roadToCityNode.number))//don't do the same wombo combo
         .forEach(otherCityNode -> {
           String newRoadCity = getNew(neighborCityNode, otherCityNode);
           Node neighborRoadCityNode = tempRoadCityGraph.getOrDefault(newRoadCity, new Node(newRoadCity));
