@@ -23,6 +23,4 @@ public class Wheelie {
   boolean isWheel(boolean[][] adj) {
     return false;
   }
-
-
 }
