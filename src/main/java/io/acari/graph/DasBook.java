@@ -1,5 +1,12 @@
 package io.acari.graph;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class DasBook {
 
   /**
@@ -23,6 +30,91 @@ public class DasBook {
    * @return
    */
   boolean isBook(boolean[][] adj) {
-    return false;
+    int length = adj.length;
+    for (int i = 0; i < length; i++) {
+      if (adj[i][i])
+        return false;
+    }
+    Map<String, Node> cityGraph = createCityGraph(adj, length);
+    List<Node> baseNodes = cityGraph.entrySet().stream()
+        .map(Map.Entry::getValue)
+        .filter(n -> isBaseNode(length, n))
+        .collect(Collectors.toList());
+
+    return baseNodes.size() == 2 &&
+        (length == 2 || areAllPagesConnected(baseNodes.get(0), baseNodes.get(1), length));
+
+
+  }
+
+  private boolean areAllPagesConnected(Node left, Node right, int length) {
+    for (Node neighbor : left.neighbors) {
+      if (!right.isConnected(neighbor))
+        return false;
+    }
+
+    return left.neighbors.size() == right.neighbors.size() &&
+        left.neighbors.size() + 1 == length;
+  }
+
+  private boolean isBaseNode(int length, Node n) {
+    return n.neighbors.size() == length - 1;
+  }
+
+  private Map<String, Node> createCityGraph(boolean[][] roadRegister, int length) {
+    Map<String, Node> graph = IntStream.range(0, length)
+        .boxed()
+        .map(Object::toString)
+        .collect(Collectors.toMap(a -> a, Node::new));
+    for (int i = 0; i < length; i++) {
+      Node one = graph.get(String.valueOf(i));
+      for (int j = 0; j < length; j++) {
+        if (roadRegister[i][j]) {
+          Node two = graph.get(String.valueOf(j));
+          one.addNeighbor(two);
+        }
+      }
+    }
+    return graph;
+  }
+
+  class Node {
+    final String number;
+    final Set<Node> neighbors;
+
+    public Node(String number) {
+      this.number = number;
+      this.neighbors = new HashSet<>();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Node node = (Node) o;
+
+      return number.equals(node.number);
+    }
+
+    @Override
+    public int hashCode() {
+      return number.hashCode();
+    }
+
+    boolean isConnected(Node c) {
+      return neighbors.contains(c) || equals(c);
+    }
+
+    void addNeighbor(Node cityOne) {
+      neighbors.add(cityOne);
+    }
+
+    @Override
+    public String toString() {
+      return "Node{" +
+          "number='" + number + '\'' +
+          '}';
+    }
   }
 }
