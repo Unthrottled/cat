@@ -43,10 +43,10 @@ public class Vagabond {
             .flatMap(cityNode -> cityNode.neighbors
                 .stream()
                 .map(cityNode2 -> {
-                  String number = getNew(cityNode, cityNode2);
-                  Node streetNode = tempNodeGraph.getOrDefault(number, new Node(number));
-                  createNeigborRoadCities(tempNodeGraph, cityNode, streetNode);
-                  createNeigborRoadCities(tempNodeGraph, cityNode2, streetNode);
+                  String streetName = getNew(cityNode, cityNode2);
+                  Node streetNode = tempNodeGraph.getOrDefault(streetName, new Node(streetName));
+                  tempNodeGraph.put(streetName, streetNode);
+                  createNeighborRoadCities(tempNodeGraph, cityNode2, streetNode);
                   return streetNode;
                 }))
             .collect(Collectors.toMap(a -> a.number, a -> a, (a, b) -> a, TreeMap::new)));
@@ -54,7 +54,6 @@ public class Vagabond {
     boolean[][] newRoadRegister = new boolean[size][size];
     for (int i = 0; i < orderedGraph.size(); i++) {
       newRoadRegister[i] = buildNeighbors(orderedGraph.get(i), size);
-
     }
 
     return newRoadRegister;
@@ -64,12 +63,12 @@ public class Vagabond {
     return cityNode.number.compareTo(cityNode2.number) < 0 ? cityNode.number + "_" + cityNode2.number : cityNode2.number + "_" + cityNode.number;
   }
 
-  private void createNeigborRoadCities(Map<String, Node> tempRoadCityGraph, Node cityNode, Node roadToCityNode) {
-    cityNode.neighbors
+  private void createNeighborRoadCities(Map<String, Node> tempRoadCityGraph, Node neighborCityNode, Node roadToCityNode) {
+    neighborCityNode.neighbors
         .stream()
-        .filter(otherCityNode -> getNew(cityNode, otherCityNode).compareTo(roadToCityNode.number) != 0)//don't do the same wombo combo
+        .filter(otherCityNode -> getNew(neighborCityNode, otherCityNode).compareTo(roadToCityNode.number) != 0)//don't do the same wombo combo
         .forEach(otherCityNode -> {
-          String newRoadCity = getNew(cityNode, otherCityNode);
+          String newRoadCity = getNew(neighborCityNode, otherCityNode);
           Node neighborRoadCityNode = tempRoadCityGraph.getOrDefault(newRoadCity, new Node(newRoadCity));
           neighborRoadCityNode.addNeighbor(roadToCityNode);
           roadToCityNode.addNeighbor(neighborRoadCityNode);
