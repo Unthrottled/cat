@@ -54,4 +54,17 @@ public class WheelieTest {
             {true, true, false, false, false, true}}
     ));
   }
+
+  @Test
+  public void isWheelEight() {
+    assertFalse(wheelie.isWheel(new boolean[][]
+        {{false, true, true, true, true, true, true},
+            {true, false, true, false, false, false, true},
+            {true, true, false, true, false, false, false},
+            {true, false, true, false, true, false, false},
+            {true, false, false, true, false, true, false},
+            {true, false, false, false, true, false, true},
+            {true, true, false, false, false, true, true}}
+    ));
+  }
 }
