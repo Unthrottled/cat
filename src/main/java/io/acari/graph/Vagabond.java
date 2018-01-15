@@ -49,7 +49,13 @@ public class Vagabond {
                   createNeighborRoadCities(tempNodeGraph, cityNode2, streetNode);
                   return streetNode;
                 }))
-            .collect(Collectors.toMap(a -> a.number, a -> a, (a, b) -> a, TreeMap::new)));
+            .collect(Collectors.toMap(a -> a.number, a -> a, (a, b) -> a, ()->new TreeMap<>((a,b)->{
+              String[] a_ = a.split("_");
+              String[] b_ = b.split("_");
+              int a_1 = Integer.parseInt(a_[0]);
+              int b_1 = Integer.parseInt(b_[0]);
+              return a_1 == b_1 ? Integer.parseInt(a_[1]) - Integer.parseInt(b_[1]) : a_1 -b_1;
+            }))));
     int size = orderedGraph.size();
     boolean[][] newRoadRegister = new boolean[size][size];
     for (int i = 0; i < orderedGraph.size(); i++) {
@@ -140,6 +146,14 @@ public class Vagabond {
 
     void addNeighbor(Node cityOne) {
       neighbors.add(cityOne);
+    }
+
+    @Override
+    public String toString() {
+      return "Node{" +
+          "number='" + number + '\'' +
+          ", newIndex=" + newIndex +
+          '}';
     }
   }
 }
