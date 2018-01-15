@@ -1,8 +1,6 @@
 package io.acari.graph;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -26,7 +24,33 @@ public class Stars {
    * @return
    */
   int countStars(boolean[][] adj) {
-    return 0;
+    int stars = 0;
+    Set<Node> visited = new HashSet<>(adj.length);
+    Map<String, Node> cityGraph = createCityGraph(adj, adj.length);
+    for (Map.Entry<String, Node> stringNodeEntry : cityGraph.entrySet()) {
+      Node current = stringNodeEntry.getValue();
+      if (!visited.contains(current)) {
+        visited.add(current);
+        if (current.neighbors.size() > 1) {
+          stars += isCenter(current, visited) ? 1 : 0;
+        } else if (current.neighbors.size() == 1) {
+          Node next = current.neighbors.iterator().next();
+          stars += next.neighbors.size() == 0 ||
+              (next.neighbors.size() == 1 && next.neighbors.contains(current) && !next.equals(current)) ||
+              (next.neighbors.size() > 1 && isCenter(next, visited)) ? 1 : 0;
+          visited.add(next);
+        }
+      }
+    }
+
+    return stars;
+  }
+
+  private boolean isCenter(Node current, Set<Node> visited) {
+    return current.neighbors
+        .stream()
+        .filter(n -> !n.equals(current))
+        .allMatch(n -> visited.add(n) && (n.neighbors.isEmpty() || (n.neighbors.size() == 1 && n.neighbors.contains(current))));
   }
 
   private Map<String, Node> createCityGraph(boolean[][] roadRegister, int length) {

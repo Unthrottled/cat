@@ -64,4 +64,31 @@ public class StarsTest {
         )
     );
   }
+
+  @Test
+  public void countStarsSix() {
+    assertEquals(4,
+        stars.countStars(new boolean[][]
+            {{false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}, 
+ {true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}, 
+ {false,false,false,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false}, 
+ {false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}, 
+ {false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}, 
+ {false,false,false,false,false,false,true,true,true,false,false,false,false,false,false,false,false,false,false}, 
+ {false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false}, 
+ {false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false}, 
+ {false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false}, 
+ {false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false}, 
+ {false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false}, 
+ {false,false,false,false,false,false,false,false,false,false,false,false,true,true,false,false,false,false,false}, 
+ {false,false,false,false,false,false,false,false,false,false,false,true,false,true,false,false,false,false,false}, 
+ {false,false,false,false,false,false,false,false,false,false,false,true,true,false,false,false,false,false,false}, 
+ {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,true}, 
+ {false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,true,false,true}, 
+ {false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,false,true,false}, 
+ {false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,true,false,true}, 
+ {false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,false,true,false}}
+        )
+    );
+  }
 }
