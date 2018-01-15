@@ -48,13 +48,17 @@ public class DasBook {
   }
 
   private boolean areAllPagesConnected(Node left, Node right, int length) {
+    boolean remove = left.neighbors.remove(right);
+    boolean remove1 = right.neighbors.remove(left);
+    if(!(remove || remove1))
+      return false;
+
     for (Node neighbor : left.neighbors) {
-      if (!right.isConnected(neighbor))
+      if (!right.isConnected(neighbor) || (neighbor.neighbors.size() > 2))
         return false;
     }
 
-    return left.neighbors.size() == right.neighbors.size() &&
-        left.neighbors.size() + 1 == length;
+    return left.neighbors.size() == right.neighbors.size();
   }
 
   private boolean isBaseNode(int length, Node n) {
