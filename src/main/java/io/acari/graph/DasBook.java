@@ -41,7 +41,7 @@ public class DasBook {
         .filter(n -> isBaseNode(length, n))
         .collect(Collectors.toList());
 
-    return baseNodes.size() == 2 &&
+    return (baseNodes.size() == 2 || baseNodes.size() == 3 && length == 3 ) &&
         (length == 2 || areAllPagesConnected(baseNodes.get(0), baseNodes.get(1), length));
 
 
