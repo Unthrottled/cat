@@ -35,8 +35,9 @@ public class Vagabond {
   boolean[][] livingOnTheRoads(boolean[][] roadRegister) {
     int length = roadRegister.length;
     Map<Integer, Node> tempNodeGraph = new HashMap<>();
-    Map<Integer, Node> orderedGraph = giveNewNames(
-        createGraph(roadRegister, length).entrySet()
+    Map<Integer, Node> orderedGraph = giveRoadCitiesNewNames(
+        createCityGraph(roadRegister, length)
+            .entrySet()
             .stream()
             .map(Map.Entry::getValue)
             .flatMap(cityNode -> cityNode.neighbors
@@ -44,8 +45,8 @@ public class Vagabond {
                 .map(cityNode2 -> {
                   int number = cityNode.number + cityNode2.number;
                   Node streetNode = tempNodeGraph.getOrDefault(number, new Node(number));
-                  addNeighbors(tempNodeGraph, cityNode, streetNode);
-                  addNeighbors(tempNodeGraph, cityNode2, streetNode);
+                  createNeigborRoadCities(tempNodeGraph, cityNode, streetNode);
+                  createNeigborRoadCities(tempNodeGraph, cityNode2, streetNode);
                   return streetNode;
                 }))
             .collect(Collectors.toMap(a -> a.number, a -> a, (a, b) -> a, TreeMap::new)));
@@ -59,17 +60,20 @@ public class Vagabond {
     return newRoadRegister;
   }
 
-  private void addNeighbors(Map<Integer, Node> tempNodeGraph, Node cityNode2, Node streetNode) {
-    cityNode2.neighbors
+  private void createNeigborRoadCities(Map<Integer, Node> tempRoadCityGraph, Node cityNode, Node roadToCityNode) {
+    cityNode.neighbors
+        .stream()
+        .filter(otherCityNode -> cityNode.number + otherCityNode.number != roadToCityNode.number)//don't do the same wombo combo
         .forEach(otherCityNode->{
-          int naoeu = cityNode2.number + otherCityNode.number;
-          Node neighborStreetNode = tempNodeGraph.getOrDefault(naoeu, new Node(naoeu));
-          neighborStreetNode.addNeighbor(streetNode);
-          streetNode.addNeighbor(neighborStreetNode);
+          int newRoadCity = cityNode.number + otherCityNode.number;
+          Node neighborRoadCityNode = tempRoadCityGraph.getOrDefault(newRoadCity, new Node(newRoadCity));
+          neighborRoadCityNode.addNeighbor(roadToCityNode);
+          roadToCityNode.addNeighbor(neighborRoadCityNode);
+          tempRoadCityGraph.put(newRoadCity, neighborRoadCityNode);
         });
   }
 
-  private Map<Integer, Node> giveNewNames(SortedMap<Integer, Node> edgeGraph) {
+  private Map<Integer, Node> giveRoadCitiesNewNames(SortedMap<Integer, Node> edgeGraph) {
     int index = 0;
     HashMap<Integer, Node> newGuy = new HashMap<>(edgeGraph.size());
     for (Map.Entry<Integer, Node> integerNodeEntry : edgeGraph.entrySet()) {
@@ -87,7 +91,7 @@ public class Vagabond {
     return connections;
   }
 
-  private Map<Integer, Node> createGraph(boolean[][] roadRegister, int length) {
+  private Map<Integer, Node> createCityGraph(boolean[][] roadRegister, int length) {
     Map<Integer, Node> graph = IntStream.range(0, length)
         .boxed()
         .collect(Collectors.toMap(a -> a, Node::new));
@@ -141,6 +145,14 @@ public class Vagabond {
     @Override
     public int compareTo(Node node) {
       return number - node.number;
+    }
+
+    @Override
+    public String toString() {
+      return "Node{" +
+          "number=" + number +
+          ", newIndex=" + newIndex +
+          '}';
     }
   }
 }
