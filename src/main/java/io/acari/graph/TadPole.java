@@ -41,11 +41,26 @@ public class TadPole {
         .findFirst();
   }
 
-  private boolean hasCycle(Node head){
+  private boolean hasCycle(Node head) {
+    Set<Node> visited = new HashSet<>();
+    Deque<Node> queue = new LinkedList<>();
+    queue.offer(head);
+    while (!queue.isEmpty()) {
+      Node current = queue.pollLast();
+      visited.add(current);
+      for (Node neighbor : current.neighbors) {
+        if (neighbor.equals(head))
+          return visited.size() > 1;
+        else if (!visited.contains(neighbor)) {
+          queue.offer(neighbor);
+        }
+      }
+
+    }
     return false;
   }
 
-  private boolean hasSingleTail(Node head){
+  private boolean hasSingleTail(Node head) {
     return false;
   }
 
