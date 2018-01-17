@@ -1,5 +1,9 @@
 package io.acari.graph;
 
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class TadPole {
 
   /**
@@ -21,7 +25,85 @@ public class TadPole {
    * @return
    */
   boolean isTadpole(boolean[][] adj) {
+    int length = adj.length;
+    for (int i = 0; i < length; i++) {
+      if (adj[i][i])
+        return false;
+    }
+    return findHeadNode(createCityGraph(adj))
+        .map(this::hasSingleTail)
+        .orElse(false);
+  }
+
+  private Optional<Node> findHeadNode(Map<Integer, Node> cityGraph) {
+    return cityGraph.entrySet().stream().map(Map.Entry::getValue)
+        .filter(this::hasCycle)
+        .findFirst();
+  }
+
+  private boolean hasCycle(Node head){
     return false;
+  }
+
+  private boolean hasSingleTail(Node head){
+    return false;
+  }
+
+  private Map<Integer, Node> createCityGraph(boolean[][] roadRegister) {
+    int length = roadRegister.length;
+    Map<Integer, Node> graph = IntStream.range(0, length)
+        .boxed()
+        .collect(Collectors.toMap(a -> a, Node::new));
+    for (int i = 0; i < length; i++) {
+      Node one = graph.get(i);
+      for (int j = 0; j < length; j++) {
+        if (roadRegister[i][j]) {
+          Node two = graph.get(j);
+          one.addNeighbor(two);
+        }
+      }
+    }
+    return graph;
+  }
+
+  class Node {
+    final Integer number;
+    final Set<Node> neighbors;
+
+    public Node(Integer number) {
+      this.number = number;
+      this.neighbors = new HashSet<>();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Node node = (Node) o;
+
+      return number.equals(node.number);
+    }
+
+    @Override
+    public int hashCode() {
+      return number.hashCode();
+    }
+
+    boolean isConnected(Node c) {
+      return neighbors.contains(c) || equals(c);
+    }
+
+    void addNeighbor(Node cityOne) {
+      neighbors.add(cityOne);
+    }
+
+    @Override
+    public String toString() {
+      return "Node{" +
+          "number='" + number + '\'' +
+          '}';
+    }
   }
 
 }
