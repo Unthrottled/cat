@@ -31,7 +31,7 @@ public class TadPole {
         return false;
     }
     return findHeadNode(createCityGraph(adj))
-        .map(this::hasSingleTail)
+        .map(node-> hasSingleTail(node, length))
         .orElse(false);
   }
 
@@ -45,23 +45,50 @@ public class TadPole {
     Set<Node> visited = new HashSet<>();
     Deque<Node> queue = new LinkedList<>();
     queue.offer(head);
+    head.depth = 0;
     while (!queue.isEmpty()) {
       Node current = queue.pollLast();
       visited.add(current);
       for (Node neighbor : current.neighbors) {
-        if (neighbor.equals(head))
-          return visited.size() > 1;
+        if (neighbor.depth == 0 && current.depth > 1)
+          return true;
         else if (!visited.contains(neighbor)) {
+          neighbor.depth = current.depth + 1;
           queue.offer(neighbor);
         }
       }
+    }
+    return false;
+  }
+
+  private boolean hasSingleTail(Node head, int length) {
+    List<Node> nodesWithThreeConnections = findThreeConnections(head);
+    if(nodesWithThreeConnections.size() == 1){
 
     }
     return false;
   }
 
-  private boolean hasSingleTail(Node head) {
-    return false;
+  private List<Node> findThreeConnections(Node head) {
+    Set<Node> visited = new HashSet<>();
+    Deque<Node> queue = new LinkedList<>();
+    LinkedList<Node> nodesWithThreeConnections = new LinkedList<>();
+    queue.offer(head);
+    head.depth = 0;
+    while (!queue.isEmpty()) {
+      Node current = queue.pollLast();
+      if(current.neighbors.size() > 2)
+        nodesWithThreeConnections.offer(current);
+      visited.add(current);
+      for (Node neighbor : current.neighbors) {
+        if (neighbor.depth == 0 && current.depth > 1)
+          return nodesWithThreeConnections;
+        else if (!visited.contains(neighbor)) {
+          queue.offer(neighbor);
+        }
+      }
+    }
+    return nodesWithThreeConnections;
   }
 
   private Map<Integer, Node> createCityGraph(boolean[][] roadRegister) {
@@ -84,6 +111,7 @@ public class TadPole {
   class Node {
     final Integer number;
     final Set<Node> neighbors;
+    int depth = -1;
 
     public Node(Integer number) {
       this.number = number;
