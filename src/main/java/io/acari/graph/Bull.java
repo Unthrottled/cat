@@ -1,5 +1,11 @@
 package io.acari.graph;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Bull {
 
   /**
@@ -24,4 +30,60 @@ public class Bull {
     return false;
   }
 
+  private Map<String, Node> createCityGraph(boolean[][] roadRegister, int length) {
+    Map<String, Node> graph = IntStream.range(0, length)
+            .boxed()
+            .map(Object::toString)
+            .collect(Collectors.toMap(a -> a, Node::new));
+    for (int i = 0; i < length; i++) {
+      Node one = graph.get(String.valueOf(i));
+      for (int j = 0; j < length; j++) {
+        if (roadRegister[i][j]) {
+          Node two = graph.get(String.valueOf(j));
+          one.addNeighbor(two);
+        }
+      }
+    }
+    return graph;
+  }
+
+  class Node {
+    final String number;
+    final Set<Node> neighbors;
+
+    public Node(String number) {
+      this.number = number;
+      this.neighbors = new HashSet<>();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      Node node = (Node) o;
+
+      return number.equals(node.number);
+    }
+
+    @Override
+    public int hashCode() {
+      return number.hashCode();
+    }
+
+    boolean isConnected(Node c) {
+      return neighbors.contains(c) || equals(c);
+    }
+
+    void addNeighbor(Node cityOne) {
+      neighbors.add(cityOne);
+    }
+
+    @Override
+    public String toString() {
+      return "Node{" +
+              "number='" + number + '\'' +
+              '}';
+    }
+  }
 }
