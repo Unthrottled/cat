@@ -51,13 +51,33 @@ public class Bull {
   }
 
   private boolean hasHorns(Node current) {
+    return hasSingleLongHorn(current) ^ hasTwoHorns(current);
+  }
+
+  private boolean hasSingleLongHorn(Node current) {
     for (Node neighbor : current.neighbors) {
       for (Node otherNeighbor : neighbor.neighbors) {
-        if (otherNeighbor.isConnected(current)) {
+        if (otherNeighbor.isConnected(current) && !otherNeighbor.equals(current)) {
           long singleHorns =
-              countSingleHorns(otherNeighbor, current, neighbor) +
-                  countSingleHorns(current, otherNeighbor, neighbor) +
-                  countSingleHorns(current, neighbor, otherNeighbor);
+              countTwoLengthHorns(otherNeighbor, current, neighbor) +
+                  countTwoLengthHorns(current, otherNeighbor, neighbor) +
+                  countTwoLengthHorns(current, neighbor, otherNeighbor);
+          return singleHorns == 1;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  private boolean hasTwoHorns(Node current) {
+    for (Node neighbor : current.neighbors) {
+      for (Node otherNeighbor : neighbor.neighbors) {
+        if (otherNeighbor.isConnected(current) && !otherNeighbor.equals(current)) {
+          long singleHorns =
+              countOneLengthHorns(otherNeighbor, current, neighbor) +
+                  countOneLengthHorns(current, otherNeighbor, neighbor) +
+                  countOneLengthHorns(current, neighbor, otherNeighbor);
           return singleHorns == 2;
         }
       }
@@ -66,7 +86,7 @@ public class Bull {
     return false;
   }
 
-  private long countSingleHorns(Node current, Node neighbor, Node otherNeighbor) {
+  private long countOneLengthHorns(Node current, Node neighbor, Node otherNeighbor) {
     return neighbor.neighbors.stream()
         .filter(n -> !current.equals(n))
         .filter(n -> !otherNeighbor.equals(n))
@@ -75,12 +95,24 @@ public class Bull {
         .count();
   }
 
+  private long countTwoLengthHorns(Node current, Node neighbor, Node otherNeighbor) {
+    return neighbor.neighbors.stream()
+        .filter(n -> !current.equals(n))
+        .filter(n -> !otherNeighbor.equals(n))
+        .filter(n -> n.neighbors.size() == 2)
+        .filter(n -> n.neighbors.contains(neighbor))
+        .filter(n -> !n.neighbors.contains(otherNeighbor))
+        .filter(n -> !n.neighbors.contains(current))
+        .count();
+  }
+
   private boolean isPartOfHead(Node current) {
     return current.neighbors.stream()
         .filter(neighbor -> neighbor.neighbors.stream()
+            .filter(otherNeighbor -> !otherNeighbor.equals(current))
             .filter(otherNeighbor -> otherNeighbor.isConnected(current))
             .count() == 1)
-        .count() == 1;
+        .count() == 2;
   }
 
   private Map<Integer, Node> createCityGraph(boolean[][] roadRegister) {
