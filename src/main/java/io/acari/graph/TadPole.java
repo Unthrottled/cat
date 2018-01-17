@@ -64,6 +64,12 @@ public class TadPole {
   private boolean hasSingleTail(Node head, int length) {
     List<Node> nodesWithThreeConnections = findThreeConnections(head);
     if(nodesWithThreeConnections.size() == 1){
+      Node node = nodesWithThreeConnections.get(0);
+      for (Node neighbor : node.neighbors) {
+        if(!hasCycle(neighbor)){
+          return true;
+        }
+      }
 
     }
     return false;
