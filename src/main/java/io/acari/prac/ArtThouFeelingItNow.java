@@ -1,6 +1,6 @@
 package io.acari.prac;
 
-public class ArtThouFeelingItKnow {
+public class ArtThouFeelingItNow {
 
   /**
    * Given an array strings, determine whether it follows the sequence given
