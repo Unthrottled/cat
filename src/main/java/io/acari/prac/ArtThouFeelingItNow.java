@@ -13,7 +13,16 @@ public class ArtThouFeelingItNow {
    * @return
    */
   boolean areFollowingPatterns(String[] strings, String[] patterns) {
-    return false;
+    for (int i = 0; i < strings.length -1; i++) {
+      for (int j = i + 1; j < strings.length; j++) {
+        boolean stringsMatch = strings[i].equals(strings[j]);
+        boolean patternsMatch = patterns[i].equals(patterns[j]);
+        if((stringsMatch && !patternsMatch) || (!stringsMatch && patternsMatch)){
+          return false;
+        }
+      }
+    }
+    return strings.length == patterns.length;
   }
 
 
