@@ -1,5 +1,9 @@
 package io.acari.prac;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class LargestPerRow {
 
   /**
@@ -18,7 +22,43 @@ public class LargestPerRow {
    * @return
    */
   int[] largestValuesInTreeRows(Tree<Integer> t) {
-    return null;
+    if(t != null){
+      Queue<Tree<Integer>> q1 = new LinkedList<>();
+      Queue<Tree<Integer>> q2 = new LinkedList<>();
+      List<Integer> maxes = new LinkedList<>();
+      q2.offer(t);
+      int currentMax = Integer.MIN_VALUE;
+      while (!(q1.isEmpty() && q2.isEmpty())){
+        currentMax = getCurrentMax(q2, q1, currentMax);
+        if(currentMax != Integer.MIN_VALUE) maxes.add(currentMax);
+        currentMax = Integer.MIN_VALUE;
+        currentMax = getCurrentMax(q1, q2, currentMax);
+        if(currentMax != Integer.MIN_VALUE) maxes.add(currentMax);
+      }
+
+      int[] r = new int[maxes.size()];
+      int i = 0;
+      for (Integer max : maxes) {
+        r[i++] = max;
+      }
+      return r;
+
+    }
+    return new int[]{};
+  }
+
+  private int getCurrentMax(Queue<Tree<Integer>> q1, Queue<Tree<Integer>> q2, int currentMax) {
+    while (!q2.isEmpty()){
+      Tree<Integer> p = q2.poll();
+      currentMax = currentMax < p.value ? p.value : currentMax;
+      if(p.left != null){
+        q1.offer(p.left);
+      }
+      if(p.right != null){
+        q1.offer(p.right);
+      }
+    }
+    return currentMax;
   }
 
   class Tree<T> {
