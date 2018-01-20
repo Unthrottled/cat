@@ -13,6 +13,8 @@ public class FirstDup {
    * If there are no such elements, return -1.
    *
    *
+   * TODO: MEEEEE
+   *
    * @param a
    * @return
    */

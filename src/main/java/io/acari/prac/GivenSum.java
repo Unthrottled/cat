@@ -7,6 +7,8 @@ public class GivenSum {
    * determine whether there is a root to leaf path
    * in t such that the sum of vertex values equals s.
    *
+   * DOES GOOD!
+   *
    * @param t
    * @param s
    * @return

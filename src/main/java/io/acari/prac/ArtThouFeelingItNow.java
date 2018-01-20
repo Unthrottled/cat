@@ -8,6 +8,8 @@ public class ArtThouFeelingItNow {
    * which strings[i] = strings[j] and patterns[i] ≠ patterns[j] or
    * for which strings[i] ≠ strings[j] and patterns[i] = patterns[j].
    *
+   * DOES GOOD
+   *
    * @param strings
    * @param patterns
    * @return

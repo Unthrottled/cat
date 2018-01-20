@@ -19,6 +19,10 @@ public class DishStacker {
    * The result array should be sorted lexicographically
    * by the names of the ingredients in its elements.
    *
+   *
+   * DOES GOOD!
+   *
+   *
    * @param dishes
    * @return
    */

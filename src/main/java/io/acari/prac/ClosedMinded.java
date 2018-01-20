@@ -13,6 +13,8 @@ public class ClosedMinded {
    * in the array where nums[i] = nums[j] and
    * the absolute difference between i and j is less than or equal to k.
    *
+   * DOES GOOD!
+   *
    * @param nums
    * @param k
    * @return
