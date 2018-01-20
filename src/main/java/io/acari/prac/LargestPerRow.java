@@ -26,13 +26,11 @@ public class LargestPerRow {
       Queue<Tree<Integer>> q1 = new LinkedList<>();
       Queue<Tree<Integer>> q2 = new LinkedList<>();
       List<Integer> maxes = new LinkedList<>();
-      q2.offer(t);
-      int currentMax = Integer.MIN_VALUE;
+      q1.offer(t);
       while (!(q1.isEmpty() && q2.isEmpty())){
-        currentMax = getCurrentMax(q2, q1, currentMax);
+        int currentMax = getCurrentMax(q2, q1);
         if(currentMax != Integer.MIN_VALUE) maxes.add(currentMax);
-        currentMax = Integer.MIN_VALUE;
-        currentMax = getCurrentMax(q1, q2, currentMax);
+        currentMax = getCurrentMax(q1, q2);
         if(currentMax != Integer.MIN_VALUE) maxes.add(currentMax);
       }
 
@@ -47,15 +45,16 @@ public class LargestPerRow {
     return new int[]{};
   }
 
-  private int getCurrentMax(Queue<Tree<Integer>> q1, Queue<Tree<Integer>> q2, int currentMax) {
-    while (!q2.isEmpty()){
-      Tree<Integer> p = q2.poll();
+  private int getCurrentMax(Queue<Tree<Integer>> two, Queue<Tree<Integer>> one) {
+    int currentMax = Integer.MIN_VALUE;
+    while (!one.isEmpty()){
+      Tree<Integer> p = one.poll();
       currentMax = currentMax < p.value ? p.value : currentMax;
       if(p.left != null){
-        q1.offer(p.left);
+        two.offer(p.left);
       }
       if(p.right != null){
-        q1.offer(p.right);
+        two.offer(p.right);
       }
     }
     return currentMax;
