@@ -12,13 +12,27 @@ public class TreeSums {
    * all the numbers encoded in it.
    *
    *
-   * TODO: MEEEEE
+   * Does good!
    *
    * @param t
    * @return
    */
   long digitTreeSum(Tree<Integer> t) {
-    return 0;
+    return helper(t, 0L);
+  }
+
+  private long helper(Tree<Integer> t, long i) {
+    if(t != null){
+        long current = i * 10 + t.value;
+        if(t.left == null && t.right == null){
+          return current;
+        }
+
+        long left = helper(t.left, current);
+        long right = helper(t.right, current);
+        return left + right;
+    }
+    return 0L;
   }
 
   class Tree<T> {
