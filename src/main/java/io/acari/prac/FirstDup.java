@@ -1,5 +1,9 @@
 package io.acari.prac;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class FirstDup {
 
   /**
@@ -18,7 +22,9 @@ public class FirstDup {
    * @param a
    * @return
    */
-  int firstDup(int[] a){
-    return -1;
+  int firstDuplicate(int[] a){
+    Set<Integer> set = new HashSet<>();
+    return Arrays.stream(a).boxed().filter(i->!set.add(i))
+        .findFirst().orElse(-1);
   }
 }
