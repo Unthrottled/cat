@@ -15,8 +15,8 @@ public class GFG8 {
     for (int i_t = 0; i_t < t; i_t++) {
       String num = in.nextLine();
       String line = in.nextLine();
-      Integer[] coinz = new Integer[Integer.parseInt(num)];
-      coinz = Arrays.stream(line.split(" ")).map(Integer::parseInt).collect(Collectors.toList()).toArray(coinz);
+      Long[] coinz = new Long[Integer.parseInt(num)];
+      coinz = Arrays.stream(line.split(" ")).map(Long::parseLong).collect(Collectors.toList()).toArray(coinz);
       String value = in.nextLine();
       System.out.println(steve.find(coinz, Integer.parseInt(value)));
     }
