@@ -167,7 +167,7 @@ public class Bull {
         @Override
         public String toString() {
             return "Node{" +
-                    "number = '" + number + '\'' +
+                    "number='" + number + '\'' +
                     '}';
         }
     }
