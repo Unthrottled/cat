@@ -9,46 +9,46 @@ import static org.junit.Assert.assertTrue;
  * Forged in the flames of battle by alex.
  */
 public class TacoCatTest {
-  private TacoCat tacoCat = new TacoCat();
+    private TacoCat tacoCat = new TacoCat();
 
-  @Test
-  public void palindromeRearrangingOne() throws Exception {
-    assertTrue(tacoCat.palindromeRearranging("aabb"));
-  }
+    @Test
+    public void palindromeRearrangingOne() throws Exception {
+        assertTrue(tacoCat.palindromeRearranging("aabb"));
+    }
 
-  @Test
-  public void palindromeRearrangingTwo() throws Exception {
-    assertFalse(tacoCat.palindromeRearranging("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabc"));
-  }
+    @Test
+    public void palindromeRearrangingTwo() throws Exception {
+        assertFalse(tacoCat.palindromeRearranging("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabc"));
+    }
 
-  @Test
-  public void palindromeRearrangingThree() throws Exception {
-    assertTrue(tacoCat.palindromeRearranging("zyyzzzzz"));
-  }
+    @Test
+    public void palindromeRearrangingThree() throws Exception {
+        assertTrue(tacoCat.palindromeRearranging("zyyzzzzz"));
+    }
 
-  @Test
-  public void palindromeRearrangingFour() throws Exception {
-    assertTrue(tacoCat.palindromeRearranging("z"));
-  }
+    @Test
+    public void palindromeRearrangingFour() throws Exception {
+        assertTrue(tacoCat.palindromeRearranging("z"));
+    }
 
-  @Test
-  public void palindromeRearrangingFive() throws Exception {
-    assertTrue(tacoCat.palindromeRearranging("zaa"));
-  }
+    @Test
+    public void palindromeRearrangingFive() throws Exception {
+        assertTrue(tacoCat.palindromeRearranging("zaa"));
+    }
 
-  @Test
-  public void palindromeRearrangingFivePointTwo() throws Exception {
-    assertFalse(tacoCat.palindromeRearranging("zaaa"));
-  }
+    @Test
+    public void palindromeRearrangingFivePointTwo() throws Exception {
+        assertFalse(tacoCat.palindromeRearranging("zaaa"));
+    }
 
-  @Test
-  public void palindromeRearrangingSix() throws Exception {
-    assertTrue(tacoCat.palindromeRearranging("tacocat"));
-  }
+    @Test
+    public void palindromeRearrangingSix() throws Exception {
+        assertTrue(tacoCat.palindromeRearranging("tacocat"));
+    }
 
-  @Test
-  public void palindromeRearrangingSeven() throws Exception {
-    assertTrue(tacoCat.palindromeRearranging("racecar"));
-  }
+    @Test
+    public void palindromeRearrangingSeven() throws Exception {
+        assertTrue(tacoCat.palindromeRearranging("racecar"));
+    }
 
 }

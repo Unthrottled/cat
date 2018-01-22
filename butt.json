@@ -5,9 +5,9 @@
     "left": {
       "value": 3,
       "left": {
-          "value": 6,
-          "left": null,
-          "right":null
+        "value": 6,
+        "left": null,
+        "right": null
       },
       "right": null
     },
@@ -30,7 +30,7 @@
       "right": {
         "value": 6,
         "left": null,
-        "right":null
+        "right": null
       }
     }
   }

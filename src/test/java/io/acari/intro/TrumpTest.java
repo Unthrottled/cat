@@ -8,24 +8,24 @@ import static org.junit.Assert.assertArrayEquals;
  * Forged in the flames of battle by alex.
  */
 public class TrumpTest {
-  private Trump trump = new Trump();
+    private Trump trump = new Trump();
 
-  @Test
-  public void addBorderOne() throws Exception {
-    assertArrayEquals(new String[]{"*****",
-            "*abc*",
-            "*ded*",
-            "*****"},
-        trump.addBorder(new String[]{"abc",
-            "ded"}));
-  }
+    @Test
+    public void addBorderOne() throws Exception {
+        assertArrayEquals(new String[]{"*****",
+                        "*abc*",
+                        "*ded*",
+                        "*****"},
+                trump.addBorder(new String[]{"abc",
+                        "ded"}));
+    }
 
-  @Test
-  public void addBorderTwo() throws Exception {
-    assertArrayEquals(new String[]{"***",
-            "*a*",
-            "***"},
-        trump.addBorder(new String[]{"a"}));
-  }
+    @Test
+    public void addBorderTwo() throws Exception {
+        assertArrayEquals(new String[]{"***",
+                        "*a*",
+                        "***"},
+                trump.addBorder(new String[]{"a"}));
+    }
 
 }
