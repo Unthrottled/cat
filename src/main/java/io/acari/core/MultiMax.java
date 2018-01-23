@@ -18,6 +18,6 @@ public class MultiMax {
    * @return
    */
   int maxMultiple(int divisor, int bound) {
-    return 0;
+    return (bound) - (bound % divisor);
   }
 }
