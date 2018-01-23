@@ -16,6 +16,11 @@ public class BeegNumberTest {
   }
 
   @Test
+  public void largestNumberThree() {
+    assertEquals(999999, beegNumber.largestNumber(6));
+  }
+
+  @Test
   public void largestNumberTwo() {
     assertEquals(9, beegNumber.largestNumber(1));
   }

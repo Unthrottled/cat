@@ -10,7 +10,13 @@ public class BeegNumber {
    * @return
    */
   int largestNumber(int n) {
-    return n;
+    int b = 0;
+    while (n > 0){
+      b *= 10;
+      b += 9;
+      n--;
+    }
+    return b;
   }
 
 }
