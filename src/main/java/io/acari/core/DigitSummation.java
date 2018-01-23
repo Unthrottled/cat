@@ -9,6 +9,6 @@ public class DigitSummation {
    * @return
    */
   int addTwoDigits(int n) {
-    return 0;
+    return (n / 10) + (n % 10);
   }
 }
