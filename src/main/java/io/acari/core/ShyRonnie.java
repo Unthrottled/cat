@@ -30,7 +30,7 @@ public class ShyRonnie {
    * @return
    */
   int seatsInTheater(int nCols, int nRows, int col, int row) {
-    return 0;
+    return (nCols - --col) * (nRows - row);
   }
 
 }
