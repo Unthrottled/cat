@@ -17,7 +17,7 @@ public class CallMeBeepMeTest {
 
   @Test
   public void phoneCallTwo() {
-    assertEquals(1, kimPossible.phoneCall(2,2,1,1));
+    assertEquals(1, kimPossible.phoneCall(2,2,1,2));
   }
 
   @Test

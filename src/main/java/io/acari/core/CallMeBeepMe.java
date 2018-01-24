@@ -22,7 +22,27 @@ public class CallMeBeepMe {
    * @return
    */
   int phoneCall(int min1, int min2_10, int min11, int s) {
-    return 0;
+    int firstMinute = 0;
+    int secondMinute = 0;
+    int thirdMinute = 0;
+    if(s >= min1){
+      firstMinute = 1;
+      s -= min1;
+    }
+
+    if(firstMinute > 0){
+      int availableMinutes = s / min2_10;
+      int maxSecondTier = 9;
+      if(availableMinutes > maxSecondTier){
+        secondMinute = maxSecondTier;
+        s -= (min2_10 * maxSecondTier);
+        thirdMinute = s/min11;
+      } else {
+        secondMinute = availableMinutes;
+      }
+    }
+
+    return firstMinute + secondMinute + thirdMinute;
   }
 
 }
