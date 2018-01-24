@@ -13,7 +13,7 @@ public class TakeItToTheNextLevel {
    *
    * @param experience
    * @param threshold
-   * @param reward
+   * @param
    * @return
    */
   boolean reachNextLevel(int experience, int threshold, int reward) {
