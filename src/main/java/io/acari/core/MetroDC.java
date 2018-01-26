@@ -24,7 +24,16 @@ public class MetroDC {
    * @return
    */
   int[] metroCard(int lastNumberOfDays) {
-    return null;
+    switch (lastNumberOfDays){
+      case 31:
+        return new int[]{28, 30, 31};
+      case 30:
+        return new int[]{31};
+      case 28:
+        return new int[]{31};
+      default:
+        return new int[]{};
+    }
   }
 
 }
