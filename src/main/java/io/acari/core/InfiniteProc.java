@@ -16,6 +16,6 @@ public class InfiniteProc {
    * @return
    */
   boolean isInfiniteProcess(int a, int b) {
-    return false;
+    return a > b ||  (b - a) % 2 == 1;
   }
 }
