@@ -23,7 +23,7 @@ public class MaryIsInLove {
    * @return
    */
   boolean willYou(boolean young, boolean beautiful, boolean loved) {
-    return false;
+    return (young && beautiful && !loved) || (loved && !(young && beautiful));
   }
 
 }
