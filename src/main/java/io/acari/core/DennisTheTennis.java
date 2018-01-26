@@ -15,7 +15,23 @@ public class DennisTheTennis {
    * @return
    */
   boolean tennisSet(int score1, int score2) {
-    return false;
+    if(score1 == 7){
+      return correctSeven(score2);
+    } else if (score2 == 7){
+      return correctSeven(score1);
+    } else if (score1 == 6) {
+      return correctSix(score2);
+    } else{
+      return score2 == 6 && correctSix(score1);
+    }
+  }
+
+  private boolean correctSix(int score2) {
+    return score2 > -1 && score2 < 5;
+  }
+
+  private boolean correctSeven(int score2) {
+    return score2 < 7 && score2 > 4;
   }
 
 }
