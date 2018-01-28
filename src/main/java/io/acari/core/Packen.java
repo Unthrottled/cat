@@ -1,5 +1,7 @@
 package io.acari.core;
 
+import java.util.Arrays;
+
 public class Packen {
 
     /**
@@ -22,11 +24,15 @@ public class Packen {
      * For further clarification see the
      * following example.
      *
-     * @param a
+     * @param numsToPack
      * @return
      */
-    int arrayPacking(int[] a) {
-        return 0;
+    int arrayPacking(int[] numsToPack) {
+        int packed = 0;
+        for (int i = 0; i < numsToPack.length; i++) {
+            packed |= numsToPack[i] << (i * 8);
+        }
+        return packed;
     }
 
 }
