@@ -15,7 +15,7 @@ public class BitFlippy {
      * @return
      */
     int killKthBit(int n, int k) {
-        return n;
+        return n & ~(1 << --k);
     }
 
 }
