@@ -1,5 +1,7 @@
 package io.acari.core;
 
+import java.util.stream.IntStream;
+
 public class FreeRange {
   /**
    * You are given two numbers a and b where 0 ≤ a ≤ b.
@@ -13,7 +15,9 @@ public class FreeRange {
    * @return
    */
   int rangeBitCount(int a, int b) {
-    return a;
+    return IntStream.rangeClosed(a,b)
+        .map(Integer::bitCount)
+        .sum();
   }
 
 }
