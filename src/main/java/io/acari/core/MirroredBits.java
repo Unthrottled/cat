@@ -9,7 +9,14 @@ public class MirroredBits {
    * @return
    */
   int mirrorBits(int a) {
-    return a;
+    int mirror = 0;
+    while (a > 0){
+      mirror <<=1;
+      mirror |= a & 1;
+      a>>=1;
+    }
+
+    return mirror;
   }
 
 }
