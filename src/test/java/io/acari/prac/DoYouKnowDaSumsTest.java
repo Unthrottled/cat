@@ -1,5 +1,6 @@
 package io.acari.prac;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -7,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Forged in the flames of battle by alex.
  */
+@Ignore
 public class DoYouKnowDaSumsTest {
     private final DoYouKnowDaSums doYouKnowDaSums = new DoYouKnowDaSums();
 

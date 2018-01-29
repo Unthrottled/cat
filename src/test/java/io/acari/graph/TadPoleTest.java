@@ -1,5 +1,6 @@
 package io.acari.graph;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -8,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Forged in the flames of battle by alex.
  */
+@Ignore
 public class TadPoleTest {
     private final TadPole tadPole = new TadPole();
 
