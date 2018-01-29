@@ -1,5 +1,8 @@
 package io.acari.core;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class SmallestFactorial {
 
   /**
@@ -14,7 +17,21 @@ public class SmallestFactorial {
    * @return
    */
   int leastFactorial(int n) {
-    return n;
+    int[] lookup = new int[n + 1];
+    Arrays.fill(lookup, -1);
+    return IntStream.rangeClosed(0, n)
+        .map(i -> findFact(i, lookup))
+        .filter(i -> i >= n)
+        .findFirst().orElse(-1);
   }
 
+  private int findFact(int i, int[] lookup) {
+    if (lookup[i] != -1)
+      return lookup[i];
+    else if (i == 0) {
+      return lookup[0] = 1;
+    } else {
+      return lookup[i] = lookup[i - 1] * i;
+    }
+  }
 }
