@@ -1,5 +1,7 @@
 package io.acari.core;
 
+import java.util.function.IntFunction;
+
 public class ToTheRight {
 
   /**
@@ -13,7 +15,14 @@ public class ToTheRight {
    * @return
    */
   int secondRightmostZeroBit(int n) {
-    return 0;
+    return (int) ((IntFunction) i -> {
+      String shitFuck = Integer.toBinaryString(i);
+      for (int j = shitFuck.length() -1, a=0, x =0; j > -1; --j, x++) {
+        if(shitFuck.charAt(j) == '0' && ++a == 2)
+          return 1 << x;
+      }
+      return 0;
+    }).apply(n);
   }
 
 }
