@@ -17,8 +17,7 @@ public class CountSumula {
     if(l <= midPoint && r >= midPoint){
       int lHalf = midPoint - l;
       int rHalf = r - midPoint;
-
-      return 0;
+      return lHalf == rHalf ? ++lHalf : Math.min(lHalf,rHalf);
     } else {
       return 0;
     }
