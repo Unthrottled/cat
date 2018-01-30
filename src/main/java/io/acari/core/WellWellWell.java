@@ -14,6 +14,10 @@ public class WellWellWell {
    * @return
    */
   int magicalWell(int a, int b, int n) {
-    return a;
+    int dollaDollaYall = 0;
+    for (int i = 0; i < n; i++) {
+      dollaDollaYall += a++ * b++;
+    }
+    return dollaDollaYall;
   }
 }
