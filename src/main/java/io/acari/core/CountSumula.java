@@ -13,7 +13,15 @@ public class CountSumula {
    * @return
    */
   int countSumOfTwoRepresentations2(int n, int l, int r) {
-    return r;
+    int midPoint = n/2;
+    if(l <= midPoint && r >= midPoint){
+      int lHalf = midPoint - l;
+      int rHalf = r - midPoint;
+
+      return 0;
+    } else {
+      return 0;
+    }
   }
 
 }

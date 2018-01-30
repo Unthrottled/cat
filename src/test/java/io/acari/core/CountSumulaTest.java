@@ -29,4 +29,14 @@ public class CountSumulaTest {
   public void countSumOfTwoRepresentations2Four() {
     assertEquals(5, countSumula.countSumOfTwoRepresentations2(24, 8, 16));
   }
+
+  @Test
+  public void countSumOfTwoRepresentations2Five() {
+    assertEquals(1, countSumula.countSumOfTwoRepresentations2(24,12,12));
+  }
+
+  @Test
+  public void countSumOfTwoRepresentations2Six() {
+    assertEquals(12, countSumula.countSumOfTwoRepresentations2(93,24,58));
+  }
 }
