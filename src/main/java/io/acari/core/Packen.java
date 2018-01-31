@@ -1,7 +1,5 @@
 package io.acari.core;
 
-import java.util.Arrays;
-
 public class Packen {
 
     /**
