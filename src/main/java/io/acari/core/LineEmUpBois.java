@@ -26,13 +26,13 @@ public class LineEmUpBois {
    * @return
    */
   int lineUp(String commands) {
-    if(commands.length() < 2)
+    if (commands.length() < 2)
       return 0;
 
     int iCantDirections = 0;
     int oneLess = commands.length() - 1;
     for (int i = 0; i < oneLess; i++) {
-      if(commands.charAt(i) == 'L' && commands.charAt(i + 1) == 'R'){
+      if (commands.charAt(i) == 'L' && commands.charAt(i + 1) == 'R') {
         iCantDirections++;
         i++;
       }

@@ -17,6 +17,6 @@ public class TakeItToTheNextLevel {
    * @return
    */
   boolean reachNextLevel(int experience, int threshold, int reward) {
-      return experience + reward >= threshold;
+    return experience + reward >= threshold;
   }
 }

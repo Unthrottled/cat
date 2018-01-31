@@ -11,7 +11,7 @@ public class BeegNumber {
    */
   int largestNumber(int n) {
     int b = 0;
-    while (n > 0){
+    while (n > 0) {
       b *= 10;
       b += 9;
       n--;

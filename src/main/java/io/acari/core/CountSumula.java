@@ -13,8 +13,8 @@ public class CountSumula {
    * @return
    */
   int countSumOfTwoRepresentations2(int n, int l, int r) {
-    int midPoint = n/2;
-    if(l <= midPoint && r >= midPoint){
+    int midPoint = n / 2;
+    if (l <= midPoint && r >= midPoint) {
       int lHalf = midPoint - l;
       int rHalf = r - midPoint;
       boolean isOdd = n % 2 == 1;

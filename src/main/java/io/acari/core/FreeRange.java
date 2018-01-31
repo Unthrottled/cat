@@ -15,7 +15,7 @@ public class FreeRange {
    * @return
    */
   int rangeBitCount(int a, int b) {
-    return IntStream.rangeClosed(a,b)
+    return IntStream.rangeClosed(a, b)
         .map(Integer::bitCount)
         .sum();
   }

@@ -13,7 +13,7 @@ public class OooAPieceOfCandy {
    * @return
    */
   int candies(int numberOfChildren, int candyCount) {
-    return candyCount - (candyCount%numberOfChildren);
+    return candyCount - (candyCount % numberOfChildren);
   }
 
 }

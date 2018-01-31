@@ -15,12 +15,13 @@ public class SwappyBitties {
    * @return
    */
   int swapAdjacentBits(int n) {
-    return ((IntFunction<Integer>) i -> { String o = Integer.toBinaryString(i);
+    return ((IntFunction<Integer>) i -> {
+      String o = Integer.toBinaryString(i);
       StringBuilder sb = new StringBuilder();
-      if(o.length() % 2 != 0)
-        o = '0'+o;
-      for (int j = 1; j < o.length(); j+= 2) {
-        sb.append(o.charAt(j)).append(o.charAt(j-1));
+      if (o.length() % 2 != 0)
+        o = '0' + o;
+      for (int j = 1; j < o.length(); j += 2) {
+        sb.append(o.charAt(j)).append(o.charAt(j - 1));
       }
 
       return Integer.parseInt(sb.toString(), 2);

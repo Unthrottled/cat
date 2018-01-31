@@ -25,18 +25,18 @@ public class CallMeBeepMe {
     int firstMinute = 0;
     int secondMinute = 0;
     int thirdMinute = 0;
-    if(s >= min1){
+    if (s >= min1) {
       firstMinute = 1;
       s -= min1;
     }
 
-    if(firstMinute > 0){
+    if (firstMinute > 0) {
       int availableMinutes = s / min2_10;
       int maxSecondTier = 9;
-      if(availableMinutes > maxSecondTier){
+      if (availableMinutes > maxSecondTier) {
         secondMinute = maxSecondTier;
         s -= (min2_10 * maxSecondTier);
-        thirdMinute = s/min11;
+        thirdMinute = s / min11;
       } else {
         secondMinute = availableMinutes;
       }

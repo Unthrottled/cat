@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class GFG11 {
 
-    public static void main(String... args) {
-        PalindromicPartitioning steve = new PalindromicPartitioning();
-        Scanner in = new Scanner(System.in);
-        int t = Integer.parseInt(in.nextLine());
-        for (int i_t = 0; i_t < t; i_t++) {
-            String num = in.nextLine();
-            System.out.println(steve.find(num));
-        }
+  public static void main(String... args) {
+    PalindromicPartitioning steve = new PalindromicPartitioning();
+    Scanner in = new Scanner(System.in);
+    int t = Integer.parseInt(in.nextLine());
+    for (int i_t = 0; i_t < t; i_t++) {
+      String num = in.nextLine();
+      System.out.println(steve.find(num));
     }
+  }
 }

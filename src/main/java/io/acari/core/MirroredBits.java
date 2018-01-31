@@ -10,10 +10,10 @@ public class MirroredBits {
    */
   int mirrorBits(int a) {
     int mirror = 0;
-    while (a > 0){
-      mirror <<=1;
+    while (a > 0) {
+      mirror <<= 1;
       mirror |= a & 1;
-      a>>=1;
+      a >>= 1;
     }
 
     return mirror;

@@ -13,7 +13,7 @@ public class MaffExpression {
    * @return
    */
   boolean arithmeticExpression(int a, int b, int c) {
-    return a + b == c  || a - b == c || a * b == c || Double.compare(a/(double)b, c) == 0;
+    return a + b == c || a - b == c || a * b == c || Double.compare(a / (double) b, c) == 0;
   }
 
 }
