@@ -3,6 +3,9 @@ package io.acari.core;
 public class LineEmUpBois {
 
   /**
+   *
+   * Did I do something?
+   *
    * To prepare his students for an upcoming game,
    * the sports coach decides to try some new training
    * drills. To begin with, he lines them up and starts
