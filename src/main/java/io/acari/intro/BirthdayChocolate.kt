@@ -6,8 +6,15 @@ import java.util.stream.Stream
 fun birthday(chocolateSquares: List<Int>, birthDay: Int, birthMonth: Int): Int {
   return Stream.iterate(0){it+1}
       .limit(chocolateSquares.size.toLong())
-      .findAny()
-      .orElseThrow { RuntimeException("I was told there was input") }
+      .map { it.toLong() }
+      .map { chocolateSquares.stream()
+          .skip(it)
+          .mapToInt{it}
+          .limit(birthMonth.toLong())
+          .sum()
+      }
+      .filter { it == birthDay }
+      .count().toInt()
 }
 
 fun main(args: Array<String>) {
