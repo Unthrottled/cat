@@ -4,8 +4,7 @@ import java.lang.RuntimeException
 import java.util.stream.Stream
 
 fun birthday(chocolateSquares: List<Int>, birthDay: Int, birthMonth: Int): Int {
-  return Stream.iterate(0){it+1}
-      .limit(chocolateSquares.size.toLong())
+  return 0.rangeTo(chocolateSquares.size)
       .map { it.toLong() }
       .map { chocolateSquares.stream()
           .skip(it)
@@ -14,7 +13,7 @@ fun birthday(chocolateSquares: List<Int>, birthDay: Int, birthMonth: Int): Int {
           .sum()
       }
       .filter { it == birthDay }
-      .count().toInt()
+      .count()
 }
 
 fun main(args: Array<String>) {
